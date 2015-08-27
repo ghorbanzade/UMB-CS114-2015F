@@ -1,0 +1,24 @@
+language: java
+sudo: false
+addons:
+  apt:
+    packages:
+    - texlive-latex-base
+    - texlive-latex-extra
+    - texlive-fonts-recommended
+    - texlive-xetex
+    - texlive-humanities
+    - latex-beamer
+    - lmodern
+    - pgf
+    - python-pygments
+    - ghostscript
+script:
+  - make clean
+  - make code
+notifications:
+  email:
+    recipients:
+      - mail@ghorbanzade.com
+    on_success: always
+    on_failure: always
