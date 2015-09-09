@@ -28,7 +28,8 @@ Office: S-3-124
 Office Hours: Mondays, Wednesdays 16:00 to 17:30
 
 ## Teaching Assistants
-To be determined.
+Azib Hassan
+Mail Address: ``azib.hassan001 [at] umb [dot] edu``
 
 ## Grading
 Homeworks: 40 points  
