@@ -16,10 +16,10 @@ Object-Oriented Design
 Basic Data Structures
 
 ## Prerequisites
-To be determined.
+Students taking this course should have passed or be taking one of [Math129] or [Math130] courses.
 
 ## Recommended Textbook
-To be determined.
+Y. Daniel Liang, Introduction to Java Programming, 10th Edition, Prentice Hall, 2014.
 
 ## Instructor
 Pejman Ghorbanzade  
@@ -39,7 +39,7 @@ Final Exam: 40 points
 First Lecture: Sep 09, 2015  
 Midterm Exam: Oct 14, 2015  
 Last Lecture: Dec 14, 2015  
-Final Exam: TBD
+Final Exam: To be determined.
 
 ## Attendance Policy
 Lecture and lab attendance is optional but strongly encouraged. Students are strongly advised to attend both. Slides do not reﬂect all materials covered in lectures. Students are responsible for material covered in any class that they do not attend. Students are also expected to check this website regularly for latest announcements, upcoming events and released homeworks.
