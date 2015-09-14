@@ -1,6 +1,6 @@
 TOP_DIR = ..
 
-SLIDES= 01
+SLIDES= 01 02
 FONT_DIR= ../template/fonts
 FILES = $(foreach NUM, $(SLIDES), ls$(NUM)/ls$(NUM))
 PDF   = $(addsuffix .pdf, $(FILES))
@@ -18,7 +18,7 @@ docs: code prepare $(PDF)
 $(PDF): $(TEX)
 	@echo -n "  $(@D)... "
 	@cd $(@D) && \
-	xelatex -halt-on-error -shell-escape $(@F:.pdf=.tex) > /dev/null && \
+	xelatex -halt-on-error -shell-escape $(@F:.pdf=.tex) && \
 	xelatex -halt-on-error -shell-escape $(@F:.pdf=.tex) > /dev/null
 	@echo "Done."
 

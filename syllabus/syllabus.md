@@ -28,7 +28,7 @@ Office: S-3-124
 Office Hours: Mondays, Wednesdays 16:00 to 17:30
 
 ## Teaching Assistants
-Azib Hassan
+Azib Hassan  
 Mail Address: ``azib.hassan001 [at] umb [dot] edu``
 
 ## Grading
@@ -38,7 +38,7 @@ Final Exam: 40 points
 
 ## Important Dates
 First Lecture: Sep 09, 2015  
-Midterm Exam: Oct 14, 2015  
+Midterm Exam: Oct 21, 2015  
 Last Lecture: Dec 14, 2015  
 Final Exam: To be determined.
 
