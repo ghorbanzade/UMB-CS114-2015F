@@ -18,7 +18,7 @@ docs: code prepare $(PDF)
 $(PDF): $(TEX)
 	@echo -n "  $(@D)... "
 	@cd $(@D) && \
-	xelatex -halt-on-error -shell-escape $(@F:.pdf=.tex) && \
+	xelatex -halt-on-error -shell-escape $(@F:.pdf=.tex) > /dev/null && \
 	xelatex -halt-on-error -shell-escape $(@F:.pdf=.tex) > /dev/null
 	@echo "Done."
 
