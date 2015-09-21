@@ -1,0 +1,101 @@
+% -----------------------------------------------------------------------------
+% The MIT License (MIT)
+%
+% Copyright (c) 2015 Pejman Ghorbanzade
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in
+% all copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+% THE SOFTWARE.
+% -----------------------------------------------------------------------------
+
+\section*{Question 1}
+The following code snippet does not compile. Rewrite the code snippet and create a program \texttt{HelloUMass.java} by resolving problems of the given code such that it compiles successfully and prints \textit{``Hello World!"} on the console once executed.
+
+\lstset{language=Java}
+\begin{lstlisting}
+public class HelloUMass
+	public static void main(String args) {
+		System.out.pintln(Hello UMass Boston!")
+	}
+}
+\end{lstlisting}
+
+\section*{Question 2}
+Write a program \texttt{Weather.java} that takes two command-line arguments as \textit{city} and \textit{condition} and functions as shown in following examples.
+
+\begin{verbatim}
+$ java WeatherBasic Boston sunny
+Boston is sunny today!
+$ java WeatherBasic Cambridge cloudy
+Cambridge is cloudy today!
+\end{verbatim}
+
+\section*{Question 3}
+Write a program \texttt{Temperature.java} that takes temperature in Celsius as command-line argument and prints it's equivalent in fahrenheit. Your program is expected to function as shown in the following example.
+
+\begin{verbatim}
+$ java TemperatureCalculator 12
+12.0 Celsius is 53.6 fahrenheit.
+\end{verbatim}
+
+\section*{Question 4}
+Given an airplane's acceleration \texttt{a} and take-off speed \texttt{v}, the minimum runway length needed for the airplane to take off can be computed using the formula given in Equation \ref{eq1}.
+
+\begin{equation}
+\textrm{length} = \frac{v^2}{2a}
+\label{eq1}
+\end{equation}
+
+Write a program \texttt{Runway.java} that takes parameters \texttt{v} in meters/second and \texttt{a} in meters/second-squared respectively as command-line arguments and displays the minimum runway length required for it. An example to illustrate the output format is given below.
+
+\begin{verbatim}
+$ java RunwayCalc 60 3.5
+Speed of the airplane is assumed 60.000 m/s
+Acceleration of the airplane is assumed 3.500 m/s2
+Minimum runway length is 514.286 m
+\end{verbatim}
+
+\section*{Question 5}
+Due to the combined effects of gravitation and rotation, the Earth's shape is roughly that of a sphere slightly flattened in the direction of its axis. Consiquently, the Earth is often approximated by an oblate spheroid instead of a sphere. Mathematically, a spheroid is a quadric surface obtained by rotating an ellipse about one of its principal axes.
+
+Equation \ref{eq2} describes a spheroid centred at the origin with its semi-axes aligned along the coordinate axes, in which semi-axis \texttt{a} is equatorial radius of the spheroid and \texttt{c} is the distance from centre to pole along the symmetry axis.
+
+\begin{equation}
+\frac{x^2+y^2}{a^2} + \frac{z^2}{c^2} = 1
+\label{eq2}
+\end{equation}
+
+Write a program \texttt{Spheroid.java} that takes respectively parameters \texttt{a} and \texttt{c} as command-line arguments and calculates surface area of an oblate spheroid using Equation \ref{eq3}.
+
+\begin{equation}
+S_{\text{oblate}} = 2\pi a^2 + \pi \frac{c^2}{e} \ln \left(\frac{1+e}{1-e} \right)
+\label{eq3}
+\end{equation}
+
+where variable \texttt{e} is as given in Equation \ref{eq4}
+
+\begin{equation}
+e = \sqrt{1 - \frac{c^2}{a^2}}
+\label{eq4}
+\end{equation}
+
+The example given below illustrates the accepted output format.
+
+\begin{verbatim}
+$ java Spheroid 6 5
+Surface area is 403.050
+\end{verbatim}

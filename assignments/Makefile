@@ -1,11 +1,11 @@
 TOP_DIR = ..
 
-ASSIGNMENTS =
-SOLUTIONS =
+ASSIGNMENTS = 1
+SOLUTIONS = 1
 FILES = $(foreach NUM, $(ASSIGNMENTS), hw0$(NUM)/assignment/hw0$(NUM))
 FILES += $(foreach NUM, $(SOLUTIONS), hw0$(NUM)/solution/hw0$(NUM)s)
 
-CODE_1 = 
+CODE_1 = HelloUMass Weather Temperature Runway Spheroid
 CODE_2 =
 CODE_3 =
 CODE_4 =
