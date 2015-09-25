@@ -116,11 +116,11 @@
 	\frametitle{Java Hello-World Program}
 	\begin{block}{HelloWorld.java}
 		\begin{minted}[fontsize=\small, linenos, firstnumber=1]{java}
-public class HelloWorld {
-  public static void main(String[] args) {
-    System.out.println("Hello World!");
-  }
-}
+			public class HelloWorld {
+			    public static void main(String[] args) {
+			        System.out.println("Hello World!");
+			    }
+			}
 		\end{minted}
 	\end{block}
 	\pause
@@ -146,9 +146,9 @@ public class HelloWorld {
 	\frametitle{Hello Java Program}
 	\begin{block}{Terminal}
 		\begin{minted}[fontsize=\small,tabsize=8]{bash}
-> javac HelloWorld.java
-> java HelloWorld
-  Hello World!
+			\$ javac HelloWorld.java
+			\$ java HelloWorld
+			Hello World!
 		\end{minted}
 	\end{block}
 \end{frame}
@@ -159,18 +159,18 @@ public class HelloWorld {
 	\frametitle{Command-line Arguments}
 	\begin{block}{SayHello.java}
 		\begin{minted}[fontsize=\small,tabsize=8]{java}
-public class SayHello {
-  public static void main(String[] args) {
-    System.out.println("Hello! How are you?");
-  }
-}
+			public class SayHello {
+			    public static void main(String[] args) {
+			        System.out.println("Hello! How are you?");
+			    }
+			}
 		\end{minted}
 	\end{block}
 	\begin{block}{Terminal}
 		\begin{minted}[fontsize=\small,tabsize=8]{bash}
-> javac SayHello.java
-> java SayHello
-  Hello! How are you?
+			\$ javac SayHello.java
+			\$ java SayHello
+			    Hello! How are you?
 		\end{minted}
 	\end{block}
 \end{frame}
@@ -179,21 +179,21 @@ public class SayHello {
 	\frametitle{Command-line Arguments}
 	\begin{block}{SayHello.java}
 		\begin{minted}[fontsize=\small,tabsize=8]{java}
-public class SayHello {
-  public static void main(String[] args) {
-    System.out.println("Hello " + args[0] + "! ");
-    System.out.println("How are you?");
-  }
-}
+			public class SayHello {
+			    public static void main(String[] args) {
+			        System.out.println("Hello " + args[0] + "! ");
+			        System.out.println("How are you?");
+			    }
+			}
 		\end{minted}
 	\end{block}
 	\begin{block}{Terminal}
 		\begin{minted}[fontsize=\small,tabsize=8]{bash}
-> javac SayHello.java
-> java SayHello Pejman
-  Hello Pejman! How are you?
-> java SayHello 12@#1
-  Hello 12@#1! How are you?
+			\$ javac SayHello.java
+			\$ java SayHello Pejman
+			Hello Pejman! How are you?
+			\$ java SayHello 12@#1
+			Hello 12@#1! How are you?
 		\end{minted}
 	\end{block}
 \end{frame}
