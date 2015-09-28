@@ -49,9 +49,7 @@
 	\frametitle{Overview}
 	\begin{itemize}
 		\item[] Class PrintStream
-		\item[] Class Math
 		\item[] Class String
-		\item[] Data Conversion
 	\end{itemize}
 \end{frame}
 
@@ -137,102 +135,6 @@
 		    }
 		}
 	\end{minted}
-	\end{block}
-\end{frame}
-
-\section{Class Math}
-
-\begin{frame}[fragile]
-	\frametitle{Class Math}
-	Class Math provides methods to perform basic numeric operations, efficiently.
-	\begin{block}{Fields}
-		\begin{columns}
-			\begin{column}{0.5\textwidth}
-				\begin{itemize}
-					\item[] Neperian Number
-				\end{itemize}
-			\end{column}
-			\begin{column}{0.5\textwidth}
-				\begin{itemize}
-					\item[] Pi Number
-				\end{itemize}
-			\end{column}
-		\end{columns}
-	\end{block}
-	\begin{block}{Methods}
-		\begin{columns}
-			\begin{column}{0.5\textwidth}
-				\begin{itemize}
-					\item[] abs(a)
-					\item[] floor(a)
-					\item[] ceil(a)
-					\item[] round(a)
-					\item[] sqrt(a)
-					\item[] cbrt(a)
-				\end{itemize}
-			\end{column}
-			\begin{column}{0.5\textwidth}
-				\begin{itemize}
-					\item[] sin(a)
-					\item[] asin(a)
-					\item[] sinh(a)
-					\item[] cos(a)
-					\item[] acos(a)
-					\item[] cosh(a)
-				\end{itemize}
-			\end{column}
-		\end{columns}
-	\end{block}
-\end{frame}
-
-\begin{frame}[fragile]
-	\frametitle{Class Math}
-	\begin{block}{Methods (cont'd)}
-		\begin{columns}
-			\begin{column}{0.5\textwidth}
-				\begin{itemize}
-					\item[] exp(a)
-					\item[] log(a)
-					\item[] tan(a)
-					\item[] atan(a)
-					\item[] atan2(a)
-					\item[] tanh(a)
-				\end{itemize}
-			\end{column}
-			\begin{column}{0.5\textwidth}
-				\begin{itemize}
-					\item[] max(a, b)
-					\item[] min(a, b)
-					\item[] pow(a, b)
-					\item[] random()
-					\item[] toRadians(a)
-					\item[] toDegrees(a)
-				\end{itemize}
-			\end{column}
-		\end{columns}
-	\end{block}
-	\begin{block}{Usage}
-		\begin{minted}[fontsize=\small,tabsize=8]{java}
-			double randomNum = Math.random();
-			int upperBound = Math.ceil(randomNum);
-			int lowerBound = Math.floor(randomNum);
-		\end{minted}
-	\end{block}
-\end{frame}
-
-\begin{frame}[fragile]
-	\frametitle{Class Math}
-	\begin{block}{How random is Math.random()?}
-		Method Math.random() is a little biased. We will discuss better alternatives later.
-	\end{block}
-	\begin{block}{Method Math.random()}
-		\begin{minted}[fontsize=\small,tabsize=8]{java}
-			double randomNum1 = Math.random();
-		\end{minted}
-		Output is always less than or equal to zero and less than one. What if we want a random number between $x$ and $y$?
-		\begin{minted}[fontsize=\small,tabsize=8]{java}
-			double randomNum2 = x + (y-x) * Math.random();
-		\end{minted}
 	\end{block}
 \end{frame}
 

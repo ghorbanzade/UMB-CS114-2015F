@@ -1,0 +1,216 @@
+% -----------------------------------------------------------------------------
+% The MIT License (MIT)
+%
+% Copyright (c) 2015 Pejman Ghorbanzade
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in
+% all copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+% THE SOFTWARE.
+% -----------------------------------------------------------------------------
+
+\def \topDirectory {../..}
+
+\documentclass[10pt, compress]{beamer}
+
+\usepackage{\topDirectory/template/style/directives}
+\input{\topDirectory/template/config}
+\usepackage{\topDirectory/template/style/beamerthemeUmassLecture}
+\doc{number}{5}
+%\setbeamertemplate{footline}[text line]{}
+
+\begin{document}
+\prepareCover
+
+\section{Course Administration}
+
+\begin{frame}[fragile]
+\frametitle{Course Administration}
+	\begin{itemize}
+		\item[] Student Forum now available in \href{http://www.ghorbanzade.com}{Course Website}.
+		\item[] 37/40 user accounts at \href{http://www.ghorbanzade.com}{Course Website} created so far.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Overview}
+	\begin{itemize}
+		\item[] Class Math
+		\item[] Data Conversion
+	\end{itemize}
+\end{frame}
+
+\section{Class Math}
+
+\begin{frame}[fragile]
+	\frametitle{Class Math}
+	Class Math provides methods to perform basic numeric operations, efficiently.
+	\begin{block}{Fields}
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item[] Neperian Number
+				\end{itemize}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item[] Pi Number
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{block}
+	\begin{block}{Methods}
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item[] abs(a)
+					\item[] floor(a)
+					\item[] ceil(a)
+					\item[] round(a)
+					\item[] sqrt(a)
+					\item[] cbrt(a)
+				\end{itemize}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item[] sin(a)
+					\item[] asin(a)
+					\item[] sinh(a)
+					\item[] cos(a)
+					\item[] acos(a)
+					\item[] cosh(a)
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Class Math}
+	\begin{block}{Methods (cont'd)}
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item[] exp(a)
+					\item[] log(a)
+					\item[] tan(a)
+					\item[] atan(a)
+					\item[] atan2(a)
+					\item[] tanh(a)
+				\end{itemize}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item[] max(a, b)
+					\item[] min(a, b)
+					\item[] pow(a, b)
+					\item[] random()
+					\item[] toRadians(a)
+					\item[] toDegrees(a)
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{block}
+	\begin{block}{Usage}
+		\begin{minted}[fontsize=\small,tabsize=8]{java}
+			double randomNum = Math.random();
+			int upperBound = Math.ceil(randomNum);
+			int lowerBound = Math.floor(randomNum);
+		\end{minted}
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Class Math}
+	\begin{block}{How random is Math.random()?}
+		Method Math.random() is a little biased. We will discuss better alternatives later.
+	\end{block}
+	\begin{block}{Method Math.random()}
+		\begin{minted}[fontsize=\small,tabsize=8]{java}
+			double randomNum1 = Math.random();
+		\end{minted}
+		Output is always less than or equal to zero and less than one. What if we want a random number between $x$ and $y$?
+		\begin{minted}[fontsize=\small,tabsize=8]{java}
+			double randomNum2 = x + (y-x) * Math.random();
+		\end{minted}
+	\end{block}
+\end{frame}
+
+
+\section{Data Conversion}
+
+\begin{frame}[fragile]
+	\frametitle{Data Conversion}
+	\begin{itemize}
+		\item[] All variables should be declared only once.
+		\item[] Variables of a declared type can be assigned values of that type.
+	\end{itemize}
+	\begin{block}{Converting Primitive Types to String}
+		\begin{minted}[fontsize=\small,tabsize=8]{java}
+			int a = 64;
+			double b = 124.52;
+			boolean c = false;
+			String strA = String.valueOf(a);
+			String strB = String.valueOf(b);
+			String strC = String.valueOf(c);
+		\end{minted}
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Data Conversion}
+	\begin{block}{Explicit Type Conversion}
+		\begin{minted}[fontsize=\small,tabsize=8]{java}
+			String strA = "64";
+			String strB = "124.52";
+			String strC = "false";
+			int a = Integer.parseInt(strA);
+			double b = Double.parseDouble(strB);
+			boolean c = Boolean.parseBoolean(strC);
+		\end{minted}
+		Many methods perform a type conversion by receiving input of one type and giving output of another type.
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Data Conversion}
+	\begin{block}{Explicit Type Casting}
+		\begin{minted}[fontsize=\small,tabsize=8]{java}
+			double a = 124.52;
+			int b = (int) a;
+			int c = (int) a + b;
+			int d = (int) (a + b);
+		\end{minted}
+		Type casting has higher precedance than other operations. Beware! Type casting may involve information loss.
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Data Conversion}
+	\begin{block}{Automatic Promotion}
+		\begin{minted}[fontsize=\small,tabsize=8]{java}
+			int a = 5;
+			int b = -15;
+			int c = 9;
+			double discriminant = Math.pow(b,2) - 4 * a *c;
+		\end{minted}
+		Java automatically promotes data types where it assumes we have been light-headed. In above example, variables a, b and c will first be converted to type double and then other operations are performed. Automatic promotion is safe as it doesn't involve information loss.
+	\end{block}
+\end{frame}
+
+\plain{}{Keep Calm\\and\\Practice}
+
+\end{document}
