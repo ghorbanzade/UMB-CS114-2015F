@@ -18,12 +18,13 @@ $(PDF_TARGET):
 	@$(MAKE) --no-print-directory docs -C syllabus;
 
 code:
-	@$(MAKE) --no-print-directory code -C assignments;
+	@ant test -silent;
 	@$(MAKE) --no-print-directory code -C exams;
 	@$(MAKE) --no-print-directory code -C slides;
 	@$(MAKE) --no-print-directory code -C syllabus;
 
 clean:
+	@ant clean -silent;
 	@$(MAKE) --no-print-directory clean -C assignments;
 	@$(MAKE) --no-print-directory clean -C exams;
 	@$(MAKE) --no-print-directory clean -C slides;

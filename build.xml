@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="assignment2" default="compile" basedir=".">
+
+	<property name="lib.dir" value="lib" />
+	<property name="hw01.dir" value="assignments/hw01/code" />
+	<property name="hw02.dir" value="assignments/hw01/code" />
+
+	<target name="ivy">
+		<ivy:retrieve />
+		<ivy:cachepath pathid="compile.path" conf="compile" />
+		<ivy:cachepath pathid="runtime.path" conf="runtime" />
+		<ivy:cachepath pathid="test.path" conf="test" />
+	</target>
+
+	<path id="classpath.test">
+		<pathelement location="${lib.dir}/junit-4.12.jar" />
+		<pathelement location="${lib.dir}/hamcrest-core-1.3.jar" />
+	</path>
+	<path id="classpath.hw01">
+		<pathelement location="${hw01.dir}" />
+		<path refid="classpath.test" />
+	</path>
+	<path id="classpath.hw02">
+		<pathelement location="${hw02.dir}" />
+		<path refid="classpath.test" />
+	</path>
+
+	<target name="compile" depends="ivy">
+		<javac srcdir="${hw01.dir}" destdir="${hw01.dir}" includeantruntime="false">
+			<classpath refid="classpath.hw01"/>
+		</javac>
+		<javac srcdir="${hw02.dir}" destdir="${hw02.dir}" includeantruntime="false">
+			<classpath refid="classpath.hw02"/>
+		</javac>
+	</target>
+
+	<target name="test" depends="compile">
+		<junit printsummary="on" haltonfailure="yes">
+			<classpath refid="classpath.hw01"/>
+			<batchtest>
+				<fileset dir="${hw01.dir}" includes="*Test.java"/>
+			</batchtest>
+		</junit>
+		<junit printsummary="on" haltonfailure="yes">
+			<classpath refid="classpath.hw02"/>
+			<batchtest>
+				<fileset dir="${hw02.dir}" includes="*Test.java"/>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="clean">
+		<delete>
+			<fileset dir="${hw01.dir}" includes="**/*.class" />
+			<fileset dir="${hw02.dir}" includes="**/*.class" />
+		</delete>
+		<delete dir="${lib.dir}"/>
+	</target>
+
+</project>
