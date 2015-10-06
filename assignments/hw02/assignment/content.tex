@@ -1,0 +1,97 @@
+% -----------------------------------------------------------------------------
+% The MIT License (MIT)
+%
+% Copyright (c) 2015 Pejman Ghorbanzade
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in
+% all copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+% THE SOFTWARE.
+% -----------------------------------------------------------------------------
+
+\section*{Question 1}
+Given coordinates of a point and a sphere in tridimensional space, a point can either be inside, outside or on the sphere.
+
+Write a program \texttt{PointAndSphere.java} that takes respectively coordinates of a point and center of a sphere as command line arguments and prompts user for radius of the sphere.
+Your program would then determine the location of the point with respect to the sphere.
+Following is an example of an accepted output format.
+
+\begin{verbatim}
+$ java PointAndSphere 1 1 1 0 0 0
+Radius of the sphere: 1.7
+The point is outside the sphere.
+$ java PointAndSphere 1 1 1 0 0 0
+Radius of the sphere 1.8
+The point is inside the sphere.
+\end{verbatim}
+
+\section*{Question 2}
+Using Leibniz Formula, the number $\pi$ can be approximated using the series given in Equation \ref{eq1}.
+
+\begin{equation}
+\pi = 4 \left( 1 - \frac{1}{3} + \frac{1}{5} + \cdots + \frac{(-1)^{i+1}}{2i-1} \right)
+\label{eq1}
+\end{equation}
+
+Write a program \texttt{PiProximator.java} that prompts user for a number $i$ and approximates the number $\pi$ using the first $i$ sentences of Equation \ref{eq1}.
+Your program should also print the approximation error compared to the \texttt{Math.PI} value.
+Following is the expected output of a sample run of your program.
+
+\begin{verbatim}
+$ java PiProximator
+Number of Sentences: 100
+Approximate Value: 3.131593
+Approximation Error: 0.010000
+\end{verbatim}
+
+\section*{Question 3}
+Write a program \texttt{PrimePrinter.java} that prompts user for a number $x$ and prints all prime numbers less than or equal to the number $x$.
+Your program should function as shown in the example given below.
+
+\begin{verbatim}
+$ java PrimePrinter
+Enter Upper Limit: 29
+2 3 5 7 11 13 17 19 23 29
+\end{verbatim}
+
+\section*{Question 4}
+Write a program \texttt{MatrixFiller.java} that prompts user for a number $x$ between 1 to 9 and generates an $x \times x$ matrix with random elements from 1 to $x^2$.
+Following is an expected sample run of your program.
+
+\begin{verbatim}
+$ java MatrixFiller
+Size of Matrix: 5
+ 05 21 07 25 11
+ 17 02 17 01 07
+ 25 14 14 08 07
+ 02 05 01 14 02
+ 02 14 14 13 07
+\end{verbatim}
+
+\section*{Question 5}
+Write a program \texttt{Pyramid.java} that prompts user for a number between 1 to 10 and displays a pyramid of the given format.
+
+\begin{verbatim}
+$ java Pyramid
+Number of Rows: 5
+                   1
+               1   2   1
+           1   2   4   2   1
+       1   2   4   8   4   2   1
+   1   2   4   8  16   8   4   2   1
+\end{verbatim}
+
+\newpage
