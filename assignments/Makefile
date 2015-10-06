@@ -1,7 +1,7 @@
 TOP_DIR = ..
 
 ASSIGNMENTS = 1 2
-SOLUTIONS = 1
+SOLUTIONS = 1 2
 FILES = $(foreach NUM, $(ASSIGNMENTS), hw0$(NUM)/assignment/hw0$(NUM))
 FILES += $(foreach NUM, $(SOLUTIONS), hw0$(NUM)/solution/hw0$(NUM)s)
 

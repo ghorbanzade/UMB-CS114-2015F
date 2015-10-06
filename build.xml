@@ -3,7 +3,7 @@
 
 	<property name="lib.dir" value="lib" />
 	<property name="hw01.dir" value="assignments/hw01/code" />
-	<property name="hw02.dir" value="assignments/hw01/code" />
+	<property name="hw02.dir" value="assignments/hw02/code" />
 
 	<target name="ivy">
 		<ivy:retrieve />
