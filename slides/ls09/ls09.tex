@@ -1,0 +1,263 @@
+% -----------------------------------------------------------------------------
+% The MIT License (MIT)
+%
+% Copyright (c) 2015 Pejman Ghorbanzade
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in
+% all copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+% THE SOFTWARE.
+% -----------------------------------------------------------------------------
+
+\def \topDirectory {../..}
+
+\documentclass[10pt, compress]{beamer}
+
+\usepackage{\topDirectory/template/style/directives}
+\input{\topDirectory/template/config}
+\usepackage{\topDirectory/template/style/beamerthemeUmassLecture}
+\doc{number}{9}
+%\setbeamertemplate{footline}[text line]{}
+
+\begin{document}
+\prepareCover
+
+\section{Course Administration}
+
+\begin{slide}
+	\begin{itemize}
+		\item[] Midterm exam to be held Ocober 21, 2015 at 5:30 PM.
+	\end{itemize}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Overview}
+		\begin{itemize}
+			\item[] Branches
+			\item[] One-Dimensional Arrays
+		\end{itemize}
+	\end{block}
+\end{slide}
+
+\section{Branches}
+
+\begin{slide}
+	\begin{block}{Objective}
+		Write a program \texttt{FindP.java} that takes a String as command-line argument and checks if it contains the letter \texttt{p} (case insensitive). Do not use method \texttt{String.contains()}.
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{FindP.java (v1)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class FindP {
+			    public static void main(String[] args) {
+			        String phrase = args[0].toLowerCase();
+			        char letter = 'p';
+			        boolean found = false;
+			        for (int i = 0; i < phrase.length(); i++) {
+			            if (phrase.charAt(i) == letter)
+			                found = true;
+			        }
+			        if (found)
+			            System.out.println("Found some '" + letter "'.");
+			        else
+			            System.out.println("No '"+ letter +"' found.");
+			    }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Result}
+		\begin{minted}[fontsize=\small,tabsize=8]{text}
+			> javac FindP.java
+			> java FindP Hello
+			No 'p' Found.
+			> java FindP Pejman
+			Found Some 'p'.
+		\end{minted}
+	\end{block}
+	\begin{block}{Question}
+		How is the for loop executed?
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{FindP.java (v2)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class FindP {
+			    public static void main(String[] args) {
+			        String phrase = args[0].toLowerCase();
+			        char letter = 'p';
+			        for (int i = 0; i < phrase.length(); i++) {
+			            if (phrase.charAt(i) == letter)
+			                System.out.print(letter);
+			            else
+			                System.out.print("-");
+			        }
+			    }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Result}
+		\begin{minted}[fontsize=\small,tabsize=8]{text}
+			> javac FindP.java
+			> java FindP Happy
+			--pp-
+			> java FindP Pejman
+			p-----
+		\end{minted}
+	\end{block}
+	\begin{block}{Problem Statement}
+		There are as many loop iterations as \texttt{phrase.length()}. Are they really required?
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{break} Statement}
+		\texttt{break} statement immediately terminates the loop.
+		Control flow will return to the statement after the loop.
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{FindP.java (v3)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=3]{java}
+			String phrase = args[0].toLowerCase();
+			char letter = 'p';
+			boolean found = false;
+			for (int i = 0; i < phrase.length(); i++)
+			    if (phrase.charAt(i) == letter) {
+			        found = true;
+			        break;
+			    }
+			if (found)
+			    System.out.println("Found some '" + letter "'.");
+			else
+			    System.out.println("No '"+ letter +"' found.");
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{FindP.java (v4)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			String phrase = args[0].toLowerCase();
+			char letter = 'p';
+			for (int i = 0; i < phrase.length(); i++) {
+			    if (phrase.charAt(i) == letter) {
+			        System.out.print(letter);
+			        break;
+			    }
+			    else
+			        System.out.print("-");
+			}
+		\end{minted}
+	\end{block}
+	\begin{block}{Result}
+		\begin{minted}[fontsize=\small,tabsize=8]{text}
+			> javac FindP.java
+			> java FindP Happy
+			--p
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Note}
+	Unconditional branches can be avoided to enhance code readability.
+	\end{block}
+	\begin{block}{FindP.java (v5)}
+		\begin{minted}[fontsize=\small, tabsize=8, linenos, firstnumber=1]{java}
+			String phrase = args[0].toLowerCase();
+			char letter = 'p';
+			boolean found = false;
+			int i = 0;
+			while (!found && i < phrase.length())
+			if (phrase.charAt(i++) == letter)
+			    found = true;
+			    System.out.println(found ? "Found" : "Not Found");
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{continue} Statement}
+		The \texttt{continue} statement skips \emph{current iteration} of the loop.
+		Control flow will immediately skip to the end the loop's body.
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Objective}
+		Write a program \texttt{CountP.java} that takes a String as command-line argument and prints number of 'p' letters it contains. Comparison is case insensitive.
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{CountP.java (v1)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class CountP {
+			    public static void main(String[] args) {
+			        String phrase = args[0].toLowerCase();
+			        char letter = 'p';
+			        int counter = 0;
+			        for (int i = 0; i < phrase.length(); i++) {
+			            if (phrase.charAt(i) != letter)
+			                continue;
+			            counter++;
+			        }
+			        System.out.printf("Found %d 'P'(s)\n", counter);
+			    }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Note}
+	Unconditional branches can be avoided to enhance code readability.
+	\end{block}
+	\begin{block}{CountP.java (v2)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=3]{java}
+			String phrase = args[0].toLowerCase();
+			char letter = 'p';
+			int counter = 0;
+			for (int i = 0; i < phrase.length(); i++) {
+			    if (phrase.charAt(i) == letter)
+			        counter++;
+			}
+			System.out.printf("Found %d 'P'(s)\n", counter);
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{return} statement}
+	Exits from the current method. Control flow returns to where the method was invoked.
+
+	Will be discussed later.
+	\end{block}
+\end{slide}
+
+\plain{}{Keep Calm\\and\\Practice}
+
+\end{document}

@@ -1,6 +1,6 @@
 TOP_DIR = ..
 
-SLIDES= 01 02 03 04 05 06 07 08
+SLIDES= 01 02 03 04 05 06 07 08 09
 FONT_DIR= ../template/fonts
 FILES = $(foreach NUM, $(SLIDES), ls$(NUM)/ls$(NUM))
 PDF   = $(addsuffix .pdf, $(FILES))

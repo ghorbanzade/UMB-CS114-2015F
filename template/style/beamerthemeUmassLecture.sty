@@ -193,6 +193,10 @@
 	}
 }
 
+\newenvironment{slide}
+	{\begin{frame}[fragile,environment=slide]\frametitle{\secname}}
+	{\end{frame}}
+
 % Commands
 \newcommand{\insertsectionHEAD}{%
 	\expandafter\insertsectionHEADaux\insertsectionhead}
