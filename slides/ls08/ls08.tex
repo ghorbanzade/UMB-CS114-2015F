@@ -40,25 +40,24 @@
 
 \section{Course Administration}
 
-\begin{frame}[fragile]
-\frametitle{Course Administration}
+\begin{slide}
 	\begin{itemize}
 		\item[] Assignment 1 Due October 5, 2015 at 17:30 PM.
 		\item[] Assignment 2 Released. Due October 19, 2015 at 17:30 PM.
 	\end{itemize}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Overview}
-	\begin{itemize}
-		\item[] Loops
-	\end{itemize}
-\end{frame}
+\begin{slide}
+	\begin{block}{Overview}
+		\begin{itemize}
+			\item[] Loops
+		\end{itemize}
+	\end{block}
+\end{slide}
 
 \section{Loops}
 
-\begin{frame}[fragile]
-	\frametitle{Loops}
+\begin{slide}
 	\begin{block}{\texttt{HelloWorld.java}}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
 			public class HelloWorld {
@@ -71,10 +70,9 @@
 	\begin{block}{Objective}
 		Write a program \texttt{HelloWorld100.java} so that it prints \texttt{Hello World!} a hundred times.
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Loops}
+\begin{slide}
 	\begin{block}{\texttt{HelloWorld100.java}}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
 			public class HelloWorld {
@@ -88,10 +86,9 @@
 			}
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Loops}
+\begin{slide}
 	\begin{block}{\texttt{while} Loop}
 		The \texttt{while} statement continually executes a block of statements while a particular condition is \texttt{true}.
 		\begin{minted}[fontsize=\small,tabsize=8]{text}
@@ -107,17 +104,15 @@
 			\item[] Condition will be reevaluated once \textbf{all} statements are executed.
 		\end{itemize}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Loops}
+\begin{slide}
 	\begin{block}{Objective}
 		Write a program \texttt{twoSix.java} that keeps rolling two dice until you get two six.
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Loops}
+\begin{slide}
 	\begin{block}{\texttt{TwoSix.java} (v1.0)}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
 			public class TwoSix {
@@ -136,10 +131,9 @@
 			}
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Loops}
+\begin{slide}
 	\begin{block}{\texttt{TwoSix.java} (v2.0)}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
 			public class TwoSix {
@@ -155,10 +149,9 @@
 			}
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Loops}
+\begin{slide}
 	\begin{block}{\texttt{do-while} Loop}
 		The \texttt{do-while} loop is a variation of \texttt{while} loop which evaluates iteration condition after execution of block of statements.
 		\begin{minted}[fontsize=\small,tabsize=8]{text}
@@ -174,10 +167,9 @@
 			\item[] Condition will be reevaluated once \textbf{all} statements are reexecuted.
 		\end{itemize}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Loops}
+\begin{slide}
 	\begin{block}{\texttt{HelloWorld100.java} (v1.0)}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=3]{java}
 			int i = 0;
@@ -196,10 +188,9 @@
 			}
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Loops}
+\begin{slide}
 	\begin{block}{\texttt{HelloWorld100.java} (v2.0)}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
 			public class HelloWorld {
@@ -210,10 +201,9 @@
 			}
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Loops}
+\begin{slide}
 	\begin{block}{\texttt{for} Loop}
 		The \texttt{for} loop is a special case of a \texttt{while} loop that executes a block of statements for a specified number of times. Any \texttt{for} loop can be converted to a \texttt{while} loop.
 		\begin{minted}[fontsize=\small,tabsize=8]{text}
@@ -227,10 +217,9 @@
 			\item Afterthought\\Increments/Decrements iteration counter
 		\end{enumerate}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Loops}
+\begin{slide}
 	\begin{block}{Objective}
 		Write a program \texttt{Triangle.java} that takes number $n$ from user and prints a traingle in $n$ lines using star characters, such that there are $k$ star characters in $k^{th}$ line.
 		\begin{verbbox}
@@ -245,10 +234,9 @@
 		\caption{Sample riangle generated for $n = 5$}
 		\end{figure}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Loops}
+\begin{slide}
 	\begin{block}{\texttt{Triangle.java}}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
 			public class Triangle {
@@ -265,7 +253,7 @@
 			}
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
 \plain{}{Keep Calm\\and\\Practice}
 

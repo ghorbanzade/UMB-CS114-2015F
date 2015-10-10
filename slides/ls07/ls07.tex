@@ -37,25 +37,24 @@
 
 \section{Course Administration}
 
-\begin{frame}[fragile]
-\frametitle{Course Administration}
+\begin{slide}
 	\begin{itemize}
 		\item[] Assignment 1 Due October 5, 2015 at 17:30 PM.
 	\end{itemize}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Overview}
-	\begin{itemize}
-		\item[] Class Scanner
-		\item[] Conditionals
-	\end{itemize}
-\end{frame}
+\begin{slide}
+	\begin{block}{Overview}
+		\begin{itemize}
+			\item[] Class Scanner
+			\item[] Conditionals
+		\end{itemize}
+	\end{block}
+\end{slide}
 
 \section{Class Scanner}
 
-\begin{frame}[fragile]
-	\frametitle{Class Scanner}
+\begin{slide}
 	\begin{block}{Problem Definition}
 		\begin{itemize}
 			\item[] Command-line arguments to be given before program execution.
@@ -69,10 +68,9 @@
 			\item[] Scanner class provides a simple yet powerful way to ask for inputs during execution of program.
 		\end{itemize}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Class Scanner}
+\begin{slide}
 	\begin{block}{Objective}
 		Write a program \texttt{Greetings.java} that prompts user for his name and then prints a welcome message of the following format.
 	\end{block}
@@ -83,10 +81,9 @@
 			Greetings, Pejman!
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Class Scanner}
+\begin{slide}
 	\begin{block}{Example}
 		\begin{minted}[fontsize=\small,tabsize=8]{java}
 			import java.util.Scanner;
@@ -101,10 +98,9 @@
 			}
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Class Scanner}
+\begin{slide}
 	\begin{block}{Objective}
 		Write a program \texttt{SimpleAdder.java} that prompts user for two \textit{Integer} numbers and shows their sum as output.
 	\end{block}
@@ -116,10 +112,9 @@
 			a + b = 279
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Class Scanner}
+\begin{slide}
 	\begin{block}{Example}
 		\begin{minted}[fontsize=\small,tabsize=8]{java}
 			import java.util.Scanner;
@@ -136,10 +131,9 @@
 			}
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Class Scanner}
+\begin{slide}
 	\begin{block}{Instantiation}
 		\begin{minted}[fontsize=\small,tabsize=8]{java}
 			Scanner input = new Scanner(System.in);
@@ -167,10 +161,9 @@
 			\end{column}
 		\end{columns}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Class Scanner}
+\begin{slide}
 	\begin{block}{Final Note}
 		\begin{itemize}
 			\item[] It is a good practice to use the \texttt{close()} method to close once you are sure you will no longer use it. This helps avoid memory leakage and releases system resources.
@@ -182,22 +175,20 @@
 			input.close();
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
 \section{Conditionals}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{Objective}
 		Write a program \texttt{Quadratic.java} that takes three integers \texttt{a}, \texttt{b} and \texttt{c} as command line arguments and solves for \texttt{x} with three digits of precision the quadratic expression shown below.
 		\begin{equation*}\label{eq1}
 			a^2 x + b x + c = 0
 		\end{equation*}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{\texttt{Quadratic.java} (v1)}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
 			public class Quadratic {
@@ -214,10 +205,9 @@
 			}
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{Problem Statement}
 		\begin{minted}[fontsize=\small,tabsize=8]{text}
 			> javac Quadratic.java
@@ -232,10 +222,9 @@
 	\begin{block}{Proposed Solution}
 		What if we could make the program decide what to print based on value of discriminant?
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{\texttt{Quadratic.java} (v2)}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=3]{java}
 			double a = Double.parseDouble(args[0]);
@@ -250,10 +239,9 @@
 			}
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{Problem Statement}
 		\begin{minted}[fontsize=\small,tabsize=8]{text}
 			> javac Quadratic.java
@@ -266,10 +254,9 @@
 	\begin{block}{Proposed Solution}
 		Use more \texttt{if} conditionals to cover different conditions.
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{\texttt{Quadratic.java} (v3)}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=6]{java}
 			double discriminant = Math.pow(b,2) - 4 * a * c;
@@ -287,10 +274,9 @@
 			    System.out.printf("No real solution exists.");
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{Problem Statement}
 		\begin{minted}[fontsize=\small,tabsize=8]{text}
 			> javac Quadratic.java
@@ -305,10 +291,9 @@
 	\begin{block}{Are we done?}
 		All three conditions are being checked unnecessarily.
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{\texttt{Quadratic.java} (v4)}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=6]{java}
 			double discriminant = Math.pow(b,2) - 4 * a * c;
@@ -326,17 +311,15 @@
 			    System.out.printf("No real solution exists.");
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{Objective}
 		Write a program \textit{NumberChecker.java} that prompts user for an \textit{Integer} number and determines whether the number can be stored in a variable of type \textit{Byte} or \textit{Short}.
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{\texttt{NumberChecker.java} (v1)}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos]{java}
 			import java.util.Scanner;
@@ -355,10 +338,9 @@
 			}
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{Problem Statement}
 		\begin{minted}[fontsize=\small,tabsize=8]{text}
 			> javac NumberChecker.java
@@ -375,10 +357,9 @@
 	\begin{block}{Proposed Solution}
 		Condition to be checked if previous condition is not met.
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{\texttt{NumberChecker.java} (v2)}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos]{java}
 			import java.util.Scanner;
@@ -397,10 +378,9 @@
 			}
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{Result}
 		\begin{minted}[fontsize=\small,tabsize=8]{text}
 			> javac NumberChecker.java
@@ -415,10 +395,9 @@
 	\begin{block}{Conclusion}
 		Conditionals allow a program to perform different operations in different conditions.
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{Objective}
 		Write a program \texttt{Grade.java} that takes a letter grade and converts it to its numerical equivalent, based on the table given below.
 		\begin{table}[H]
@@ -433,10 +412,9 @@
 			\end{tabular}
 		\end{table}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{\texttt{Grade.java} (v1.0)}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=4]{java}
 			        Scanner input = new Scanner(System.in);
@@ -454,10 +432,9 @@
 			            System.out.println("GPA is 0");
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{Problem Statement}
 		We were lucky grade letters end in \texttt{F}.
 	\end{block}
@@ -467,10 +444,9 @@
 	\begin{block}{Proposed Solution}
 		\texttt{switch} conditionals help us avoid repetitive \texttt{if-then-else} conditionals.
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{\texttt{Grade.java} (v2.0)}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=3]{java}
 			        Scanner input = new Scanner(System.in);
@@ -488,10 +464,9 @@
 			        System.out.printf("GPA is %.2f\n", num);
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Conditionals}
+\begin{slide}
 	\begin{block}{Remember}
 		\begin{itemize}
 			\item[] \texttt{switch} is not always an alternative for the \texttt{if-then-else} conditional. \texttt{switch} is a very special case of more general \texttt{if-then-else} conditionals.
@@ -499,7 +474,7 @@
 			\item[] The \texttt{default} section handles all values that are not explicitly handled by one of the \texttt{case} sections.
 		\end{itemize}
 	\end{block}
-\end{frame}
+\end{slide}
 
 \plain{}{Keep Calm\\and\\Practice}
 

@@ -37,26 +37,25 @@
 
 \section{Course Administration}
 
-\begin{frame}[fragile]
-\frametitle{Course Administration}
+\begin{slide}
 	\begin{itemize}
 		\item[] Student Forum now available in \href{http://www.ghorbanzade.com}{Course Website}.
 		\item[] 37/40 user accounts at \href{http://www.ghorbanzade.com}{Course Website} created so far.
 	\end{itemize}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Overview}
-	\begin{itemize}
-		\item[] Class Math
-		\item[] Data Conversion
-	\end{itemize}
-\end{frame}
+\begin{slide}
+	\begin{block}{Overview}
+		\begin{itemize}
+			\item[] Class Math
+			\item[] Data Conversion
+		\end{itemize}
+	\end{block}
+\end{slide}
 
 \section{Class Math}
 
-\begin{frame}[fragile]
-	\frametitle{Class Math}
+\begin{slide}
 	Class Math provides methods to perform basic numeric operations, efficiently.
 	\begin{block}{Fields}
 		\begin{columns}
@@ -96,10 +95,9 @@
 			\end{column}
 		\end{columns}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Class Math}
+\begin{slide}
 	\begin{block}{Methods (cont'd)}
 		\begin{columns}
 			\begin{column}{0.5\textwidth}
@@ -131,10 +129,9 @@
 			int lowerBound = Math.floor(randomNum);
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Class Math}
+\begin{slide}
 	\begin{block}{How random is Math.random()?}
 		Method Math.random() is a little biased. We will discuss better alternatives later.
 	\end{block}
@@ -147,13 +144,11 @@
 			double randomNum2 = x + (y-x) * Math.random();
 		\end{minted}
 	\end{block}
-\end{frame}
-
+\end{slide}
 
 \section{Data Conversion}
 
-\begin{frame}[fragile]
-	\frametitle{Data Conversion}
+\begin{slide}
 	\begin{itemize}
 		\item[] All variables should be declared only once.
 		\item[] Variables of a declared type can be assigned values of that type.
@@ -168,10 +163,9 @@
 			String strC = String.valueOf(c);
 		\end{minted}
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Data Conversion}
+\begin{slide}
 	\begin{block}{Explicit Type Conversion}
 		\begin{minted}[fontsize=\small,tabsize=8]{java}
 			String strA = "64";
@@ -183,10 +177,9 @@
 		\end{minted}
 		Many methods perform a type conversion by receiving input of one type and giving output of another type.
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Data Conversion}
+\begin{slide}
 	\begin{block}{Explicit Type Casting}
 		\begin{minted}[fontsize=\small,tabsize=8]{java}
 			double a = 124.52;
@@ -196,10 +189,9 @@
 		\end{minted}
 		Type casting has higher precedance than other operations. Beware! Type casting may involve information loss.
 	\end{block}
-\end{frame}
+\end{slide}
 
-\begin{frame}[fragile]
-	\frametitle{Data Conversion}
+\begin{slide}
 	\begin{block}{Automatic Promotion}
 		\begin{minted}[fontsize=\small,tabsize=8]{java}
 			int a = 5;
@@ -209,7 +201,7 @@
 		\end{minted}
 		Java automatically promotes data types where it assumes we have been light-headed. In above example, variables a, b and c will first be converted to type double and then other operations are performed. Automatic promotion is safe as it doesn't involve information loss.
 	\end{block}
-\end{frame}
+\end{slide}
 
 \plain{}{Keep Calm\\and\\Practice}
 
