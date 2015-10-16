@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="assignment2" default="compile" basedir=".">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="CS114-2015F" default="compile" basedir=".">
 
 	<property name="lib.dir" value="lib" />
 	<property name="hw01.dir" value="assignments/hw01/code" />

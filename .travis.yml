@@ -1,6 +1,17 @@
 language: java
 sudo: false
+env:
+  global:
+    - secure: "qSniotCUo7qtZu+s+knVs/U6kZBTBDsspxbp49YfiJxSOxQe1w4MyQPdpHWuYPD9oMl8uiEP36xm6/nHGLsNmZD1K2HXRE2xUTGGSA2xRsAkRt1Sg3vBYF2IG5FAzdiES40VNaJb+Nh2e2G985n9EGwunKwdi/Bo1TMkb1lzGwPzwL//pXlrgLdUKWHZoSrEuyK+DKZFDOwxy8uY6810rnuKPUF7g5A59U2ZEiZIFCnPMxm2+L+1SjOltzWvKfUBs4ptBkD2hFKQ7uv1Kbnynmc28nWEbTAcZmZwC+Ukh7xQx14N9FImuuFSNRPQdZaWwb95XYVqvX9V6DXGOv/q1Ty1VN6M3my8MTGcAqm6wPJB/w9Czl0PCERyw6B8YEIZ1sartcNycfiXQ6bmbEVTnft2B9hmw9w4goQPPmmLt6Qvvdpug1PJf6BaMUJMaEnWA6sLbVW0gqXUn1ViGwEAjXjOCVBX2uxTJScA2HLihaYwBBd3FNIkTnZbNRGzHwmmH1KMMfRWOwWiqVvvuMLi8avsMdmlKq4nsePf5U7PpZF+oD08n7CXL1hsvoSiVY8mNO3hXeFoedObS9vAUrVvqCVlELvEdWaS1hvFeIVaud15pxJL7tw6lqNhx3YKQSTgz3aJi3cEF538YYuRkw+19ffa0Oj0YaHiP/2CK7/IFPg="
 addons:
+  coverity_scan:
+    project:
+      name: "ghorbanzade/UMB-CS114-2015F"
+      description: "Released source for CS114 Introduction to Java"
+    notification_email: mail@ghorbanzade.com
+    build_command_prepend: "make clean"
+    build_command: "make code"
+    branch_pattern: master
   apt:
     packages:
     - texlive-latex-base

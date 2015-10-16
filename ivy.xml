@@ -1,5 +1,5 @@
 <ivy-module version="2.0">
-	<info organisation="org.apache" module="assignment2" />
+	<info organisation="org.apache" module="CS114-2015F" />
 	<configurations>
 		<conf name="compile"/>
 		<conf name="runtime" extends="compile"/>
