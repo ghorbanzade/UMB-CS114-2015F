@@ -1,17 +1,12 @@
 TOP_DIR = ..
 
-ASSIGNMENTS =
-SOLUTIONS =
-FILES = $(foreach NUM, $(ASSIGNMENTS), $(NUM)/assignment/$(NUM))
+EXAMS = m01 m02
+SOLUTIONS = m01 m02
+FILES = $(foreach NUM, $(EXAMS), $(NUM)/exam/$(NUM))
 FILES += $(foreach NUM, $(SOLUTIONS), $(NUM)/solution/$(NUM)s)
-
-CODE_1 = 
-CODES  = $(foreach FILE, $(CODE_1), f01/code/$(FILE))
 
 PDF = $(addsuffix .pdf, $(FILES))
 TEX = $(addsuffix .tex, $(FILES))
-CLASS = $(addsuffix .class, $(CODES))
-JAVA = $(addsuffix .java, $(CODES))
 
 .PHONY: clean code docs all
 
@@ -29,12 +24,7 @@ $(PDF): $(TEX)
 	pdflatex -halt-on-error $(@F:.pdf=.tex) > /dev/null
 	@echo "Done."
 
-code: $(CLASS)
-$(CLASS): $(JAVA)
-	@echo -n "  $(@:.class=)... "
-	@cd $(@D) && \
-	javac -d . -classpath . $(@F:.class=.java)
-	@echo "Done."
+code: ;
 
 clean:
 	@find . -name '*.log' -delete

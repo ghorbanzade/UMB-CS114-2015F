@@ -4,6 +4,8 @@
 	<property name="lib.dir" value="lib" />
 	<property name="hw01.dir" value="assignments/hw01/code" />
 	<property name="hw02.dir" value="assignments/hw02/code" />
+	<property name="m01.dir" value="exams/m01/code" />
+	<property name="m02.dir" value="exams/m02/code" />
 
 	<target name="ivy">
 		<ivy:retrieve />
@@ -24,6 +26,14 @@
 		<pathelement location="${hw02.dir}" />
 		<path refid="classpath.test" />
 	</path>
+	<path id="classpath.m01">
+		<pathelement location="${m01.dir}" />
+		<path refid="classpath.test" />
+	</path>
+	<path id="classpath.m02">
+		<pathelement location="${m02.dir}" />
+		<path refid="classpath.test" />
+	</path>
 
 	<target name="compile" depends="ivy">
 		<javac srcdir="${hw01.dir}" destdir="${hw01.dir}" includeantruntime="false">
@@ -31,6 +41,12 @@
 		</javac>
 		<javac srcdir="${hw02.dir}" destdir="${hw02.dir}" includeantruntime="false">
 			<classpath refid="classpath.hw02"/>
+		</javac>
+		<javac srcdir="${m01.dir}" destdir="${m01.dir}" includeantruntime="false">
+			<classpath refid="classpath.m01"/>
+		</javac>
+		<javac srcdir="${m02.dir}" destdir="${m02.dir}" includeantruntime="false">
+			<classpath refid="classpath.m02"/>
 		</javac>
 	</target>
 
@@ -47,12 +63,26 @@
 				<fileset dir="${hw02.dir}" includes="*Test.java"/>
 			</batchtest>
 		</junit>
+		<junit printsummary="on" haltonfailure="yes">
+			<classpath refid="classpath.m01"/>
+			<batchtest>
+				<fileset dir="${m01.dir}" includes="*Test.java"/>
+			</batchtest>
+		</junit>
+		<junit printsummary="on" haltonfailure="yes">
+			<classpath refid="classpath.m02"/>
+			<batchtest>
+				<fileset dir="${m02.dir}" includes="*Test.java"/>
+			</batchtest>
+		</junit>
 	</target>
 
 	<target name="clean">
 		<delete>
 			<fileset dir="${hw01.dir}" includes="**/*.class" />
 			<fileset dir="${hw02.dir}" includes="**/*.class" />
+			<fileset dir="${m01.dir}" includes="**/*.class" />
+			<fileset dir="${m02.dir}" includes="**/*.class" />
 		</delete>
 		<delete dir="${lib.dir}"/>
 	</target>

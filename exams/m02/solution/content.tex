@@ -1,0 +1,268 @@
+% -----------------------------------------------------------------------------
+% The MIT License (MIT)
+%
+% Copyright (c) 2015 Pejman Ghorbanzade
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in
+% all copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+% THE SOFTWARE.
+% -----------------------------------------------------------------------------
+
+\section*{Question 1}
+The following programs have each a \textbf{single} compilation error given below. You are expected to find and fix the error so that given command-line arguments will lead to expected output as indicated.
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java HelloWorld President} \hfill \texttt{Hello President!}
+\begin{lstlisting}
+public class HelloWorld {
+	public static void main(String[] args) {
+		System.out.println("Hello + args[0] + "!");
+	}
+}
+\end{lstlisting}
+
+\begin{terminal}
+HelloWorld.java:3: error: ')' expected
+    System.out.println("Hello + args[0] + "!");
+HelloWorld.java:3: error: unclosed string literal
+    System.out.println("Hello + args[0] + "!");
+HelloWorld.java:3: error: ';' expected
+    System.out.println("Hello + args[0] + "!");
+HelloWorld.java:5: error: reached end of file while parsing
+}
+4 errors
+\end{terminal}
+
+\newpage
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java Feet2Centimeters 5} \hfill \texttt{152.4}
+\begin{lstlisting}
+public class Feet2Centimeters {
+	public static void main(String[] args) {
+		double conversion = 30.48;
+		double cm = args[0] * conversion;
+		System.out.println(cm);
+	}
+}
+\end{lstlisting}
+
+\begin{terminal}
+Feet2Centimeters.java:4: error: bad operand types for binary operator '*'
+        double cm = args[0] * conversion;
+1 error
+\end{terminal}
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java SphereSurface 7} \hfill \texttt{615.75}
+
+\begin{lstlisting}
+public class SphereSurface {
+	public static void main(String[] args) {
+		double radius = Double.parseDouble(args[0]);
+		double surface = 4 * Math.PI * pow(radius, 2);
+		System.out.printf("%.2f\n", surface);
+	}
+}
+\end{lstlisting}
+
+\begin{terminal}
+SphereSurface.java:4: error: cannot find symbol
+        double surface = 4 * Math.PI * pow(radius, 2);
+1 error
+\end{terminal}
+
+\newpage
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java Factorial 5} \hfill \texttt{120}
+
+\begin{lstlisting}
+public class Factorial {
+	public static void main(String[] args) {
+		int num = Integer.parseInt(args[0]);
+		int counter = 1;
+		int result = 1;
+		do
+			result *= counter;
+			counter++;
+		while (counter <= num);
+		System.out.println(result);
+	}
+}
+\end{lstlisting}
+
+\begin{terminal}
+Factorial.java:7: error: while expected
+	result *= counter;
+Factorial.java:8: error: illegal start of expression
+	counter++;
+Factorial.java:8: error: ';' expected
+	counter++;
+Factorial.java:9: error: not a statement
+	while (counter <= num);
+4 errors
+\end{terminal}
+
+\end{enumerate}
+
+\newpage
+
+\subsection*{Solution}
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+\item Execution Script \hfill Expected Output\\
+\texttt{java HelloWorld President} \hfill \texttt{Hello President!}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+public class HelloWorld {
+	public static void main(String[] args) {
+		System.out.println("Hello" + args[0] + "!");
+	}
+}
+\end{lstlisting}
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java Feet2Centimeters 5} \hfill \texttt{152.4}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+public class Feet2Centimeters {
+	public static void main(String[] args) {
+		double conversion = 30.48;
+		double cm = Double.parseDouble(args[0]) * conversion;
+		System.out.println(cm);
+	}
+}
+\end{lstlisting}
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java SphereSurface 7} \hfill \texttt{615.75}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+public class SphereSurface {
+	public static void main(String[] args) {
+		double radius = Double.parseDouble(args[0]);
+		double surface = 4 * Math.PI * Math.pow(radius, 2);
+		System.out.printf("%.2f\n", surface);
+	}
+}
+\end{lstlisting}
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java Factorial 5} \hfill \texttt{120}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+public class Factorial {
+	public static void main(String[] args) {
+		int num = Integer.parseInt(args[0]);
+		int counter = 1;
+		int result = 1;
+		do {
+			result *= counter;
+			counter++;
+		}
+		while (counter <= num);
+		System.out.println(result);
+	}
+}
+\end{lstlisting}
+
+\end{enumerate}
+
+\section*{Question 2}
+The following code snippet had been written on a scrap of paper found in a trashcan of a classroom.
+The program is error-free and functions as expected but unfortunately no one knows what it does.
+Read the code snippet and explain how it works.
+No assumption can be made about user input except that the input is always an integer.
+
+\begin{lstlisting}
+import java.util.Scanner;
+public class FiveStar {
+	public static void main(String[] args) {
+		Scanner key = new Scanner(System.in);
+		System.out.printf("Insert Number: ");
+		int num = key.nextInt();
+		int rand = (int) (Math.random() * 100) + 1;
+		double result = num * Math.pow(1, rand);
+		double sum = 0;
+		int var = 0;
+		while (var != 6) {
+			sum += Math.pow(-1, var) * result;
+			var++;
+		}
+		System.out.printf("Result is %.2f\n", sum);
+	}
+}
+\end{lstlisting}
+
+\subsection*{Solution}
+
+The program prompts user for an integer number $x$.
+A random number $y$ in range 0 to 100 is generated and is used to calculate the value $z$ to be stored in variable \texttt{result}.
+Since $z = x \times 1^{y} = x$, the value stored in \texttt{result} is always the number given by the user.
+The program continues in a \texttt{while} loop with 5 iterations, leading to value $t$ to be stored in variable \texttt{sum} where $t$ is calculated based on Equation \ref{eq1}.
+
+\begin{equation}
+\text{sum} = \sum\limits_{i=0}^5 (-1)^i \times \text{result} = 0
+\label{eq1}
+\end{equation}
+
+Since the final value stored in \texttt{sum} is $0$, regardless of the use input, what is printed by the program is always as follows.
+
+\begin{terminal}
+$ java FiveStar.java
+$ java FiveStar
+Insert Number: 5
+Result is 0.00
+\end{terminal}
+
+\section*{Question 3}
+Write a program \texttt{NumberLimit.java} that prompts user for a strictly positive integer number $x$ and prints the largest non-negative integer number $y$ such that $y^3 < x$.
+For simplicity, assume the user input is always a strictly positive integer number.
+Following is an expected sample run of your program.
+
+\begin{terminal}
+$ javac NumberLimit.java
+$ java NumberLimit
+Upper Limit? 70
+Number is 4.
+\end{terminal}
+
+\subsection*{Solution}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+import java.util.Scanner;
+public class NumberLimit {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Upper Limit? ");
+		int num = input.nextInt();
+		input.close();
+		int i = 0;
+		while (Math.pow(i, 3) < num)
+			i++;
+		System.out.printf("Number is %d.\n", i - 1);
+	}
+}
+\end{lstlisting}
