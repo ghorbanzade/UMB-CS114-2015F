@@ -1,0 +1,140 @@
+\section*{Question 1}
+Write a program \texttt{HouseOfCards.java} that randomly selects two cards from a standard 52-card deck.
+The program would then print the names of the cards based on their rank and suit.
+Finally, your program should determine if the two cards share the same rank or the same suit.
+Your program is expected to function as shown in following examples:
+
+\begin{terminal}
+$ java HouseOfCards
+Queen of Diamonds
+Jack of Spades
+Cards do not share rank or suit.
+$ java HouseOfCards
+Ace of Hearts
+8 of Hearts
+Cards share the same suit.
+\end{terminal}
+
+\newpage
+
+\section*{Question 2}
+Write a program \texttt{Deviation.java} that prompts user to enter a positive integer number $n$ and then asks user to enter $n$ floating-point numbers.
+Your program should compute and display standard deviation of the numbers according to Equation \ref{eq1}, in the format shown below.
+
+\begin{equation}
+\text{deviation} = \sqrt{\frac{\sum_{i = 1}^{n} \left( x_i - \frac{\sum_{i = 1}^{n} x_i}{n} \right)^2 }{n - 1}}
+\label{eq1}
+\end{equation}
+
+\begin{terminal}
+$ javac Deviation.java
+$ java Deviation
+Enter count: 10
+Enter 10 numbers: 1.9 2.5 3.7 2 1 6 3 4 5 2
+Standard Deviation: 1.557
+\end{terminal}
+
+\section*{Question 3}
+Write a program \texttt{DuplicateTester.java} that prompts user for a positive integer $x$ and creates an array with $x$ randomly generted integer elements in range 0 to 9.
+Use a method with signature \texttt{public static int[] removeDuplicates(int[] array);} to remove all duplicate elements in the array.
+Your program is expected to terminate by displaying the new array.
+Following is a sample expected run of the program.
+
+\begin{terminal}
+$ javac DuplicateTester.java
+$ java DuplicateTester
+Size of Array: 10
+Generated Array:
+3 4 2 8 2 4 3 1 6 7
+Filtered Array:
+3 4 2 8 1 6 7
+\end{terminal}
+
+\newpage
+
+\section*{Question 4}
+Thomas, a CS114 student, had been asked to write a program that performs simple arithmetic operations (add and multiply) on two matrices $x$ and $y$ whose elements are randomly generated from range 0 to 9.
+The program was supposed to prompt user for a number $r$ and generate two $r \times r$ matrices, $x$ and $y$.
+The program would then display $x + y$ and $x \times y$ respectively, as shown in Figure \ref{terminal1}.
+
+\renewcommand{\lstlistingname}{Figure}
+\lstset{caption=Expected Output of \texttt{MatrixWorld.java}, label=terminal1}
+\begin{terminal}
+Size of Matrices: 3
+
+Matrix A:
+  0   3   2
+  7   0   1
+  1   6   5
+
+Matrix B:
+  7   8   9
+  0   3   1
+  8   9   6
+
+Sum:
+  7  11  11
+  7   3   2
+  9  15  11
+
+Multiplication:
+ 16  27  15
+ 57  65  69
+ 47  71  45
+\end{terminal}
+
+\newpage
+
+Unfortunately, Thomas gave up while developing the requested program.
+He has asked that you continue development of his program without modifying the code he has written.
+
+\lstset{caption=}
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+// written by: Thomas A. Anderson
+// <thomas.anderson001@umb.edu>
+
+import java.util.Scanner;
+public class MatrixWorld {
+	public static void main(String[] args) {
+		int size = getSize();
+		int[][] matrixA = matrixInit(size);
+		int[][] matrixB = matrixInit(size);
+		int[][] sum = matrixAdd(matrixA, matrixB);
+		int[][] multiplication = matrixMultiply(matrixA, matrixB);
+		matrixDisplay(matrixA, "Matrix A");
+		matrixDisplay(matrixB, "Matrix B");
+		matrixDisplay(sum, "Sum");
+		matrixDisplay(multiplication, "Multiplication");
+	}
+	public static int getSize() {
+		// To Be Developed
+	}
+	public static int[][] matrixInit(int size) {
+		// To Be Developed
+	}
+	public static int[][] matrixAdd(int[][] matrixA, int[][] matrixB) {
+		// To Be Developed
+	}
+	public static int[][] matrixMultiply(int[][] matrixA, int[][] matrixB) {
+		// To Be Developed
+	}
+	public static void matrixDisplay(int[][] matrix, String name) {
+		// To Be Developed
+	}
+}
+\end{lstlisting}
+
+\newpage
+
+\section*{Question 5}
+Write a program \texttt{BackwardPrimes.java} that prompts user for a positive integer number $x$ and displays $x$ prime numbers whose reversal is also a prime.
+Numbers 13, 31 and 157 are instances of such numbers.
+Following is a sample run of your program.
+
+\begin{terminal}
+$ javac BackwardPrimes.java
+$ java BackwardPrimes
+Number of Primes? 15
+13 17 31 37 71 73 79 97 107 113 149 157 167 179 199
+\end{terminal}
