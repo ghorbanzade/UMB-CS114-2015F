@@ -29,14 +29,14 @@ Write a program \texttt{PointAndSphere.java} that takes respectively coordinates
 Your program would then determine the location of the point with respect to the sphere.
 Following is an example of an accepted output format.
 
-\begin{verbatim}
+\begin{terminal}
 $ java PointAndSphere 1 1 1 0 0 0
 Radius of the sphere: 1.7
 The point is outside the sphere.
 $ java PointAndSphere 1 1 1 0 0 0
 Radius of the sphere 1.8
 The point is inside the sphere.
-\end{verbatim}
+\end{terminal}
 
 \subsection*{Solution}
 \lstset{language=Java,tabsize=2}
@@ -77,12 +77,13 @@ Write a program \texttt{PiProximator.java} that prompts user for a number $i$ an
 Your program should also print the approximation error compared to the \texttt{Math.PI} value.
 Following is the expected output of a sample run of your program.
 
-\begin{verbatim}
+\begin{terminal}
+$ javac PiProximator.java
 $ java PiProximator
 Number of Sentences: 100
 Approximate Value: 3.131593
 Approximation Error: 0.010000
-\end{verbatim}
+\end{terminal}
 
 \subsection*{Solution}
 \lstset{language=Java,tabsize=2}
@@ -108,11 +109,12 @@ public class PiProximator {
 Write a program \texttt{PrimePrinter.java} that prompts user for a number $x$ and prints all prime numbers less than or equal to the number $x$.
 Your program should function as shown in the example given below.
 
-\begin{verbatim}
+\begin{terminal}
+$ javac PrimePrinter.java
 $ java PrimePrinter
 Enter Upper Limit: 29
 2 3 5 7 11 13 17 19 23 29
-\end{verbatim}
+\end{terminal}
 
 \subsection*{Solution}
 \lstset{language=Java,tabsize=2}
@@ -141,7 +143,8 @@ public class PrimePrinter {
 Write a program \texttt{MatrixFiller.java} that prompts user for a number $x$ between 1 to 9 and generates an $x \times x$ matrix with random elements from 1 to $x^2$.
 Following is an expected sample run of your program.
 
-\begin{verbatim}
+\begin{terminal}
+$ javac MatrixFiller.java
 $ java MatrixFiller
 Size of Matrix: 5
  05 21 07 25 11
@@ -149,7 +152,7 @@ Size of Matrix: 5
  25 14 14 08 07
  02 05 01 14 02
  02 14 14 13 07
-\end{verbatim}
+\end{terminal}
 
 \subsection*{Solution}
 \lstset{language=Java,tabsize=2}
@@ -173,10 +176,13 @@ public class MatrixFiller {
 }
 \end{lstlisting}
 
+\newpage
+
 \section*{Question 5}
 Write a program \texttt{Pyramid.java} that prompts user for a number between 1 to 10 and displays a pyramid of the given format.
 
-\begin{verbatim}
+\begin{terminal}
+$ javac Pyramid.java
 $ java Pyramid
 Number of Rows: 5
                    1
@@ -184,7 +190,7 @@ Number of Rows: 5
            1   2   4   2   1
        1   2   4   8   4   2   1
    1   2   4   8  16   8   4   2   1
-\end{verbatim}
+\end{terminal}
 
 \subsection*{Solution}
 \lstset{language=Java,tabsize=2}
@@ -210,3 +216,5 @@ public class Pyramid {
 	}
 }
 \end{lstlisting}
+
+\newpage

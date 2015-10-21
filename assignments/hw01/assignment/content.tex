@@ -25,7 +25,7 @@
 \section*{Question 1}
 The following code snippet does not compile. Rewrite the code snippet and create a program \texttt{HelloUMass.java} by resolving problems of the given code such that it compiles successfully and prints \textit{``Hello World!"} on the console once executed.
 
-\lstset{language=Java}
+\lstset{language=Java,tabsize=4}
 \begin{lstlisting}
 public class HelloUMass
 	public static void main(String args) {
@@ -37,20 +37,24 @@ public class HelloUMass
 \section*{Question 2}
 Write a program \texttt{Weather.java} that takes two command-line arguments as \textit{city} and \textit{condition} and functions as shown in following examples.
 
-\begin{verbatim}
+\begin{terminal}
 $ java Weather Boston sunny
 Boston is sunny today!
 $ java Weather Cambridge cloudy
 Cambridge is cloudy today!
-\end{verbatim}
+\end{terminal}
+
+\newpage
 
 \section*{Question 3}
-Write a program \texttt{Temperature.java} that takes temperature in Celsius as command-line argument and prints it's equivalent in fahrenheit. Your program is expected to function as shown in the following example.
+Write a program \texttt{Temperature.java} that takes temperature in Celsius as command-line argument and prints it's equivalent in fahrenheit.
+Your program is expected to function as shown in the following example.
 
-\begin{verbatim}
+\begin{terminal}
+$ javac TemperatureCalculator.java
 $ java TemperatureCalculator 12
 12.0 Celsius is 53.6 fahrenheit.
-\end{verbatim}
+\end{terminal}
 
 \section*{Question 4}
 Given an airplane's acceleration \texttt{a} and take-off speed \texttt{v}, the minimum runway length needed for the airplane to take off can be computed using the formula given in Equation \ref{eq1}.
@@ -62,15 +66,18 @@ Given an airplane's acceleration \texttt{a} and take-off speed \texttt{v}, the m
 
 Write a program \texttt{Runway.java} that takes parameters \texttt{v} in meters/second and \texttt{a} in meters/second-squared respectively as command-line arguments and displays the minimum runway length required for it. An example to illustrate the output format is given below.
 
-\begin{verbatim}
+\begin{terminal}
+$ javac Runway.java
 $ java Runway 60 3.5
 Speed of the airplane is assumed 60.000 m/s
 Acceleration of the airplane is assumed 3.500 m/s2
 Minimum runway length is 514.286 m
-\end{verbatim}
+\end{terminal}
 
 \section*{Question 5}
 Due to the combined effects of gravitation and rotation, the Earth's shape is roughly that of a sphere slightly flattened in the direction of its axis. Consiquently, the Earth is often approximated by an oblate spheroid instead of a sphere. Mathematically, a spheroid is a quadric surface obtained by rotating an ellipse about one of its principal axes.
+
+\newpage
 
 Equation \ref{eq2} describes a spheroid centred at the origin with its semi-axes aligned along the coordinate axes, in which semi-axis \texttt{a} is equatorial radius of the spheroid and \texttt{c} is the distance from centre to pole along the symmetry axis.
 
@@ -95,7 +102,8 @@ e = \sqrt{1 - \frac{c^2}{a^2}}
 
 The example given below illustrates the accepted output format.
 
-\begin{verbatim}
+\begin{terminal}
+$ javac Spheroid.java
 $ java Spheroid 6 5
 Surface area is 403.050
-\end{verbatim}
+\end{terminal}
