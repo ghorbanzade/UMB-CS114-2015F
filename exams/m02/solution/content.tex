@@ -218,16 +218,17 @@ public class FiveStar {
 \subsection*{Solution}
 
 The program prompts user for an integer number $x$.
-A random number $y$ in range 0 to 100 is generated and is used to calculate the value $z$ to be stored in variable \texttt{result}.
+A random integer number $y$ in range 0 to 100 is generated and is used to calculate the value $z$ to be stored in variable \texttt{result}.
 Since $z = x \times 1^{y} = x$, the value stored in \texttt{result} is always the number given by the user.
-The program continues in a \texttt{while} loop with 5 iterations, leading to value $t$ to be stored in variable \texttt{sum} where $t$ is calculated based on Equation \ref{eq1}.
+The program continues in a \texttt{while} loop with 6 iterations computing variable \texttt{sum} according to Equation \ref{eq1} given below.
 
 \begin{equation}
 \text{sum} = \sum\limits_{i=0}^5 (-1)^i \times \text{result} = 0
 \label{eq1}
 \end{equation}
 
-Since the final value stored in \texttt{sum} is $0$, regardless of the use input, what is printed by the program is always as follows.
+Since the final value stored in \texttt{sum} is $0$, regardless of the use input, what is printed by the program would always be zero.
+Following is a sample run of the program.
 
 \begin{terminal}
 $ java FiveStar.java
