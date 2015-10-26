@@ -223,6 +223,59 @@
 	\end{block}
 \end{slide}
 
+\section{Static Variables}
+
+\begin{slide}
+	\begin{block}{Definition}
+		Static variables are variables that belong to the class.
+		Their scope is not limited to class methods and is determined by their \textit{modifier}.
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Objective}
+		Write a program \texttt{PrimeNumber.java} that prints all first 100000 prime numbers.
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{PrimeNumber.java (v4) (Part 1)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class PrimeNumber {
+			    public static int counter = 0;
+			    public static int[] primes = new int[100000];
+			    public static void main(String[] args) {
+			        int num = 2;
+			        while (counter < 100000) {
+			            if (isPrime(num)) {
+			                System.out.printf("%d, ", num);
+			                primes[counter] = num;
+			                counter++;
+			            }
+			            num++;
+			        }
+			    }
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{PrimeNumber.java (v4) (Part 2)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=15]{java}
+			    public static boolean isPrime(int number) {
+			        boolean isPrime = true;
+			        for (int i = 0; i < counter; i++)
+			            if (number % primes[i] == 0) {
+			                isPrime = false;
+			                break;
+			            }
+			        return isPrime;
+			    }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
 \plain{}{Keep Calm\\and\\Practice}
 
 \end{document}
