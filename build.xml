@@ -5,6 +5,7 @@
 	<property name="hw01.dir" value="assignments/hw01/code" />
 	<property name="hw02.dir" value="assignments/hw02/code" />
 	<property name="hw03.dir" value="assignments/hw03/code" />
+	<property name="hw04.dir" value="assignments/hw04/code" />
 	<property name="m01.dir" value="exams/m01/code" />
 	<property name="m02.dir" value="exams/m02/code" />
 
@@ -30,6 +31,10 @@
 	</path>
 	<path id="classpath.hw03">
 		<pathelement location="${hw03.dir}" />
+		<path refid="classpath.test" />
+	</path>
+	<path id="classpath.hw04">
+		<pathelement location="${hw04.dir}" />
 		<path refid="classpath.test" />
 	</path>
 	<path id="classpath.m01">
@@ -70,6 +75,9 @@
 		<javac srcdir="${hw03.dir}" destdir="${hw03.dir}" includeantruntime="false">
 			<classpath refid="classpath.hw03"/>
 		</javac>
+		<javac srcdir="${hw04.dir}" destdir="${hw04.dir}" includeantruntime="false">
+			<classpath refid="classpath.hw04"/>
+		</javac>
 		<javac srcdir="${m01.dir}" destdir="${m01.dir}" includeantruntime="false">
 			<classpath refid="classpath.m01"/>
 		</javac>
@@ -98,6 +106,12 @@
 			</batchtest>
 		</junit>
 		<junit printsummary="on" haltonfailure="yes">
+			<classpath refid="classpath.hw04"/>
+			<batchtest>
+				<fileset dir="${hw04.dir}" includes="*Test.java"/>
+			</batchtest>
+		</junit>
+		<junit printsummary="on" haltonfailure="yes">
 			<classpath refid="classpath.m01"/>
 			<batchtest>
 				<fileset dir="${m01.dir}" includes="*Test.java"/>
@@ -116,6 +130,7 @@
 			<fileset dir="${hw01.dir}" includes="**/*.class" />
 			<fileset dir="${hw02.dir}" includes="**/*.class" />
 			<fileset dir="${hw03.dir}" includes="**/*.class" />
+			<fileset dir="${hw04.dir}" includes="**/*.class" />
 			<fileset dir="${m01.dir}" includes="**/*.class" />
 			<fileset dir="${m02.dir}" includes="**/*.class" />
 		</delete>

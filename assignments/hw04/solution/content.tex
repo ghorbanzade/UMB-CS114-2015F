@@ -1,0 +1,322 @@
+\section*{Question 1}
+
+An $n \times n$ matrix is called a \textit{positive Markov matrix} if each element is positive and the sum of the elements in each column is 1.
+Write a program \texttt{MarkovMatrix.java} that prompts the user to enter a $3 \times 3$ matrix of double values.
+Use a method with the following signature to test if the given matrix is a Markov matrix.
+
+\begin{terminal}
+public static boolean isMarkovMatrix(double[][] matrix)
+\end{terminal}
+
+Your program is expected to function as shown in following examples:
+
+\begin{terminal}
+$ javac MarkovMatrix.java
+$ java MarkovMatrix
+Enter Row 1: 0.15 0.875 0.375
+Enter Row 2: 0.55 0.005 0.225
+Enter Row 3: 0.30 0.12 0.4
+Markov matrix given.
+\end{terminal}
+
+\newpage
+
+\subsection*{Solution}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+import java.util.Scanner;
+public class MarkovMatrix {
+	public static void main(String[] args) {
+		double[][] matrix = initMatrix(3, 3);
+		if (isMarkovMatrix(matrix))
+			System.out.println("Markov matrix given.");
+		else
+			System.out.println("Matrix not Markov.");
+	}
+	public static double[][] initMatrix(int row, int col) {
+		Scanner input = new Scanner(System.in);
+		double[][] matrix = new double[row][col];
+		for (int i = 0; i < row; i++) {
+			System.out.printf("Enter Row %d: ", i + 1);
+			for (int j = 0; j < col; j++)
+				matrix[i][j] = input.nextDouble();
+		}
+		input.close();
+		return matrix;
+	}
+	public static boolean isMarkovMatrix(double[][] matrix) {
+		for (int i = 0; i < matrix[0].length; i++) {
+			double sum = 0;
+			for (int j = 0; j < matrix.length; j++)
+				sum += matrix[j][i];
+			if (sum != 1)
+				return false;
+		}
+		return true;
+	}
+}
+\end{lstlisting}
+
+\newpage
+
+\section*{Question 2}
+Write a program \texttt{PointAndSphere2.java} that prompts user to enter respectively, coordinates of a point, coordinates of the center of a sphere and radius of the sphere.
+Your program would then determine the location of the point with respect to the sphere.
+The point should be an instance of class \texttt{Point} and the sphere should be an instance of class \texttt{Sphere}.
+Following is an example of an accepted output format.
+
+\begin{terminal}
+$ javac Point.java Sphere.java Coordinate.java PointAndSphere2.java
+$ java PointAndSphere2
+Coordinates of Point: 1 1 1
+Coordinates of Sphere: 0 0 0
+Radius of Sphere: 1.7
+The point is outside the sphere.
+\end{terminal}
+
+\subsection*{Solution}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+public class Coordinate {
+	public double[] coordinates = new double[3];
+	public Coordinate(double[] coordinates) {
+		for (int i = 0; i < this.coordinates.length; i++)
+			this.coordinates[i] = coordinates[i];
+	}
+	public double getDistance(Coordinate point) {
+		double sum = 0;
+		for (int i = 0; i < 3; i++)
+			sum += Math.pow(this.coordinates[i] - point.coordinates[i], 2);
+		return Math.sqrt(sum);
+	}
+}
+\end{lstlisting}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+public class Point {
+	public Coordinate coordinates;
+	public Point(double[] coordinates) {
+		this.coordinates = new Coordinate(coordinates);
+	}
+}
+\end{lstlisting}
+
+\newpage
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+public class Sphere {
+	public double radius;
+	public Coordinate coordinates;
+	public Sphere(double[] coordinates, double radius) {
+		this.radius = radius;
+		this.coordinates = new Coordinate(coordinates);
+	}
+}
+\end{lstlisting}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+import java.util.Scanner;
+public class PointAndSphere2 {
+	public static void main(String[] args) {
+		double[] pointCoordinates = promptCoordinates("Point");
+		double[] sphereCoordinates = promptCoordinates("Sphere");
+		double radius = promptRadius();
+		Point point = new Point(pointCoordinates);
+		Sphere sphere = new Sphere(sphereCoordinates, radius);
+		double dist = sphere.coordinates.getDistance(point.coordinates);
+		if (dist > sphere.radius)
+			System.out.println("The point is outside the sphere.");
+		else if (dist == sphere.radius)
+			System.out.println("The point is on the sphere.");
+		else
+			System.out.println("The point is inside the sphere.");
+	}
+	public static double[] promptCoordinates(String name) {
+		Scanner input = new Scanner(System.in);
+		System.out.printf("Coordinates of %s: ", name);
+		double[] coordinates = new double[3];
+		for (int i = 0; i < coordinates.length; i++)
+			coordinates[i] = input.nextDouble();
+		return coordinates;
+	}
+	public static double promptRadius() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Radius of Sphere: ");
+		double radius = input.nextDouble();
+		return radius;
+	}
+}
+\end{lstlisting}
+
+\section*{Question 3}
+Write a program \texttt{MatrixFiller2.java} that prompts user for a number $x$ between 1 to 9 and instantiates an $x \times x$ matrix from class \texttt{Matrix.java} whose elements are randomly generated from range 1 to $x^2$.
+Following is an expected sample run of your program.
+
+\begin{terminal}
+$ javac Matrix.java MatrixFiller2.java
+$ java MatrixFiller2
+Size of Matrix: 4
+ 05 13 07 16
+ 12 02 10 01
+ 09 14 14 08
+ 02 05 01 14
+\end{terminal}
+
+\subsection*{Solution}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+public class Matrix {
+	int[][] elements;
+	public Matrix(int row, int col) {
+		this.elements = new int[row][col];
+		for (int i = 0; i < row; i++)
+			for (int j = 0; j < col; j++) {
+				int rand = (int) (Math.random() * row * col) + 1;
+				this.elements[i][j] = rand;
+			}
+	}
+	public void display() {
+		int row = this.elements.length;
+		int col = this.elements[0].length;
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++)
+				System.out.printf(" %02d", elements[i][j]);
+			System.out.println();
+		}
+	}
+}
+\end{lstlisting}
+
+\newpage
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+import java.util.Scanner;
+public class MatrixFiller2 {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Size of Matrix: ");
+		int size = input.nextInt();
+		input.close();
+		Matrix matrix = new Matrix(size, size);
+		matrix.display();
+	}
+}
+\end{lstlisting}
+
+\section*{Question 4}
+
+Write a class \texttt{Circle.java} from which we can instantiate a circle by giving its radius and use it as is shown in the following program.
+
+\lstset{caption=}
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+import java.util.Scanner;
+public class Circles {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter radius: ");
+		double radius = input.nextDouble();
+		input.close();
+		Circle myCircle = new Circle(radius);
+		double area = myCircle.getArea();
+		double perimeter = myCircle.getCircumference();
+		System.out.printf("Area: %.2f, Perimeter: %.2f\n", area, perimeter);
+	}
+}
+\end{lstlisting}
+
+\subsection*{Solution}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+public class Circle {
+	double radius;
+	public Circle(double radius) {
+		this.radius = radius;
+	}
+	public double getArea() {
+		double area = Math.PI * Math.pow(this.radius, 2);
+		return area;
+	}
+	public double getCircumference() {
+		double circumference = 2 * Math.PI * this.radius;
+		return circumference;
+	}
+}
+\end{lstlisting}
+
+\section*{Question 5}
+The code snippet given below is content of a file \texttt{Kitten.java} found in a public repository.
+Unfortunately, the program cannot be executed because the file \texttt{Cat.java} which defines the class \texttt{Cat} is missing.
+You are expected to develop the class \texttt{Cat} in a file \texttt{Cat.java} such that \texttt{Kitten.java} is successfully executed.
+
+\lstset{caption=}
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+import java.util.Scanner;
+public class Kitten {
+	public static void main(String[] args) {
+		Cat myCat = new Cat("Kitty");
+		double[] movement = promptMove(myCat);
+		myCat.move(movement[0], movement[1]);
+		myCat.showPosition();
+		myCat.showDistance();
+	}
+	public static double[] promptMove(Cat myCat) {
+		Scanner input = new Scanner(System.in);
+		char[] directions = {'X', 'Y'};
+		double[] movement = new double[directions.length];
+		for (int i = 0; i < directions.length; i++) {
+			System.out.printf("Distance to move in %c direction: ", directions[i]);
+			movement[i] = input.nextDouble();
+		}
+		input.close();
+		return movement;
+	}
+}
+\end{lstlisting}
+
+\newpage
+
+Following is a sample expected run of the program.
+
+\begin{terminal}
+$ javac Cat.java Kitten.java
+$ java Kitten
+Distance to move in X direction: 3
+Distance to move in Y direction: 4
+Kitty is in (3.0, 4.0).
+Kitty is 5.00 units away from (0, 0).
+\end{terminal}
+
+\subsection*{Solution}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+public class Cat {
+	public String name;
+	public double dirX = 0;
+	public double dirY = 0;
+	public Cat(String name) {
+		this.name = name;
+	}
+	public void move(double dirX, double dirY) {
+		this.dirX += dirX;
+		this.dirY += dirY;
+	}
+	public void showPosition() {
+		System.out.printf("%s is in (%.1f, %.1f).\n", this.name, this.dirX, this.dirY);
+	}
+	public void showDistance() {
+		double distance = Math.sqrt(Math.pow(this.dirX, 2) + Math.pow(this.dirY, 2));
+		System.out.printf("%s is %.2f units away from (0, 0).\n", this.name, distance);
+	}
+}
+\end{lstlisting}

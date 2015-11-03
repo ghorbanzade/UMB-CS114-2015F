@@ -1,0 +1,116 @@
+\section*{Question 1}
+
+An $n \times n$ matrix is called a \textit{positive Markov matrix} if each element is positive and the sum of the elements in each column is 1.
+Write a program \texttt{MarkovMatrix.java} that prompts the user to enter a $3 \times 3$ matrix of double values.
+Use a method with the following signature to test if the given matrix is a Markov matrix.
+
+\begin{terminal}
+public static boolean isMarkovMatrix(double[][] matrix)
+\end{terminal}
+
+Your program is expected to function as shown in following examples:
+
+\begin{terminal}
+$ javac MarkovMatrix.java
+$ java MarkovMatrix
+Enter Row 1: 0.15 0.875 0.375
+Enter Row 2: 0.55 0.005 0.225
+Enter Row 3: 0.30 0.12 0.4
+Markov matrix given.
+\end{terminal}
+
+\section*{Question 2}
+Write a program \texttt{PointAndSphere2.java} that prompts user to enter respectively, coordinates of a point, coordinates of the center of a sphere and radius of the sphere.
+Your program would then determine the location of the point with respect to the sphere.
+The point should be an instance of class \texttt{Point} and the sphere should be an instance of class \texttt{Sphere}.
+Following is an example of an accepted output format.
+
+\vfill
+\newpage
+
+\begin{terminal}
+$ javac Point.java Sphere.java Coordinate.java PointAndSphere2.java
+$ java PointAndSphere2
+Coordinates of Point: 1 1 1
+Coordinates of Sphere: 0 0 0
+Radius of Sphere: 1.7
+The point is outside the sphere.
+\end{terminal}
+
+\section*{Question 3}
+Write a program \texttt{MatrixFiller2.java} that prompts user for a number $x$ between 1 to 9 and instantiates an $x \times x$ matrix from class \texttt{Matrix.java} whose elements are randomly generated from range 1 to $x^2$.
+Following is an expected sample run of your program.
+
+\begin{terminal}
+$ javac Matrix.java MatrixFiller2.java
+$ java MatrixFiller2
+Size of Matrix: 4
+ 05 13 07 16
+ 12 02 10 01
+ 09 14 14 08
+ 02 05 01 14
+\end{terminal}
+
+\section*{Question 4}
+
+Write a class \texttt{Circle.java} from which we can instantiate a circle by giving its radius and use it as is shown in the following program.
+
+\lstset{caption=}
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+import java.util.Scanner;
+public class Circles {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter radius: ");
+		double radius = input.nextDouble();
+		input.close();
+		Circle myCircle = new Circle(radius);
+		double area = myCircle.getArea();
+		double perimeter = myCircle.getCircumference();
+		System.out.printf("Area: %.2f, Perimeter: %.2f\n", area, perimeter);
+	}
+}
+\end{lstlisting}
+
+\section*{Question 5}
+The code snippet given below is content of a file \texttt{Kitten.java} found in a public repository.
+Unfortunately, the program cannot be executed because the file \texttt{Cat.java} which defines the class \texttt{Cat} is missing.
+You are expected to develop the class \texttt{Cat} in a file \texttt{Cat.java} such that \texttt{Kitten.java} is successfully executed.
+
+\lstset{caption=}
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+import java.util.Scanner;
+public class Kitten {
+	public static void main(String[] args) {
+		Cat myCat = new Cat("Kitty");
+		double[] movement = promptMove(myCat);
+		myCat.move(movement[0], movement[1]);
+		myCat.showPosition();
+		myCat.showDistance();
+	}
+	public static double[] promptMove(Cat myCat) {
+		Scanner input = new Scanner(System.in);
+		char[] directions = {'X', 'Y'};
+		double[] movement = new double[directions.length];
+		for (int i = 0; i < directions.length; i++) {
+			System.out.printf("Distance to move in %c direction: ", directions[i]);
+			movement[i] = input.nextDouble();
+		}
+		input.close();
+		return movement;
+	}
+}
+\end{lstlisting}
+
+Following is a sample expected run of the program.
+
+\begin{terminal}
+$ javac Cat.java Kitten.java
+$ java Kitten
+Distance to move in X direction: 3
+Distance to move in Y direction: 4
+Kitty is in (3.0, 4.0).
+Kitty is 5.00 units away from (0, 0).
+\end{terminal}
