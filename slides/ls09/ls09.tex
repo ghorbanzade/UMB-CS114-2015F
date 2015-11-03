@@ -85,10 +85,9 @@
 \begin{slide}
 	\begin{block}{Result}
 		\begin{minted}[fontsize=\small,tabsize=8]{text}
-			> javac FindP.java
-			> java FindP Hello
+			$ java FindP Hello
 			No 'p' Found.
-			> java FindP Pejman
+			$ java FindP Pejman
 			Found Some 'p'.
 		\end{minted}
 	\end{block}
@@ -119,10 +118,9 @@
 \begin{slide}
 	\begin{block}{Result}
 		\begin{minted}[fontsize=\small,tabsize=8]{text}
-			> javac FindP.java
-			> java FindP Happy
+			$ java FindP Happy
 			--pp-
-			> java FindP Pejman
+			$ java FindP Pejman
 			p-----
 		\end{minted}
 	\end{block}
@@ -174,9 +172,10 @@
 	\end{block}
 	\begin{block}{Result}
 		\begin{minted}[fontsize=\small,tabsize=8]{text}
-			> javac FindP.java
-			> java FindP Happy
+			$ java FindP Happy
 			--p
+			$ java FindP Pejman
+			p
 		\end{minted}
 	\end{block}
 \end{slide}
@@ -208,7 +207,8 @@
 
 \begin{slide}
 	\begin{block}{Objective}
-		Write a program \texttt{CountP.java} that takes a String as command-line argument and prints number of 'p' letters it contains. Comparison is case insensitive.
+		Write a program \texttt{CountP.java} that takes a String as command-line argument and prints number of 'p' letters it contains.
+		Comparison is case insensitive.
 	\end{block}
 \end{slide}
 
@@ -274,13 +274,13 @@
 			        int numCard = 52;
 			        int randNum = Math.floor(Math.random() * numCard);
 			        switch (randNum) {
-			            case 1: cardName = "Ace of Spades"; break;
-			            case 2: cardName = "Two of Spades"; break;
+			            case 0: cardName = "Ace of Spades"; break;
+			            case 1: cardName = "Two of Spades"; break;
 			            // Seriously?
 		\end{minted}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=57]{java}
-			            case 51: cardName = "Queen of Hearts"; break;
-			            case 52: cardName = "King of Hearts"; break;
+			            case 50: cardName = "Queen of Hearts"; break;
+			            case 51: cardName = "King of Hearts"; break;
 			        }
 			    }
 			}
@@ -309,10 +309,10 @@
 			        int randNum = Math.floor(Math.random() * numCard);
 			        suitNum = randNum / 13;
 			        switch (suitNum) {
-			            case 1: suitName = "Spades"; break;
-			            case 2: suitName = "Diamonds"; break;
-			            case 3: suidName = "Clubs"; break;
-			            case 4: suitName = "Hearts"; break;
+			            case 0: suitName = "Spades"; break;
+			            case 1: suitName = "Diamonds"; break;
+			            case 2: suidName = "Clubs"; break;
+			            case 3: suitName = "Hearts"; break;
 			        }
 		\end{minted}
 	\end{block}
@@ -323,13 +323,13 @@
 		\begin{minted}[fontsize=\small, tabsize=8, linenos, firstnumber=12]{java}
 			        switch cardNum = numCard % 13;
 			        switch (cardNum) {
-			            case 1: cardName = "Ace"; break;
-			            case 2: cardName = "Two"; break;
+			            case 0: cardName = "Ace"; break;
+			            case 1: cardName = "Two"; break;
 			            // Not cool!
 		\end{minted}
 		\begin{minted}[fontsize=\small, tabsize=8, linenos, firstnumber=26]{java}
-			            case 12: cardName = "Queen"; break;
-			            case 13: cardName = "King"; break;
+			            case 11: cardName = "Queen"; break;
+			            case 12: cardName = "King"; break;
 			        }
 			        System.out.println(cardName + " of " + suitName);
 			    }
@@ -408,7 +408,7 @@
 			    "Soldier", "Queen", "King"
 			};
 			suitNum = randNum / 13;
-			cardNum = numCard % 13;
+			cardNum = randNum % 13;
 			suitName = suitNames[suitNum];
 			cardName = cardNames[cardNum];
 			System.out.println(cardName + " of " + suitName);

@@ -75,8 +75,9 @@
 		Write a program \texttt{Greetings.java} that prompts user for his name and then prints a welcome message of the following format.
 	\end{block}
 	\begin{block}{Runtime Example}
-		\begin{minted}[fontsize=\small,tabsize=8]{bash}
-			> java Greeting
+		\begin{minted}[fontsize=\small,tabsize=8]{text}
+			$ javac Greetins
+			$ java Greetings
 			Hello! What is your name? Pejman
 			Greetings, Pejman!
 		\end{minted}
@@ -105,8 +106,9 @@
 		Write a program \texttt{SimpleAdder.java} that prompts user for two \textit{Integer} numbers and shows their sum as output.
 	\end{block}
 	\begin{block}{Runtime Example}
-		\begin{minted}[fontsize=\small,tabsize=8]{bash}
-			> java SimpleAdder
+		\begin{minted}[fontsize=\small,tabsize=8]{text}
+			$ javac SimpleAdder
+			$ java SimpleAdder
 			a = ? 124
 			b = ? 155
 			a + b = 279
@@ -210,12 +212,12 @@
 \begin{slide}
 	\begin{block}{Problem Statement}
 		\begin{minted}[fontsize=\small,tabsize=8]{text}
-			> javac Quadratic.java
-			> java Quadratic 1 -2 -4
+			$ javac Quadratic.java
+			$ java Quadratic 1 -2 -4
 			Solutions are -1.236 and 3.237
-			> java Quadratic 9 12 4
+			$ java Quadratic 9 12 4
 			Solutions are -0.667 and -0.667
-			> java Quadratic 3 4 2
+			$ java Quadratic 3 4 2
 			Solutions are NaN and NaN
 		\end{minted}
 	\end{block}
@@ -244,11 +246,11 @@
 \begin{slide}
 	\begin{block}{Problem Statement}
 		\begin{minted}[fontsize=\small,tabsize=8]{text}
-			> javac Quadratic.java
-			> java Quadratic 1 -2 -4
+			$ javac Quadratic.java
+			$ java Quadratic 1 -2 -4
 			Solutions are -1.236 and 3.237
-			> java Quadratic 9 12 4
-			> java Quadratic 3 4 2
+			$ java Quadratic 9 12 4
+			$ java Quadratic 3 4 2
 		\end{minted}
 	\end{block}
 	\begin{block}{Proposed Solution}
@@ -343,11 +345,10 @@
 \begin{slide}
 	\begin{block}{Problem Statement}
 		\begin{minted}[fontsize=\small,tabsize=8]{text}
-			> javac NumberChecker.java
-			> java NumberChecker
+			$ java NumberChecker
 			Enter number? 12345678
 			12345678 fits in Integer.
-			> java NumberChecker
+			$ java NumberChecker
 			Enter number? 123
 			123 fits in Byte
 			123 fits in Short
@@ -383,11 +384,10 @@
 \begin{slide}
 	\begin{block}{Result}
 		\begin{minted}[fontsize=\small,tabsize=8]{text}
-			> javac NumberChecker.java
-			> java NumberChecker
+			$ java NumberChecker
 			Enter number? 12345
 			12345 fits in Short.
-			> java NumberChecker
+			$ java NumberChecker
 			Enter number? 123
 			123 fits in Byte.
 		\end{minted}
