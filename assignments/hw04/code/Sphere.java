@@ -1,8 +1,8 @@
 public class Sphere {
+	public Point center;
 	public double radius;
-	public Coordinate coordinates;
-	public Sphere(double[] coordinates, double radius) {
+	public Sphere(Point center, double radius) {
+		this.center = center;
 		this.radius = radius;
-		this.coordinates = new Coordinate(coordinates);
 	}
 }

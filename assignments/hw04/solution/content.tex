@@ -67,7 +67,7 @@ The point should be an instance of class \texttt{Point} and the sphere should be
 Following is an example of an accepted output format.
 
 \begin{terminal}
-$ javac Point.java Sphere.java Coordinate.java PointAndSphere2.java
+$ javac Point.java Sphere.java PointAndSphere2.java
 $ java PointAndSphere2
 Coordinates of Point: 1 1 1
 Coordinates of Sphere: 0 0 0
@@ -79,13 +79,12 @@ The point is outside the sphere.
 
 \lstset{language=Java,tabsize=4}
 \begin{lstlisting}
-public class Coordinate {
-	public double[] coordinates = new double[3];
-	public Coordinate(double[] coordinates) {
-		for (int i = 0; i < this.coordinates.length; i++)
-			this.coordinates[i] = coordinates[i];
+public class Point {
+	public double[] coordinates;
+	public Point(double[] coordinates) {
+		this.coordinates = coordinates;
 	}
-	public double getDistance(Coordinate point) {
+	public double getDistance(Point point) {
 		double sum = 0;
 		for (int i = 0; i < 3; i++)
 			sum += Math.pow(this.coordinates[i] - point.coordinates[i], 2);
@@ -96,27 +95,17 @@ public class Coordinate {
 
 \lstset{language=Java,tabsize=4}
 \begin{lstlisting}
-public class Point {
-	public Coordinate coordinates;
-	public Point(double[] coordinates) {
-		this.coordinates = new Coordinate(coordinates);
+public class Sphere {
+	public Point center;
+	public double radius;
+	public Sphere(Point center, double radius) {
+		this.center = center;
+		this.radius = radius;
 	}
 }
 \end{lstlisting}
 
 \newpage
-
-\lstset{language=Java,tabsize=4}
-\begin{lstlisting}
-public class Sphere {
-	public double radius;
-	public Coordinate coordinates;
-	public Sphere(double[] coordinates, double radius) {
-		this.radius = radius;
-		this.coordinates = new Coordinate(coordinates);
-	}
-}
-\end{lstlisting}
 
 \lstset{language=Java,tabsize=4}
 \begin{lstlisting}
@@ -127,8 +116,9 @@ public class PointAndSphere2 {
 		double[] sphereCoordinates = promptCoordinates("Sphere");
 		double radius = promptRadius();
 		Point point = new Point(pointCoordinates);
-		Sphere sphere = new Sphere(sphereCoordinates, radius);
-		double dist = sphere.coordinates.getDistance(point.coordinates);
+		Point center = new Point(sphereCoordinates);
+		Sphere sphere = new Sphere(center, radius);
+		double dist = sphere.center.getDistance(point);
 		if (dist > sphere.radius)
 			System.out.println("The point is outside the sphere.");
 		else if (dist == sphere.radius)
@@ -152,6 +142,8 @@ public class PointAndSphere2 {
 	}
 }
 \end{lstlisting}
+
+\newpage
 
 \section*{Question 3}
 Write a program \texttt{MatrixFiller2.java} that prompts user for a number $x$ between 1 to 9 and instantiates an $x \times x$ matrix from class \texttt{Matrix.java} whose elements are randomly generated from range 1 to $x^2$.

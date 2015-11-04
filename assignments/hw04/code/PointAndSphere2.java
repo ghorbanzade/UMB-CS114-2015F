@@ -5,8 +5,9 @@ public class PointAndSphere2 {
 		double[] sphereCoordinates = promptCoordinates("Sphere");
 		double radius = promptRadius();
 		Point point = new Point(pointCoordinates);
-		Sphere sphere = new Sphere(sphereCoordinates, radius);
-		double dist = sphere.coordinates.getDistance(point.coordinates);
+		Point center = new Point(sphereCoordinates);
+		Sphere sphere = new Sphere(center, radius);
+		double dist = sphere.center.getDistance(point);
 		if (dist > sphere.radius)
 			System.out.println("The point is outside the sphere.");
 		else if (dist == sphere.radius)
