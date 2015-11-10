@@ -360,7 +360,9 @@
 \begin{slide}
 	\begin{block}{\texttt{DaltonBrothers.java} (v2.0) (Part 4)}
 		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
-			public static Brother[] swap(Brother[] daltons, int indexDest, int indexSrc) {
+			public static Brother[] swap(
+			        Brother[] daltons, int indexDest, int indexSrc)
+			{
 			    Brother tmp = daltons[indexDest];
 			    daltons[indexDest] = daltons[indexSrc];
 			    daltons[indexSrc] = tmp;
@@ -377,6 +379,50 @@
 			        for (int i = 0; i < daltons.length; i++)
 			            System.out.print(daltons[i].name + " ");
 			        System.out.println();
+			    }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Objective}
+		Write a program \texttt{DogTest.java} that instantiates a dog called \textit{Spooky} from class \texttt{Dog.java} and controls its movement in two-dimensional space.
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{Dog.java} (v1.0)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class Dog {
+			    public int x;
+			    public int y;
+			    public void move(int distX, int distY) {
+			        this.x += distX;
+			        this.y += distY;
+			    }
+			    public void showPosition() {
+			        System.out.printf("Dog is at (%d, %d)\n",
+			            this.x, this.y
+			        );
+			    }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{DogTest.java} (v1.0)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class DogTest {
+			    public static void main(String[] args) {
+			        Dog spooky = new Dog();
+			        spooky.x = 0;
+			        spooky.y = 0;
+			        spooky.move(5, 6);
+			        spooky.showPosition();
+			        spooky.move(2, 7);
+			        spooky.showPosition();
 			    }
 			}
 		\end{minted}
