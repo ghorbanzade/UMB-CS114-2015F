@@ -1,13 +1,20 @@
 <?xml version="1.0"?>
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="CS114-2015F" default="compile" basedir=".">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" xmlns:ant="antlib:net.sf.antcontrib" name="UMB-CS114-2015F" default="dist" basedir=".">
 
+	<property name="bin.dir" value="bin" />
 	<property name="lib.dir" value="lib" />
+	<property name="jar.dir" value="${bin.dir}/jar" />
+	<property name="classes.dir" value="${bin.dir}/classes" />
 	<property name="hw01.dir" value="assignments/hw01/code" />
 	<property name="hw02.dir" value="assignments/hw02/code" />
 	<property name="hw03.dir" value="assignments/hw03/code" />
 	<property name="hw04.dir" value="assignments/hw04/code" />
 	<property name="m01.dir" value="exams/m01/code" />
 	<property name="m02.dir" value="exams/m02/code" />
+
+	<property name="organization" value="edu.umb.cs114" />
+	<!-- <property name="main-class-list" value="hw01.HelloWorld" /> -->
+	<!-- <property name="test-suit-list" value="hw01.HelloWorldTest" /> -->
 
 	<property name="ivy.install.version" value="2.4.0" />
 	<condition property="ivy.home" value="${env.IVY_HOME}">
@@ -17,10 +24,34 @@
 	<property name="ivy.jar.dir" value="${ivy.home}/lib" />
 	<property name="ivy.jar.file" value="${ivy.jar.dir}/ivy.jar" />
 
+	<target name="download-ivy" unless="offline">
+		<mkdir dir="${ivy.jar.dir}"/>
+		<get src="https://repo1.maven.org/maven2/org/apache/ivy/ivy/${ivy.install.version}/ivy-${ivy.install.version}.jar" dest="${ivy.jar.file}" usetimestamp="true"/>
+	</target>
+
+	<target name="init-ivy" depends="download-ivy">
+		<path id="ivy.lib.path">
+			<fileset dir="${ivy.jar.dir}" includes="*.jar"/>
+		</path>
+		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
+	</target>
+
+	<target name="resolve" depends="init-ivy">
+		<ivy:retrieve />
+		<ivy:cachepath pathid="compile.path" conf="compile" />
+		<ivy:cachepath pathid="runtime.path" conf="runtime" />
+		<ivy:cachepath pathid="test.path" conf="test" />
+	</target>
+
 	<path id="classpath.test">
 		<pathelement location="${lib.dir}/junit-4.12.jar" />
 		<pathelement location="${lib.dir}/hamcrest-core-1.3.jar" />
 	</path>
+
+	<path id="classpath.lib">
+		<fileset dir="${lib.dir}" includes="**/*.jar"/>
+	</path>
+
 	<path id="classpath.hw01">
 		<pathelement location="${hw01.dir}" />
 		<path refid="classpath.test" />
@@ -46,42 +77,32 @@
 		<path refid="classpath.test" />
 	</path>
 
-	<target name="download-ivy" unless="offline">
-		<mkdir dir="${ivy.jar.dir}"/>
-		<get src="https://repo1.maven.org/maven2/org/apache/ivy/ivy/${ivy.install.version}/ivy-${ivy.install.version}.jar" dest="${ivy.jar.file}" usetimestamp="true"/>
-	</target>
-
-	<target name="init-ivy" depends="download-ivy">
-		<path id="ivy.lib.path">
-			<fileset dir="${ivy.jar.dir}" includes="*.jar"/>
-		</path>
-		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
-	</target>
-
-	<target name="resolve" depends="init-ivy">
-		<ivy:retrieve />
-		<ivy:cachepath pathid="compile.path" conf="compile" />
-		<ivy:cachepath pathid="runtime.path" conf="runtime" />
-		<ivy:cachepath pathid="test.path" conf="test" />
+	<target name="taskdefs" depends="resolve">
+		<taskdef resource="net/sf/antcontrib/antlib.xml">
+			<classpath>
+				<pathelement location="${lib.dir}/ant-contrib-1.0b3.jar"/>
+			</classpath>
+		</taskdef>
 	</target>
 
 	<target name="compile" depends="resolve">
-		<javac srcdir="${hw01.dir}" destdir="${hw01.dir}" includeantruntime="false">
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${hw01.dir}" destdir="${classes.dir}" includeantruntime="false">
 			<classpath refid="classpath.hw01"/>
 		</javac>
-		<javac srcdir="${hw02.dir}" destdir="${hw02.dir}" includeantruntime="false">
+		<javac srcdir="${hw02.dir}" destdir="${classes.dir}" includeantruntime="false">
 			<classpath refid="classpath.hw02"/>
 		</javac>
-		<javac srcdir="${hw03.dir}" destdir="${hw03.dir}" includeantruntime="false">
+		<javac srcdir="${hw03.dir}" destdir="${classes.dir}" includeantruntime="false">
 			<classpath refid="classpath.hw03"/>
 		</javac>
-		<javac srcdir="${hw04.dir}" destdir="${hw04.dir}" includeantruntime="false">
+		<javac srcdir="${hw04.dir}" destdir="${classes.dir}" includeantruntime="false">
 			<classpath refid="classpath.hw04"/>
 		</javac>
-		<javac srcdir="${m01.dir}" destdir="${m01.dir}" includeantruntime="false">
+		<javac srcdir="${m01.dir}" destdir="${classes.dir}" includeantruntime="false">
 			<classpath refid="classpath.m01"/>
 		</javac>
-		<javac srcdir="${m02.dir}" destdir="${m02.dir}" includeantruntime="false">
+		<javac srcdir="${m02.dir}" destdir="${classes.dir}" includeantruntime="false">
 			<classpath refid="classpath.m02"/>
 		</javac>
 	</target>
@@ -125,6 +146,9 @@
 		</junit>
 	</target>
 
+	<target name="dist" depends="clean, test">
+	</target>
+
 	<target name="clean">
 		<delete>
 			<fileset dir="${hw01.dir}" includes="**/*.class" />
@@ -134,7 +158,13 @@
 			<fileset dir="${m01.dir}" includes="**/*.class" />
 			<fileset dir="${m02.dir}" includes="**/*.class" />
 		</delete>
-		<delete dir="${lib.dir}"/>
+		<delete dir="${lib.dir}" />
+		<delete dir="${jar.dir}" />
+		<delete dir="${classes.dir}" />
+	</target>
+
+	<target name="clean-all" depends="clean">
+		<ivy:cleancache/>
 	</target>
 
 </project>
