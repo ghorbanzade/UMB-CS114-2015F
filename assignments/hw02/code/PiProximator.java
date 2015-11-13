@@ -6,6 +6,8 @@
 //	University of Massachusetts Boston
 //
 
+package edu.umb.cs114.hw02.q2;
+
 import java.util.Scanner;
 public class PiProximator {
 	public static void main(String[] args) {

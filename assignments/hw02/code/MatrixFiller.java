@@ -6,6 +6,8 @@
 //	University of Massachusetts Boston
 //
 
+package edu.umb.cs114.hw02.q4;
+
 import java.util.Scanner;
 public class MatrixFiller {
 	public static void main(String[] args) {

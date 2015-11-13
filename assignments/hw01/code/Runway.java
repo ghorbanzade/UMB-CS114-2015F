@@ -6,6 +6,8 @@
 //	University of Massachusetts Boston
 //
 
+package edu.umb.cs114.hw01.q4;
+
 public class Runway {
 	public static void main(String[] args) {
 		double speed = Double.parseDouble(args[0]);

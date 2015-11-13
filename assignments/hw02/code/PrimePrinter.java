@@ -6,6 +6,8 @@
 //	University of Massachusetts Boston
 //
 
+package edu.umb.cs114.hw02.q3;
+
 import java.util.Scanner;
 public class PrimePrinter {
 	public static void main(String[] args) {

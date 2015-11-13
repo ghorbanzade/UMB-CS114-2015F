@@ -6,6 +6,8 @@
 //	University of Massachusetts Boston
 //
 
+package edu.umb.cs114.hw01.q5;
+
 public class Spheroid {
 	public static void main(String[] args) {
 		double a = Double.parseDouble(args[0]);

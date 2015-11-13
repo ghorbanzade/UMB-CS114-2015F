@@ -6,6 +6,8 @@
 //	University of Massachusetts Boston
 //
 
+package edu.umb.cs114.hw01.q3;
+
 public class Temperature {
 	public static void main(String[] args) {
 		double celsius = Double.parseDouble(args[0]);

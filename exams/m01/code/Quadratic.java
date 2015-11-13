@@ -1,3 +1,13 @@
+//
+//	Copyright (c) 2015
+//	Pejman Ghorbanzade <mail@ghorbanzade.com>
+//	CS114: Introduction to Java
+//	Department of Computer Science
+//	University of Massachusetts Boston
+//
+
+package edu.umb.cs114.m01.q1.p2;
+
 public class Quadratic {
 	public static void main(String[] args) {
 		int a = Integer.parseInt(args[0]);

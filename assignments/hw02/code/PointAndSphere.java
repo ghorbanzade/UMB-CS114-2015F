@@ -6,6 +6,8 @@
 //	University of Massachusetts Boston
 //
 
+package edu.umb.cs114.hw02.q1;
+
 import java.util.Scanner;
 public class PointAndSphere {
 	public static void main(String[] args) {
