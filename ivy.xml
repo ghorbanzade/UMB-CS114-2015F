@@ -1,10 +1,8 @@
 <ivy-module version="2.0">
-	<info organisation="org.apache" module="CS114-2015F" />
+	<info organisation="org.apache" module="UMB-CS114-2015F"/>
 	<configurations>
-		<conf name="build" />
-		<conf name="compile" />
-		<conf name="runtime" extends="compile" />
-		<conf name="test" extends="runtime" />
+		<conf name="build"/>
+		<conf name="test"/>
 	</configurations>
 	<dependencies>
 		<dependency org="ant-contrib" name="ant-contrib" rev="1.0b3" conf="build->default"/>

@@ -1,6 +1,5 @@
 # Introduction to Java, Fall 2015
 [![Build Status](https://secure.travis-ci.org/ghorbanzade/UMB-CS114-2015F.svg?branch=master)](http://travis-ci.org/ghorbanzade/UMB-CS114-2015F)
-[![Coverity Status](https://img.shields.io/coverity/scan/6586.svg)](https://scan.coverity.com/projects/ghorbanzade-umb-cs114-2015f)
 
 This repository contains course material developed for *CS114: Introduction to Java* course at [University of Massachusetts Boston] as being taught by [Pejman Ghorbanzade] in Fall 2015.
 The material include lecture slides, problem sets and their solutions as well as Java source codes.
