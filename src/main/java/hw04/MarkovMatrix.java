@@ -31,8 +31,11 @@ public class MarkovMatrix {
 	public static boolean isMarkovMatrix(double[][] matrix) {
 		for (int i = 0; i < matrix[0].length; i++) {
 			double sum = 0;
-			for (int j = 0; j < matrix.length; j++)
+			for (int j = 0; j < matrix.length; j++) {
+				if (matrix[j][i] <= 0)
+					return false;
 				sum += matrix[j][i];
+			}
 			if (sum != 1)
 				return false;
 		}
