@@ -19,37 +19,47 @@ Your program should prompt user for a filename and - assuming that a file with s
 Following is a sample run of the program to illustrates the expected output.
 
 \begin{terminal}
-$ javac Word.java WordCount.java
+$ javac WordCount.java
 $ java WordCount
 Enter Filename: testFile.txt
 Most Frequent Words:
 word            frequency
-the             14
-and             9
-they            6
-fence           4
-went            4
+the             15
+and             10
+they            7
+fence           5
+went            5
 \end{terminal}
 
 Where content of the file \texttt{testFile.txt} is shown below.
 
 \begin{displayquote}
-Through the fence, between the curling flower spaces, I could see them hitting. They were coming toward where the flag was and I went along the fence. Luster was hunting in the grass by the flower tree. They took the flag out, and they were hitting. Then they put the flag back and they went to the table, and he hit and the other hit. Then they went on, and I went along the fence. Luster came away from the flower tree and we went along the fence and they stopped and we stopped and I looked through the fence while Luster was hunting in the grass.
+Through the fence, between the curling flower spaces, I could see them hitting.
+They were coming toward where the flag was and I went along the fence.
+Luster was hunting in the grass by the flower tree.
+They took the flag out, and they were hitting.
+Then they put the flag back and they went to the table, and he hit and the other hit.
+Then they went on, and I went along the fence.
+Luster came away from the flower tree and we went along the fence and they stopped and we stopped and I looked through the fence while Luster was hunting in the grass.
 \end{displayquote}
 
-Note that words ``\textit{They}'' and ``\textit{they}'' are considered as one word. In addition, the program is not sensitive to punctuations and regards the words   ``\textit{fence}'', ``\textit{fence,}'' and ``\textit{fence.}'' as three occurences of the same word.
+Note that words ``\textit{They}'' and ``\textit{they}'' are considered as one word.
+In addition, the program is not sensitive to punctuations and regards the words ``\textit{fence}'', ``\textit{fence,}'' and ``\textit{fence.}'' as three occurrences of the same word.
 
-A template for how to open, read and close files in Java is provided in the file \texttt{FileHandleSample.java} that accompanies this assignment.
+To simplify the task of retrieving data from a file, \texttt{FileHandler.java} accompanies this assignment.
+Using the provided class, it is possible to obtain content of any file with given relative file path, in form of an array of String literals as shown below.
+
+\begin{terminal}
+String[] words = FileHandler.getFileContent(filepath);
+\end{terminal}
 
 \section*{Question 2}
 
 Stella, the owner of a local diner has a box of magnetic characters that she uses to put different messages on the sign board of her establishment.
-
 At times when Stella runs out of characters for her desired messages, she gets annoyed and wishes if there was an easy way to test if a message can make it to the sign board.
 
 Write a program \texttt{ShopSign.java} that prompts user to first enter a string that represents the container of magnetic characters and then another string that represents the proposed message.
-
-You can assume magnetic characters are only a set of lowercase and uppercase english alphabets, numbers and exclamation mark.
+You can assume magnetic characters are only a set of lowercase and uppercase English alphabets, numbers and exclamation mark.
 
 Following is an expected sample run of your program.
 
@@ -80,7 +90,6 @@ Ticketing procedure is based on a few simple policies as follows:
 Write a program \texttt{BoxOffice.java} that prompts ticket seller for number of tickets to print, showing the number of total available seats at the same time.
 If sufficient number of seats are available in a single row, your program should print the list of seats assigned to the group.
 Otherwise, it should show a warning indicating tickets are not available for the group.
-
 Program terminates when all tickets are sold and no more seats are available.
 
 The following sample run illustrates the expected output of your program.
@@ -106,19 +115,15 @@ Tickets not available for group of 11.
 
 \section*{Question 4}
 
-Write a program \texttt{SnakeGame.java} that implements a simplified version of the fameous snake arcade game where user controls movement of a snake towards the food source within a matrix of size $5 \times 10$.
-
+Write a program \texttt{SnakeGame.java} that implements a simplified version of the famous snake arcade game where user controls movement of a snake towards the food source within a matrix of size $5 \times 10$.
 The syntax for user commands is \texttt{[number]<direction>} where \texttt{direction} is one of \textit{a}, \textit{s}, \textit{d} or \textit{w} letters corresponding to movement in left, down, right and up directions and \texttt{number} is the number of cells to move in the specified direction. As an example, command \texttt{3d} will move the snake three cells to the right.
 In case the destination cell is outside the matrix, the command will be rejected and the snake will not move at all.
 In case the number is not provided, the snake will move one cell in the specified direction.
-
 The initial position of snake is randomely generated.
 Once the snake arrives at the cell where the food source is, the food source is considered as consumed and a new food source will appear at a new randomly generated location.
-
 The program terminates when the snake eats five food sources.
 
 For simplicity, following assumptions can be made in your design:
-
 \begin{enumerate}[itemsep=0mm,rightmargin=\leftmargin]
   \item The snake has size one and it does not grow in size when it feeds.
   \item There is no barrier inside the box and both the food and the snake can be in any of the 100 cells.
@@ -152,8 +157,8 @@ Enter command: 1w
 
 
 Enter command: 2w
--------------------
 Invalid command.
+-------------------
 Points to Eat: 4
   o
        |
