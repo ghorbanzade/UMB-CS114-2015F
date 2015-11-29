@@ -1,0 +1,345 @@
+% -----------------------------------------------------------------------------
+% The MIT License (MIT)
+%
+% Copyright (c) 2015 Pejman Ghorbanzade
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in
+% all copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+% THE SOFTWARE.
+% -----------------------------------------------------------------------------
+
+\def \topDirectory {../..}
+
+\documentclass[10pt, compress]{beamer}
+
+\usepackage{\topDirectory/template/style/directives}
+\input{\topDirectory/template/config}
+\usepackage{\topDirectory/template/style/beamerthemeUmassLecture}
+\doc{number}{14}
+%\setbeamertemplate{footline}[text line]{}
+
+\begin{document}
+\prepareCover
+
+\section{Course Administration}
+
+\begin{slide}
+	\begin{block}{Overview}
+		\begin{itemize}
+			\item[] Access Modifiers
+			\item[] Encapsulation
+		\end{itemize}
+	\end{block}
+\end{slide}
+
+\section{Access Modifiers}
+
+\begin{slide}
+	\begin{block}{Definition}
+		Access modifiers specify scope of classes or class members (data memebrs, methods, constructors).
+		Access modifiers determine whether other classes can use a particular data member or invoke a particular method.
+	\end{block}
+	\begin{block}{Types}
+		\begin{columns}
+		\column{0.5\textwidth}
+			\begin{itemize}
+				\item[] public
+				\item[] default (no modifier)
+			\end{itemize}
+		\column{0.5\textwidth}
+			\begin{itemize}
+			\item[] protected
+			\item[] private
+			\end{itemize}
+		\end{columns}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{public} modifier}
+		Classes or class members may be declared as \alert{public} in which case they are accessible to all classes everywhere.
+	\end{block}
+	\begin{block}{\texttt{default} modifier}
+		Classes or class members may be declared with no explicit modifiers, in which case they are only accessible within their package.
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{protected} modifier}
+		Class members may be declared as \alert{protected} in which case they are accessible within their package.
+	\end{block}
+	\begin{block}{\texttt{private} modifier}
+		Class members may be declared as \alert{private} in which case they are only accessible within their class.
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Objective}
+		Write a class \texttt{Employee.java} for an application \texttt{EmployeeTest.java} that manages salary calculations for interns and full-time employees.
+		Interns are paid \$25/h for the number of hours they worked every week.
+		Full-time employees are paid \$50/h for 40 hours every week.
+		Each employee has a name and a unique SSN.
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Class \texttt{Employee.java} (v1.0) (Part 1)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class Employee {
+			  // class variables
+			  public static int normalHours = 40;
+			  public static int internRate = 25;
+			  public static int fullTimeRate = 50;
+			  public static int numEmployees = 1;
+			  // instance variables
+			  public int empId;
+			  public String name;
+			  public boolean isIntern;
+			  public double numHours = 0;
+			  public double perHour;
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Class \texttt{Employee.java} (v1.0) (Part 2)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=13]{java}
+			  // constructor
+			  public Employee(String name, boolean isIntern) {
+			    this.empId = numEmployees;
+			    this.name = name;
+			    this.isIntern = isIntern;
+			    this.perHour = isIntern ? internRate : fullTimeRate;
+			    numEmployees++;
+			  }
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Class \texttt{Employee.java} (v1.0) (Part 3)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=21]{java}
+			  //methods
+			  public double getAmountToPay() {
+			    if (this.isIntern) {
+			      return this.numHours * this.perHour;
+			    } else {
+			      return normalHours * this.perHour;
+			    }
+			  }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Class \texttt{EmployeeDemo.java} (v1.0)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class EmployeeDemo {
+			  public static void main(String[] args) {
+			    Employee emp1 = new Employee("Tim", true);
+			    emp1.numHours = 20;
+			    Employee emp2 = new Employee("Tom", false);
+			    emp1.numHours = 10;
+			    System.out.println(emp1.getAmountToPay());
+			    System.out.println(emp2.getAmountToPay());
+			  }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Problem Statement}
+		Class and class members of \texttt{Employee.java} all have public modifiers.
+		This makes it possible for everyone to access and modify data in \texttt{Employee.java} class or data of its objects, as they please.
+	\end{block}
+	\begin{block}{\texttt{Evil.java} (v1.0)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class Evil {
+			  public static void harm(Employee employee) {
+			    employee.ssn = -100;
+			    employee.name = "HACKED";
+			    employee.perHour = -1;
+			  }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Proposed Solution}
+		\begin{itemize}
+			\item[] Always use as restrictive access level as possible.
+			\item[] Do not allow direct access to object data.
+			\item[] Provide methods as controlled ways of indirect access to data.
+			\item[] Declare data that is not expected to change as constant.
+		\end{itemize}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Class \texttt{Employee.java} (v2.0) (Part 1)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class Employee {
+			  // class variables
+			  private static int final NORMAL_HOURS = 40;
+			  private static int final RATE_INTERN = 25;
+			  private static int final RATE_FULLTIME = 50;
+			  private static int numEmployees = 1;
+			  // instance variables
+			  private int empId;
+			  private String name;
+			  private boolean isIntern;
+			  private double numHours = 0;
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Class \texttt{Employee.java} (v2.0) (Part 2)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=12]{java}
+			  // constructor
+			  public Employee(String name, boolean isIntern) {
+			    this.empId = numEmployees;
+			    this.name = name;
+			    this.isIntern = isIntern;
+			    numEmployees++;
+			  }
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Class \texttt{Employee.java} (v2.0) (Part 3)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=19]{java}
+			  //methods
+			  public void work(double numHours) {
+			    this.numHours += numHours;
+			  }
+			  public void hire() {
+			    this.isIntern = false;
+			  }
+			  public double getAmountToPay() {
+			    if (this.isIntern == true) {
+			      return this.numHours * RATE_INTERN;
+			    } else {
+			      return NORMAL_HOUR * RATE_FULLTIME;
+			    }
+			  }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Class \texttt{EmployeeDemo.java} (v2.0)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class EmployeeDemo {
+			  public static void main(String[] args) {
+			    Employee emp1 = new Employee("Tim", true);
+			    emp1.work(20);
+			    Employee emp2 = new Employee("Tom", false);
+			    emp1.work(10);
+			    System.out.println(emp1.getAmountToPay());
+			    System.out.println(emp2.getAmountToPay());
+			  }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\section{Encapsulation}
+
+\begin{slide}
+	\begin{block}{Definition}
+		Encapsulation promotes controlling data of an object by restricting its access to methods of its class.
+		By encapsulation the states of an object, direct data manipulation is disallowed.
+		Indirect access and control is selectively given only to needed states.
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Advantages}
+		\begin{description}
+			\item[Modularity] Objects are passed to classes instead of data.
+			\item[Data Hiding] Details of internal implementation are not disclosed.
+			\item[Code Re-Use] Once verified, a developed class can be trusted.
+			\item[Pluggability] Problems will be specific to classes.
+		\end{description}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Approach}
+		\begin{enumerate}
+			\item[] Use private access modifier for data members.
+			\item[] Develop accessors and mutators for data members.
+			\item[] Impose restrictions for accessors and mutators.
+			\item[] Develop additional methods for data modification if required.
+		\end{enumerate}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Accessors}
+		Accessors (getters) return some property of an object.
+		\begin{minted}[fontsize=\small,tabsize=8]{java}
+			  public int getEmployeeId() {
+			    return this.empId;
+			  }
+			  public String getName() {
+			    return this.name;
+			  }
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Mutators}
+		Mutators (setters) change some property of an object.
+		\begin{minted}[fontsize=\small,tabsize=8]{java}
+			  public void setName(String name) {
+			    this.name = name;
+			  }
+			  public void setStatus(boolean isIntern) {
+			    this.isIntern = isIntern;
+			  }
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Naming}
+		There is no limit in how you name your accessors and mutators.
+		By convention however, we usually use \texttt{getPropertyName} and \texttt{setPropertyName} to name accessors and mutators respectively.
+		For properties with \texttt{boolean} data type, \texttt{isPropertyName} is used by convention.
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Remember}
+		Accessors and mutators are often declared public and used to access the property outside the object.
+	\end{block}
+	\begin{block}{Immutable Properties}
+		Mutators can be omitted to prohibit modifications of certain attributes.
+	\end{block}
+\end{slide}
+
+\plain{}{Keep Calm\\and\\Practice}
+
+\end{document}
