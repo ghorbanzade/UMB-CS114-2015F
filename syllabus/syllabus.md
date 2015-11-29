@@ -40,7 +40,7 @@ Final Exam: 40 points
 First Lecture: Sep 09, 2015  
 Midterm Exam: Oct 21, 2015  
 Last Lecture: Dec 14, 2015  
-Final Exam: To be determined.
+Final Exam: Dec 21, 2015
 
 ### Attendance Policy
 Attending lectures are optional but strongly encouraged. Slides do not reﬂect all materials covered in lectures. Students are responsible for material covered in any class that they do not attend. Students are also expected to check this website regularly for latest announcements, upcoming events and released homeworks.
