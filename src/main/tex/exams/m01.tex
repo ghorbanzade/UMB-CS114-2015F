@@ -1,0 +1,187 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CS114: Introduction to Programming in Java
+% Copyright 2015 Pejman Ghorbanzade <mail@ghorbanzade.com>
+% Creative Commons Attribution-ShareAlike 4.0 International License
+% https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/LICENSE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def \topDirectory {.}
+\def \texDirectory {\topDirectory/src/main/tex}
+
+\documentclass[12pt,letterpaper,twoside]{article}
+\usepackage{\texDirectory/template/style/directives}
+\usepackage{\texDirectory/template/style/assignment}
+\input{\texDirectory/template/config}
+
+\begin{document}
+
+\doc{title}{Midterm Practice Exam}
+\doc{points}{20}
+
+\prepare{header}
+
+\section*{Question 1}
+
+The following programs have each a \textbf{single} compilation error given below. You are expected to find and fix the error so that given command-line arguments will lead to expected output as indicated.
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java HelloWorld} \hfill \texttt{Hello World!}
+\begin{lstlisting}
+public class HelloWorld {
+	public static void main(String[] args) {
+		System.println("Hello World!");
+	}
+}
+\end{lstlisting}
+
+\begin{terminal}
+HelloWorld.java:3: error: cannot find symbol
+		System.println("Hello World!");
+1 error
+\end{terminal}
+
+\newpage
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java Quadratic 1 -2 -4} \hfill \texttt{-1.236 and 3.237}
+\begin{lstlisting}
+public class Quadratic {
+	public static void main(String[] args) {
+		int a = Integer.parseInt(args[0]);
+		int b = Integer.parseInt(args[1]);
+		int c = Integer.parseInt(args[2]);
+		double discriminant = b*b - 4*a*c;
+		if (double discriminant > 0) {
+			double sol1 = (- b - Math.sqrt(discriminant))/(2*a);
+			double sol2 = (- b + Math.sqrt(discriminant))/(2*a);
+			System.out.printf("%.3f and %.3f\n", sol1, sol2);
+		}
+	}
+}
+\end{lstlisting}
+
+\begin{terminal}
+Quadratic.java:7: error: '.class' expected
+		if (double discriminant > 0) {
+Quadratic.java:7: error: illegal start of expression
+		if (double discriminant > 0) {
+Quadratic.java:7: error: ';' expected
+		if (double discriminant > 0) {
+Quadratic.java:7: error: illegal start of expression
+		if (double discriminant > 0) {
+Quadratic.java:7: error: ';' expected
+		if (double discriminant > 0) {
+Quadratic.java:13: error: class, interface, or enum expected
+}
+6 errors
+\end{terminal}
+
+\newpage
+
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java TwoCities Texas Boston} \hfill \texttt{Boston, Texas}
+\begin{lstlisting}
+public class TwoCities {
+	public static void main(String[] args) {
+		if (args[0].compareTo(args[1]) < 0) {
+			System.out.println(args[0] + ", " + args[1]);
+		else
+			System.out.println(args[1] + ", " + args[0]);
+		}
+	}
+}
+\end{lstlisting}
+
+\begin{terminal}
+TwoCities.java:5: error: 'else' without 'if'
+	else
+1 error
+\end{terminal}
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java ShowNum 5} \hfill \texttt{1, 2, 3, 4, 5, }
+
+\begin{lstlisting}
+public class ShowNum {
+	public static void main(String[] args) {
+		int limit = Integer.parseInt(args[0]);
+		for (i < limit; i++) {
+			System.out.printf("%d, ", i);
+		}
+	}
+}
+\end{lstlisting}
+
+\begin{terminal}
+ShowNum.java:4: error: > expected
+		for (i < limit; i++) {
+ShowNum.java:4: error: not a statement
+		for (i < limit; i++) {
+ShowNum.java:4: error: ';' expected
+		for (i < limit; i++) {
+3 errors
+\end{terminal}
+
+\end{enumerate}
+
+\newpage
+
+\section*{Question 2}
+
+The following program is written to take $n$ as a command line argument and print the first $n$ prime numbers.
+The program has no compilation error and functions as expected.
+A professional Java programmer, however, argues that it is badly written and that it has major design problem.
+Read the code snippet, explain how it works and why it is deemed as inefficient.
+Modify the program to resolve the argued problem.
+
+\begin{lstlisting}
+public class NPrimes {
+	public static void main(String[] args) {
+		int count = Integer.parseInt(args[0]);
+		int number = 2;
+		for (int i = 0; i < count; i++) {
+			boolean isPrime = false;
+			do {
+				boolean flag = true;
+				for (int j = 2; j < number; j++) {
+					if (number % j == 0)
+						flag = false;
+				}
+				if (flag) {
+					System.out.println(number);
+					isPrime = true;
+				}
+				number++;
+			}
+			while (isPrime == false);
+		}
+	}
+}
+\end{lstlisting}
+
+\newpage
+
+\section*{Question 3}
+
+A palindrome is a sequence of characters which reads the same backward or forward.
+Write a program \texttt{Palindrome.java} that prompts user for a phrase and checks if the phrase is a palindrome or not.
+For simplicity, a palindrome is both case- and whitespace-sensitive.
+Following are two expected sample runs of your program.
+
+\begin{terminal}
+$ javac Palindrome.java
+$ java Palindrome
+Enter a String? hello olleh
+Your String is a Palindrome.
+$ java Palindrome
+Enter a String? radar
+Your String is a Palindrome.
+$ java Palindrome
+Enter a String? race car
+Your String is not a Palindrome.
+\end{terminal}
+
+\end{document}

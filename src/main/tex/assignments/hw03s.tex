@@ -1,0 +1,433 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CS114: Introduction to Programming in Java
+% Copyright 2015 Pejman Ghorbanzade <mail@ghorbanzade.com>
+% Creative Commons Attribution-ShareAlike 4.0 International License
+% https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/LICENSE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def \topDirectory {.}
+\def \texDirectory {\topDirectory/src/main/tex}
+
+\documentclass[12pt,letterpaper,twoside]{article}
+\usepackage{\texDirectory/template/style/directives}
+\usepackage{\texDirectory/template/style/assignment}
+\input{\texDirectory/template/config}
+
+\usepackage{amsmath}
+
+\begin{document}
+
+\doc{title}{Solution to Assignment 3}
+\doc{date-pub}{Oct 19, 2015 at 5:30 PM}
+\doc{date-due}{Nov 04, 2015 at 5:30 PM}
+\doc{points}{8}
+
+\prepare{header}
+
+\section*{Question 1}
+
+Write a program \texttt{HouseOfCards.java} that randomly selects two cards from a standard 52-card deck.
+The program would then print the names of the cards based on their rank and suit.
+Finally, your program should determine if the two cards share the same rank or the same suit.
+Your program is expected to function as shown in following examples:
+
+\begin{terminal}
+$ java HouseOfCards
+Queen of Diamonds
+Jack of Spades
+Cards do not share rank or suit.
+$ java HouseOfCards
+Ace of Hearts
+8 of Hearts
+Cards share the same suit.
+\end{terminal}
+
+\subsection*{Solution}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+public class HouseOfCards {
+	public static void main(String[] args) {
+		int[] card1 = generateCard();
+		int[] card2 = generateCard();
+		printCardName(card1[0], card1[1]);
+		printCardName(card2[0], card2[1]);
+		if (card1.equals(card2))
+			System.out.println("Cards are the same");
+		else if (card1[0] == card2[0])
+			System.out.println("Cards share the same suit.");
+		else if (card1[1] == card2[1])
+			System.out.println("Cards share the same rank.");
+		else
+			System.out.println("Cards do not share rank or suit.");
+	}
+	public static int[] generateCard() {
+		int[] card = new int[2];
+		int num = (int) Math.floor(Math.random() * 52);
+		card[0] = num / 13;
+		card[1] = num % 13;
+		return card;
+	}
+	public static void printCardName(int suitNum, int rankNum) {
+		String[] suitNames = {
+			"Spades", "Diamonds", "Clubs", "Hearts"
+		};
+		String[] cardNames = {
+			"Ace", "Two", "Three", "Four", "Five",
+			"Six", "Seven", "Eight", "Nine", "Ten",
+			"Soldier", "Queen", "King"
+		};
+		System.out.printf("%s of %s\n", cardNames[rankNum], suitNames[suitNum]);
+	}
+}
+\end{lstlisting}
+
+\section*{Question 2}
+
+Write a program \texttt{Deviation.java} that prompts user to enter a positive integer number $n$ and then asks user to enter $n$ floating-point numbers.
+Your program should compute and display standard deviation of the numbers according to Equation \ref{eq1}, in the format shown below.
+
+\begin{equation}
+\text{deviation} = \sqrt{\frac{\sum_{i = 1}^{n} \left( x_i - \frac{\sum_{i = 1}^{n} x_i}{n} \right)^2 }{n - 1}}
+\label{eq1}
+\end{equation}
+
+\begin{terminal}
+$ javac Deviation.java
+$ java Deviation
+Enter count: 10
+Enter 10 numbers: 1.9 2.5 3.7 2 1 6 3 4 5 2
+Standard Deviation: 1.557
+\end{terminal}
+
+\newpage
+
+\subsection*{Solution}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+import java.util.Scanner;
+public class Deviation {
+	public static void main(String[] args) {
+		double[] numbers = getNumbers();
+		double deviation = findDeviation(numbers);
+		System.out.printf("Standard Deviation: %.3f\n", deviation);
+	}
+	public static double[] getNumbers() {
+		Scanner input = new Scanner(System.in);
+		System.out.printf("Enter count: ");
+		int num = input.nextInt();
+		double[] numbers = new double[num];
+		System.out.printf("Enter %d Numbers: ", num);
+		for (int i = 0; i < num; i++) {
+			numbers[i] = input.nextDouble();
+		}
+		input.close();
+		return numbers;
+	}
+	public static double findDeviation(double[] numbers) {
+		double mean = findMean(numbers);
+		double sum = 0;
+		for (int i = 0; i < numbers.length; i++)
+			sum += Math.pow(numbers[i] - mean, 2);
+		double deviation = Math.sqrt(sum / (numbers.length - 1));
+		return deviation;
+	}
+	public static double findMean(double[] numbers) {
+		double sum = 0;
+		for (int i = 0; i < numbers.length; i++)
+			sum += numbers[i];
+		double mean = sum / numbers.length;
+		return mean;
+	}
+}
+\end{lstlisting}
+
+\newpage
+
+\section*{Question 3}
+
+Write a program \texttt{DuplicateTester.java} that prompts user for a positive integer $x$ and creates an array with $x$ randomly generted integer elements in range 0 to 9.
+Use a method with signature \texttt{public static int[] removeDuplicates(int[] array);} to remove all duplicate elements in the array.
+Your program is expected to terminate by displaying the new array.
+Following is a sample expected run of the program.
+
+\begin{terminal}
+$ javac DuplicateTester.java
+$ java DuplicateTester
+Size of Array: 10
+Generated Array:
+3 4 2 8 2 4 3 1 6 7
+Filtered Array:
+3 4 2 8 1 6 7
+\end{terminal}
+
+\subsection*{Solution}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+import java.util.Scanner;
+public class DuplicateTester {
+	public static void main(String[] args) {
+		int size = getSize();
+		System.out.println("Generated Array:");
+		int[] array = generateArray(size);
+		display(array);
+		System.out.println("Filtered Array:");
+		int[] newArray = removeDuplicates(array);
+		display(newArray);
+	}
+	public static int getSize() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Size of Array: ");
+		int size = input.nextInt();
+		input.close();
+		return size;
+	}
+	public static int[] generateArray(int size) {
+		int[] array = new int[size];
+		for (int i = 0; i < size; i++)
+			array[i] = (int) Math.floor(Math.random() * 10);
+		return array;
+	}
+	public static int[] removeDuplicates(int[] array) {
+		boolean[] flags = new boolean[10];
+		int[] numbers = new int[10];
+		for (int i = 0; i < flags.length; i++)
+			flags[i] = false;
+		int j = 0;
+		for (int i = 0; i < array.length; i++) {
+			if (flags[array[i]] == false) {
+				flags[array[i]] = true;
+				numbers[j++] = array[i];
+			}
+		}
+		int[] newArray = new int[j];
+		for (int i = 0; i < j; i++)
+			newArray[i] = numbers[i];
+		return newArray;
+	}
+	public static void display(int[] array) {
+		int size = array.length;
+		for (int i = 0; i < size; i++)
+			System.out.printf("%d ", array[i]);
+		System.out.println();
+	}
+}
+\end{lstlisting}
+
+\section*{Question 4}
+
+Thomas, a CS114 student, had been asked to write a program that performs simple arithmetic operations (add and multiply) on two matrices $x$ and $y$ whose elements are randomly generated from range 0 to 9.
+The program was supposed to prompt user for a number $r$ and generate two $r \times r$ matrices, $x$ and $y$.
+The program would then display $x + y$ and $x \times y$ respectively, as shown in Figure 1.
+
+\newpage
+
+\renewcommand{\lstlistingname}{Figure}
+\lstset{caption=Expected Output of \texttt{MatrixWorld.java}, label=terminal1}
+\begin{terminal}
+Size of Matrices: 3
+
+Matrix A:
+  0   3   2
+  7   0   1
+  1   6   5
+
+Matrix B:
+  7   8   9
+  0   3   1
+  8   9   6
+
+Sum:
+  7  11  11
+  7   3   2
+  9  15  11
+
+Multiplication:
+ 16  27  15
+ 57  65  69
+ 47  71  45
+\end{terminal}
+
+Unfortunately, Thomas gave up while developing the requested program.
+He has asked that you continue development of his program without modifying the code he has written.
+
+\lstset{caption=}
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+// written by: Thomas A. Anderson
+// <thomas.anderson001@umb.edu>
+
+import java.util.Scanner;
+public class MatrixWorld {
+	public static void main(String[] args) {
+		int size = getSize();
+		int[][] matrixA = matrixInit(size);
+		int[][] matrixB = matrixInit(size);
+		int[][] sum = matrixAdd(matrixA, matrixB);
+		int[][] multiplication = matrixMultiply(matrixA, matrixB);
+		matrixDisplay(matrixA, "Matrix A");
+		matrixDisplay(matrixB, "Matrix B");
+		matrixDisplay(sum, "Sum");
+		matrixDisplay(multiplication, "Multiplication");
+	}
+	public static int getSize() {
+		// To Be Developed
+	}
+	public static int[][] matrixInit(int size) {
+		// To Be Developed
+	}
+	public static int[][] matrixAdd(int[][] matrixA, int[][] matrixB) {
+		// To Be Developed
+	}
+	public static int[][] matrixMultiply(int[][] matrixA, int[][] matrixB) {
+		// To Be Developed
+	}
+	public static void matrixDisplay(int[][] matrix, String name) {
+		// To Be Developed
+	}
+}
+\end{lstlisting}
+
+\subsection*{Solution}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+// written by: Thomas A. Anderson
+// <thomas.anderson001@umb.edu>
+
+import java.util.Scanner;
+public class MatrixWorld {
+	public static void main(String[] args) {
+		int size = getSize();
+		int[][] matrixA = matrixInit(size);
+		int[][] matrixB = matrixInit(size);
+		int[][] sum = matrixAdd(matrixA, matrixB);
+		int[][] multiplication = matrixMultiply(matrixA, matrixB);
+		matrixDisplay(matrixA, "Matrix A");
+		matrixDisplay(matrixB, "Matrix B");
+		matrixDisplay(sum, "Sum");
+		matrixDisplay(multiplication, "Multiplication");
+	}
+	public static int getSize() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Size of Matrices: ");
+		int size = input.nextInt();
+		input.close();
+		return size;
+	}
+	public static int[][] matrixInit(int size) {
+		int[][] matrix = new int[size][size];
+		for (int i = 0; i < size; i++)
+			for (int j = 0; j < size; j++)
+				matrix[i][j] = (int) Math.floor(Math.random() * 10);
+		return matrix;
+	}
+	public static int[][] matrixAdd(int[][] matrixA, int[][] matrixB) {
+		int size = matrixA.length;
+		int[][] sum = new int[size][size];
+		for (int i = 0; i < size; i++)
+			for (int j = 0; j < size; j++)
+				sum[i][j] = matrixA[i][j] + matrixB[i][j];
+		return sum;
+	}
+	public static int[][] matrixMultiply(int[][] matrixA, int[][] matrixB) {
+		int size = matrixA.length;
+		int[][] multiplication = new int[size][size];
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) {
+				multiplication[i][j] = 0;
+				for (int k = 0; k < size; k++) {
+					multiplication[i][j] += matrixA[i][k] * matrixB[k][j];
+				}
+			}
+		}
+		return multiplication;
+	}
+	public static void matrixDisplay(int[][] matrix, String name) {
+		int size = matrix.length;
+		System.out.printf("\n%s:\n", name);
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++)
+				System.out.printf("%3d ", matrix[i][j]);
+			System.out.println();
+		}
+	}
+}
+\end{lstlisting}
+
+\newpage
+
+\section*{Question 5}
+
+Write a program \texttt{BackwardPrimes.java} that prompts user for a positive integer number $x$ and displays $x$ prime numbers whose reversal is also a prime.
+Numbers 13, 31 and 157 are instances of such numbers.
+Following is a sample run of your program.
+
+\begin{terminal}
+$ javac BackwardPrimes.java
+$ java BackwardPrimes
+Number of Primes? 15
+13 17 31 37 71 73 79 97 107 113 149 157 167 179 199
+\end{terminal}
+
+\subsection*{Solution}
+
+\lstset{language=Java,tabsize=4}
+\begin{lstlisting}
+import java.util.Scanner;
+public class BackwardPrimes {
+	public static void main(String[] args) {
+		int i = 0;
+		int num = 2;
+		int count = getNum();
+		while (i < count)
+			if (checkNumber(num++) == true)
+				i++;
+		System.out.println();
+	}
+	public static int getNum() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("Number of Primes: ");
+		int num = input.nextInt();
+		input.close();
+		return num;
+	}
+	public static boolean checkNumber(int number) {
+		boolean flag = false;
+		int reversed = reverse(number);
+		if (number != reversed) {
+			if (isPrime(number) && isPrime(reversed)) {
+				System.out.printf("%d ", number);
+				flag = true;
+			}
+		}
+		return flag;
+	}
+	public static boolean isPrime(int number) {
+		boolean isPrime = true;
+		for (int i = 2; i < number; i++) {
+			if (number % i == 0) {
+				isPrime = false;
+				break;
+			}
+		}
+		return isPrime;
+	}
+	public static int reverse(int number) {
+		String str = Integer.toString(number);
+		String strReversed = reverse(str);
+		int numReversed = Integer.parseInt(strReversed);
+		return numReversed;
+	}
+	public static String reverse(String str) {
+		char[] strReversed = new char[str.length()];
+		for (int i = 0; i < str.length(); i++)
+			strReversed[i] = str.charAt(str.length() - i - 1);
+		return new String(strReversed);
+	}
+}
+\end{lstlisting}
+
+\end{document}

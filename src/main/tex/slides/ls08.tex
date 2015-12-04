@@ -1,0 +1,244 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CS114: Introduction to Programming in Java
+% Copyright 2015 Pejman Ghorbanzade <mail@ghorbanzade.com>
+% Creative Commons Attribution-ShareAlike 4.0 International License
+% https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/LICENSE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def \topDirectory {../..}
+\def \texDirectory {\topDirectory/src/main/tex}
+
+\documentclass[10pt, compress]{beamer}
+
+\usepackage{\texDirectory/template/style/directives}
+\input{\texDirectory/template/config}
+\usepackage{\texDirectory/template/style/beamerthemeUmassLecture}
+\doc{number}{8}
+%\setbeamertemplate{footline}[text line]{}
+
+\usepackage{wrapfig}
+\usepackage{verbatimbox}
+
+\begin{document}
+\prepareCover
+
+\section{Course Administration}
+
+\begin{slide}
+	\begin{itemize}
+		\item[] Assignment 1 Due October 5, 2015 at 17:30 PM.
+		\item[] Assignment 2 Released. Due October 19, 2015 at 17:30 PM.
+	\end{itemize}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Overview}
+		\begin{itemize}
+			\item[] Loops
+		\end{itemize}
+	\end{block}
+\end{slide}
+
+\section{Loops}
+
+\begin{slide}
+	\begin{block}{\texttt{HelloWorld.java}}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class HelloWorld {
+			    public static void main(String[] args) {
+			        System.out.println("Hello World!");
+			    }
+			}
+		\end{minted}
+	\end{block}
+	\begin{block}{Objective}
+		Write a program \texttt{HelloWorld100.java} so that it prints \texttt{Hello World!} a hundred times.
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{HelloWorld100.java}}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class HelloWorld {
+			    public static void main(String[] args) {
+			        int i = 0;
+			        while (i < 100) {
+			            System.out.println("Hello World!");
+			            i++;
+			        }
+			    }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{while} Loop}
+		The \texttt{while} statement continually executes a block of statements while a particular condition is \texttt{true}.
+		\begin{minted}[fontsize=\small,tabsize=8]{text}
+			while (condition) {
+			    statement(s);
+			}
+		\end{minted}
+	\end{block}
+	\begin{block}{Remember}
+		\begin{itemize}
+			\item[] Condition is always evaluated first.
+			\item[] Statements are executed \textbf{while} condition is evaluated as \texttt{true}.
+			\item[] Condition will be reevaluated once \textbf{all} statements are executed.
+		\end{itemize}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Objective}
+		Write a program \texttt{twoSix.java} that keeps rolling two dice until you get two six.
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{TwoSix.java} (v1.0)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class TwoSix {
+			    public static void main(String[] args) {
+			        boolean roll = true;
+			        int dice1, dice2;
+			        while (roll) {
+			            dice1 = (int) Math.ceil( Math.random() * 6 );
+			            dice2 = (int) Math.ceil( Math.random() * 6 );
+			            System.out.printf("Dice 1: %d\tDice2: %d\n",
+			                dice1, dice2);
+			            if (dice1 + dice2 == 12)
+			                roll = false;
+			        }
+			    }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{TwoSix.java} (v2.0)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class TwoSix {
+			    public static void main(String[] args) {
+			        int dice1, dice2;
+			        do {
+			            dice1 = (int) Math.ceil( Math.random() * 6 );
+			            dice2 = (int) Math.ceil( Math.random() * 6 );
+			            System.out.printf("Dice 1: %d\tDice2: %d\n",
+			                    dice1, dice2);
+			        } while (dice1 + dice2 < 12);
+			    }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{do-while} Loop}
+		The \texttt{do-while} loop is a variation of \texttt{while} loop which evaluates iteration condition after execution of block of statements.
+		\begin{minted}[fontsize=\small,tabsize=8]{text}
+			do {
+			    statement(s);
+			} while (condition);
+		\end{minted}
+	\end{block}
+	\begin{block}{Remember}
+		\begin{itemize}
+			\item[] Condition is evaluated once \textbf{all} statements are executed.
+			\item[] Statements are reexecuted \textbf{while} condition is evaluated as \texttt{true}.
+			\item[] Condition will be reevaluated once \textbf{all} statements are reexecuted.
+		\end{itemize}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{HelloWorld100.java} (v1.0)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=3]{java}
+			int i = 0;
+			while (i < 100) {
+			    System.out.println("Hello World!");
+			    i++;
+			}
+		\end{minted}
+	\end{block}
+	\begin{block}{Anathomy of a Code}
+		\begin{minted}[fontsize=\small,tabsize=8]{text}
+			intitialize iteration counter;
+			while (iteration counter has not reached threshold) {
+			    execute block of statements;
+			    increment iteration counter;
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{HelloWorld100.java} (v2.0)}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class HelloWorld {
+			    public static void main(String[] args) {
+			        for (int i = 0; i < 100; i++)
+			            System.out.println("Hello World!");
+			    }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{for} Loop}
+		The \texttt{for} loop is a special case of a \texttt{while} loop that executes a block of statements for a specified number of times. Any \texttt{for} loop can be converted to a \texttt{while} loop.
+		\begin{minted}[fontsize=\small,tabsize=8]{text}
+			for (initialization, condition, afterthought) {
+			    statement(s);
+			}
+		\end{minted}
+		\begin{enumerate}
+			\item Initialization\\Intitializes iteration counter
+			\item Condition\\Specifies iteration condition
+			\item Afterthought\\Increments/Decrements iteration counter
+		\end{enumerate}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Objective}
+		Write a program \texttt{Triangle.java} that takes number $n$ from user and prints a traingle in $n$ lines using star characters, such that there are $k$ star characters in $k^{th}$ line.
+		\begin{verbbox}
+		*
+		**
+		***
+		****
+		*****
+		\end{verbbox}
+		\begin{figure}[H]\centering
+		\theverbbox
+		\caption{Sample riangle generated for $n = 5$}
+		\end{figure}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{\texttt{Triangle.java}}
+		\begin{minted}[fontsize=\small,tabsize=8, linenos, firstnumber=1]{java}
+			public class Triangle {
+			    public static void main(String[] args) {
+			        Scanner input = new Scanner(System.in);
+			        int numRow = input.nextInt();
+			        input.close();
+			        for (int i = 0; i < numRow; i++) {
+			            for (int j = 0; j <= i; j++)
+			                System.out.print("*");
+			            System.out.printf("\n");
+			        }
+			    }
+			}
+		\end{minted}
+	\end{block}
+\end{slide}
+
+\plain{}{Keep Calm\\and\\Practice}
+
+\end{document}

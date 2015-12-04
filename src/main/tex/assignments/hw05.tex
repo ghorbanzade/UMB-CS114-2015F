@@ -1,0 +1,199 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CS114: Introduction to Programming in Java
+% Copyright 2015 Pejman Ghorbanzade <mail@ghorbanzade.com>
+% Creative Commons Attribution-ShareAlike 4.0 International License
+% https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/LICENSE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def \topDirectory {.}
+\def \texDirectory {\topDirectory/src/main/tex}
+
+\documentclass[12pt,letterpaper,twoside]{article}
+\usepackage{\texDirectory/template/style/directives}
+\usepackage{\texDirectory/template/style/assignment}
+\input{\texDirectory/template/config}
+
+\usepackage{csquotes}
+
+\begin{document}
+
+\doc{title}{Assignment 5}
+\doc{date-pub}{Nov 23, 2015 at 5:30 PM}
+\doc{date-due}{Dec 9, 2015 at 5:30 PM}
+\doc{points}{8}
+
+\prepare{header}
+
+\section*{Instructions}
+
+The following questions are designed as group projects.
+Each group of three students has been assigned one of the questions and is expected to be able to present their work by December 2, 2015.
+After presentation teams will have until December 9 to submit their final solution to the assigned problem.
+
+You are free to develop as many classes as you deem necessary.
+You are also free to further develp your program and are encouraged to add extra features to make it more intersting.
+Your program however is expected to meet the requirements stated in the problem.
+
+Once complete, all team members must submit a copy of the solution to their accounts at the course website.
+
+\section*{Question 1}
+
+Write a program \texttt{WordCount.java} that takes contents of a file and list the five most frequently used words in it.
+
+Your program should prompt user for a filename and - assuming that a file with specified filename exists - attempt to read the file and process its content.
+
+Following is a sample run of the program to illustrates the expected output.
+
+\begin{terminal}
+$ javac WordCount.java
+$ java WordCount
+Enter Filename: testFile.txt
+Most Frequent Words:
+word            frequency
+the             15
+and             10
+they            7
+fence           5
+went            5
+\end{terminal}
+
+Where content of the file \texttt{testFile.txt} is shown below.
+
+\begin{displayquote}
+Through the fence, between the curling flower spaces, I could see them hitting.
+They were coming toward where the flag was and I went along the fence.
+Luster was hunting in the grass by the flower tree.
+They took the flag out, and they were hitting.
+Then they put the flag back and they went to the table, and he hit and the other hit.
+Then they went on, and I went along the fence.
+Luster came away from the flower tree and we went along the fence and they stopped and we stopped and I looked through the fence while Luster was hunting in the grass.
+\end{displayquote}
+
+Note that words ``\textit{They}'' and ``\textit{they}'' are considered as one word.
+In addition, the program is not sensitive to punctuations and regards the words ``\textit{fence}'', ``\textit{fence,}'' and ``\textit{fence.}'' as three occurrences of the same word.
+
+To simplify the task of retrieving data from a file, \texttt{FileHandler.java} accompanies this assignment.
+Using the provided class, it is possible to obtain content of any file with given relative file path, in form of an array of String literals as shown below.
+
+\begin{terminal}
+String[] words = FileHandler.getFileContent(filepath);
+\end{terminal}
+
+\section*{Question 2}
+
+Stella, the owner of a local diner has a box of magnetic characters that she uses to put different messages on the sign board of her establishment.
+At times when Stella runs out of characters for her desired messages, she gets annoyed and wishes if there was an easy way to test if a message can make it to the sign board.
+
+Write a program \texttt{ShopSign.java} that prompts user to first enter a string that represents the container of magnetic characters and then another string that represents the proposed message.
+You can assume magnetic characters are only a set of lowercase and uppercase English alphabets, numbers and exclamation mark.
+
+Following is an expected sample run of your program.
+
+\begin{terminal}
+$ java ShopSign
+Enter available characters:
+AAABCCCDDDEEFGHIILLMMNNOOPQRSSSSTTTTUUVWXYY,,!!
+Enter proposed message: HOT DOGS AND BUNS!
+The message makes it to the sign board.
+$ java ShopSign
+Enter available characters:
+AAABCCCDDDEEFGHIILLMMNNOOPQRSSSSTTTTUUVWXYY,,!!
+Enter proposed message: HOT DOGS AND SANDWICHES!
+We are short of character H.
+\end{terminal}
+
+\section*{Question 3}
+
+You are asked to develop a simple ticket printing machine for box-office of a small cinema with a total of 50 seats, 10 seats in each row.
+Ticketing procedure is based on a few simple policies as follows:
+
+\begin{enumerate}[itemsep=0mm,rightmargin=\leftmargin]
+  \item Rows closer to screen are always prioritized.
+  \item Seats in a row are filled from the leftmost to the rightmost.
+  \item All seats assigned to a group of people must be in the same row.
+\end{enumerate}
+
+Write a program \texttt{BoxOffice.java} that prompts ticket seller for number of tickets to print, showing the number of total available seats at the same time.
+If sufficient number of seats are available in a single row, your program should print the list of seats assigned to the group.
+Otherwise, it should show a warning indicating tickets are not available for the group.
+Program terminates when all tickets are sold and no more seats are available.
+
+The following sample run illustrates the expected output of your program.
+
+\begin{terminal}
+$ javac BoxOffice.java
+$ java BoxOffice
+50 seats still available.
+Number of tickets to print? 6
+Sold seats 1-6 of row 1
+
+44 seats still available.
+Number of tickets to print? 5
+Sold seats 1-5 of row 2
+
+39 seats still available.
+Number of tickets to print? 0
+
+39 seats still available.
+Number of tickets to print? 11
+Tickets not available for group of 11.
+\end{terminal}
+
+\section*{Question 4}
+
+Write a program \texttt{SnakeGame.java} that implements a simplified version of the famous snake arcade game where user controls movement of a snake towards the food source within a matrix of size $5 \times 10$.
+The syntax for user commands is \texttt{[number]<direction>} where \texttt{direction} is one of \textit{a}, \textit{s}, \textit{d} or \textit{w} letters corresponding to movement in left, down, right and up directions and \texttt{number} is the number of cells to move in the specified direction. As an example, command \texttt{3d} will move the snake three cells to the right.
+In case the destination cell is outside the matrix, the command will be rejected and the snake will not move at all.
+In case the number is not provided, the snake will move one cell in the specified direction.
+The initial position of snake is randomely generated.
+Once the snake arrives at the cell where the food source is, the food source is considered as consumed and a new food source will appear at a new randomly generated location.
+The program terminates when the snake eats five food sources.
+
+For simplicity, following assumptions can be made in your design:
+\begin{enumerate}[itemsep=0mm,rightmargin=\leftmargin]
+  \item The snake has size one and it does not grow in size when it feeds.
+  \item There is no barrier inside the box and both the food and the snake can be in any of the 100 cells.
+  \item At any moment, there is only one food source present on the board.
+\end{enumerate}
+
+Following is a portion of expected output of a sample run of the program.
+
+\begin{terminal}
+-------------------
+Points to Eat: 5
+
+       o
+   |
+
+
+Enter command: 4d
+-------------------
+Points to Eat: 5
+
+       o
+       |
+
+
+Points to Eat: 4
+-------------------
+Enter command: 1w
+  o
+       |
+
+
+
+Enter command: 2w
+Invalid command.
+-------------------
+Points to Eat: 4
+  o
+       |
+
+
+
+Enter command: 5a
+\end{terminal}
+
+\prepare{footer}
+
+\end{document}

@@ -1,0 +1,226 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CS114: Introduction to Programming in Java
+% Copyright 2015 Pejman Ghorbanzade <mail@ghorbanzade.com>
+% Creative Commons Attribution-ShareAlike 4.0 International License
+% https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/LICENSE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def \topDirectory {../..}
+\def \texDirectory {\topDirectory/src/main/tex}
+
+\documentclass[10pt, compress]{beamer}
+
+\usepackage{\texDirectory/template/style/directives}
+\input{\texDirectory/template/config}
+\usepackage{\texDirectory/template/style/beamerthemeUmassLecture}
+\doc{number}{2}
+%\setbeamertemplate{footline}[text line]{}
+
+\begin{document}
+\prepareCover
+
+\section{Course Administration}
+
+\begin{slide}
+	\begin{itemize}
+		\item[] Create user accounts at \href{http://www.ghorbanzade.com}{Course Website}.
+		\item[] Midterm exam to be held October 21st, 2015.
+	\end{itemize}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Overview}
+		\begin{itemize}
+			\item[] Computer Hardwares
+			\item[] Computer Programming
+			\item[] Programming Languages
+		\end{itemize}
+	\end{block}
+\end{slide}
+
+\section{Computer Hardware}
+
+\begin{slide}
+	\begin{block}{Key Components}
+		\begin{itemize}
+			\item[] Central Processing Unit (CPU)
+			\item[] Input Output (I/O) Devices
+			\item[] Memory
+		\end{itemize}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Key Design Challenges}
+		\begin{itemize}
+			\item[] Making Processing Units as small and powerful as possible
+			\item[] Making Input Output (I/O) Devices as heterogenous as possible
+			\item[] Making Memory as abundant as possible
+		\end{itemize}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Basic Operation Procedure}
+		\begin{enumerate}
+			\item[] Instructions read either from I/O devices or from memory
+			\item[] Each statement processed in processor
+			\item[] Output passed either to I/O devices or to memory
+		\end{enumerate}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Mircroprocessor Internal Architecture}
+		Key Components
+		\begin{enumerate}
+			\item[] Arithmetic Logic Unit (ALU)
+			\item[] Control Logic Station
+			\item[] Status Registers
+		\end{enumerate}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Nature of Information}
+		\begin{itemize}
+			\item[] Analog vs. Digital Signals
+			\item[] 2-Base Numeral Systems
+				\begin{enumerate}
+					\item[] Relation to Digital Electronic Circuitry
+					\item[] Reliable Distingushing Property
+				\end{enumerate}
+		\end{itemize}
+	\end{block}
+\end{slide}
+
+\section{Computer Programming}
+
+\begin{slide}
+	\begin{block}{Philosophy}
+		\begin{columns}
+			\begin{column}{0.4\textwidth}
+			\begin{itemize}
+				\item[] Strong Points
+				\begin{itemize}
+					\item[] Fast computing
+					\item[] No fatigue
+				\end{itemize}
+				\item[] Weak Points
+				\begin{itemize}
+					\item[] Hard to Teach
+					\item[] No Innovation
+				\end{itemize}
+			\end{itemize}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+			\begin{figure}[H]\centering
+				\includegraphics[width=\textwidth]{\texDirectory/template/images/chess.png}
+			\end{figure}
+			\end{column}
+		\end{columns}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Computers are good at}
+		\begin{itemize}
+			\item[] Repetitive simple but tedious computations
+			\item[] One-time long and complex computations
+		\end{itemize}
+	\end{block}
+	\begin{block}{Motivation}
+		To harvest computers power for solving everyday problems
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{Conflicts}
+		\begin{itemize}
+			\item[] Computers speak in zeros and ones.
+			\item[] Humans speak in prose and verse.
+		\end{itemize}
+	\end{block}
+	\begin{quote}
+		Programming languages are efforts to develop a common language easy-to-understand for both.
+	\end{quote}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{It's all about thinking}
+		\begin{quote}
+		``Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to human beings what we want a computer to do.''
+		\begin{flushright}
+		- Donald Knuth
+		\end{flushright}
+		\end{quote}
+	\end{block}
+\end{slide}
+
+\section{Programming Languages}
+
+\begin{slide}
+	\begin{block}{Classification}
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item[] By level of abstraction
+				\begin{itemize}
+					\item[] Low-level languages
+					\item[] High-level languages
+					\item[] Very-high-level languages
+				\end{itemize}
+			\end{itemize}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item[] By method of execution
+				\begin{itemize}
+					\item[] Machine Code
+					\item[] Assembler
+					\item[] Compiler
+					\item[] Interpreter
+				\end{itemize}
+			\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{A Closer Look}
+		\begin{figure}\centering
+			\includegraphics[width=\textwidth]{\texDirectory/template/images/languages.png}
+		\end{figure}
+	\end{block}
+\end{slide}
+
+\begin{slide}
+	\begin{block}{A Closer Look}
+		Let's taste some code!
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item[] Machine Language
+				\item[] Assembly
+				\item[] C
+				\item[] C++
+				\item[] Python
+			\end{itemize}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\item[] Perl
+				\item[] Ruby
+				\item[] Matlab
+				\item[] LabVIEW
+				\item[] Scratch
+			\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{block}
+\end{slide}
+
+\plain{}{Keep Calm\\and\\Love Programming}
+
+\end{document}
