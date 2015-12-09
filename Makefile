@@ -11,19 +11,19 @@ SLIDES_DIR = $(TEX_DIR)/slides
 
 SYLLABUS = syllabus
 ASSIGNMENTS = hw01 hw01s hw02 hw02s hw03 hw03s hw04 hw04s hw05 hw05s
-EXAMS = m01 m01s m02 m02s
+EXAMS = m01 m01s m02 m02s f01
 SLIDES = ls01 ls02 ls03 ls04 ls05 ls06 ls07 ls08 ls09 ls10 ls11 ls12 ls13 ls14
 
 ALL_DOC = $(SYLLABUS) $(ASSIGNMENTS) $(EXAMS) $(SLIDES)
 ALL_PDF = $(foreach NUM, $(ALL_DOC), $(DOC_DIR)/$(NUM).pdf)
 
-SYLLABUS_TEX = $(foreach NUM, $(SYLLABUS), $(TEX_DIR)/syllabus/$(NUM).tex)
+SYLLABUS_TEX = $(foreach NUM, $(SYLLABUS), $(SYLLABUS_DIR)/$(NUM).tex)
 SYLLABUS_PDF = $(foreach NUM, $(SYLLABUS), $(DOC_DIR)/$(NUM).pdf)
-ASSIGNMENTS_TEX = $(foreach NUM, $(ASSIGNMENTS), $(TEX_DIR)/assignments/$(NUM).tex)
+ASSIGNMENTS_TEX = $(foreach NUM, $(ASSIGNMENTS), $(ASSIGNMENTS_DIR)/$(NUM).tex)
 ASSIGNMENTS_PDF = $(foreach NUM, $(ASSIGNMENTS), $(DOC_DIR)/$(NUM).pdf)
-EXAMS_TEX = $(foreach NUM, $(EXAMS), $(TEX_DIR)/exams/$(NUM).tex)
+EXAMS_TEX = $(foreach NUM, $(EXAMS), $(EXAMS_DIR)/$(NUM).tex)
 EXAMS_PDF = $(foreach NUM, $(EXAMS), $(DOC_DIR)/$(NUM).pdf)
-SLIDES_TEX = $(foreach NUM, $(SLIDES), $(TEX_DIR)/slides/$(NUM).tex)
+SLIDES_TEX = $(foreach NUM, $(SLIDES), $(SLIDES_DIR)/$(NUM).tex)
 SLIDES_PDF = $(foreach NUM, $(SLIDES), $(DOC_DIR)/$(NUM).pdf)
 
 .PHONY: clean code docs syllabus assignments exams slides bind tidy all
@@ -38,7 +38,7 @@ directories:
 
 build: syllabus assignments exams slides binder tidy
 
-syllabus: $(SYLLABUS_PDF)
+syllabus: directories $(SYLLABUS_PDF)
 
 $(SYLLABUS_PDF): $(SYLLABUS_TEX)
 	@echo -n "  $(@F)... " && \
@@ -46,7 +46,7 @@ $(SYLLABUS_PDF): $(SYLLABUS_TEX)
 	pdflatex -halt-on-error -output-directory $(DOC_DIR) $(SYLLABUS_DIR)/$(@F:.pdf=.tex) > /dev/null
 	@echo "Done."
 
-assignments: $(ASSIGNMENTS_PDF)
+assignments: directories $(ASSIGNMENTS_PDF)
 
 $(ASSIGNMENTS_PDF): $(ASSIGNMENTS_TEX)
 	@echo -n "  $(@F)... " && \
@@ -54,7 +54,7 @@ $(ASSIGNMENTS_PDF): $(ASSIGNMENTS_TEX)
 	pdflatex -halt-on-error -output-directory $(DOC_DIR) $(ASSIGNMENTS_DIR)/$(@F:.pdf=.tex) > /dev/null
 	@echo "Done."
 
-exams: $(EXAMS_PDF)
+exams: directories $(EXAMS_PDF)
 
 $(EXAMS_PDF): $(EXAMS_TEX)
 	@echo -n "  $(@F)... " && \
@@ -62,7 +62,7 @@ $(EXAMS_PDF): $(EXAMS_TEX)
 	pdflatex -halt-on-error -output-directory $(DOC_DIR) $(EXAMS_DIR)/$(@F:.pdf=.tex) > /dev/null
 	@echo "Done."
 
-slides: prepare $(SLIDES_PDF)
+slides: directories prepare $(SLIDES_PDF)
 
 prepare:
 	@rm -rf "$(FONT_DIR)"
