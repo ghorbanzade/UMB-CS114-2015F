@@ -13,6 +13,8 @@
 \usepackage{\texDirectory/template/style/assignment}
 \input{\texDirectory/template/config}
 
+\usepackage[school]{\texDirectory/template/style/pgf-umlcd/pgf-umlcd}
+
 \begin{document}
 
 \doc{title}{Final Practice Exam}
@@ -23,13 +25,14 @@
 \section*{Question 1}
 
 The following code snippets either do not compile.
-There are two \textbf{distinct} compilation problems in each code snippet.
+There are two distinct compilation problems in each code snippet.
 You are expected to find and fix all errors so that given command-line argument will lead to expected output as indicated.
 
 \begin{enumerate}[label=\textbf{(\alph*)}]
 
 \item Execution Script \hfill Expected Output\\
 \texttt{java HelloWorld Beacons} \hfill \texttt{Hello Beacons!}
+
 \begin{lstlisting}
 public class HelloWorld {
 	public static void main(String args) {
@@ -40,6 +43,7 @@ public class HelloWorld {
 
 \item Execution Script \hfill Expected Output\\
 \texttt{java Temperature 86} \hfill \texttt{30.00}
+
 \begin{lstlisting}
 public class Temperature {
 	public static void main(String[] args) {
@@ -53,10 +57,10 @@ public class Temperature {
 \newpage
 
 \item Execution Script \hfill Expected Output\\
-\texttt{java Triangle 3} \hfill \texttt{6}
+\texttt{java Array 3} \hfill \texttt{6}
 
 \begin{lstlisting}
-public class SphereSurface {
+public class Array {
 	public static void main(String[] args) {
 		sum = 0;
 		int[] array = new int[5];
@@ -76,10 +80,10 @@ public class SphereSurface {
 public class Random {
 	public static void main(String[] args) {
 		int num = args[0];
-		int random = generateRandomNumber(num);
+		int random = getRandomNumber(num);
 		System.out.println(random);
 	}
-	public static getRandomNumber(num) {
+	public static int getRandomNumber(num) {
 		return (int) (Math.random() * num);
 	}
 }
@@ -88,22 +92,22 @@ public class Random {
 \newpage
 
 \item Execution Script \hfill Expected Output\\
-\texttt{java EmployeeDemo 3} \hfill 3000
+\texttt{java CircleDemo 1} \hfill 3.14
 
 \begin{lstlisting}
-public class EmployeeDemo {
+public class CircleDemo {
 	public static void main(String[] args) {
-		Employee emp = Employee(Integer.parseInt(args[0]));
-		System.out.println(emp.getSalary());
+		Circle circle = Circle(Double.parseDouble(args[0]));
+		System.out.printf("%.2f\n", circle.getArea());
 	}
 }
-public class Employee {
-	private int type;
-	public Employee(int type) {
-		this.type = type;
+public class Circle {
+	private double radius;
+	public Circle(double radius) {
+		this.radius = radius;
 	}
-	public double getSalary() {
-		double salary = 1000 * type;
+	public double getArea() {
+		double area = Math.PI * Math.pow(this.radius, 2);
 	}
 }
 \end{lstlisting}
@@ -112,6 +116,94 @@ public class Employee {
 
 \section*{Question 2}
 
+The following code snippet compiles and runs without error.
 
+Determine the output of the following program when user gives number five as command line argument.
+Formulate the output based on any integer number given as command line argument.
+Support your answer by explaining how the program works.
+
+\lstinputlisting[firstline=12]{\topDirectory/src/main/java/f01/Math.java}
+
+\section*{Question 3}
+
+A student has developed the following code snippet for his CS114 assignment.
+The program asks for a number $n$ and prints a triangle in $n$ number of lines
+using star characters as shown below.
+
+\lstinputlisting[firstline=12]{\topDirectory/src/main/java/f01/Triangle1.java}
+
+\begin{terminal}
+$ javac Triangle1.java
+$ java Triangle1
+Enter number of rows: 4
+*
+**
+***
+****
+\end{terminal}
+
+Just before submitting, the student realized that the printed triangle was supposed to be right-aligned.
+Since he is running out of time, he has asked for your help to fix the problem.
+Rewrite the program such to produce the output as shown below.
+
+\begin{terminal}
+$ javac Triangle2.java
+$ java Triangle2
+Enter number of rows: 4
+   *
+  **
+ ***
+****
+\end{terminal}
+
+\section*{Question 4}
+
+Write a static method with the following method signature that takes an integer $n$ and returns a two-dimensional array of size $n \times n$ whose elements are randomely generated integer numbers in range $[0, 10)$.
+
+\begin{terminal}
+public static int[][] generateMatrix(int size);
+\end{terminal}
+
+\section*{Question 5}
+
+A group of students are making an object-oriented java program that can record grades of multiple students (no more than 10) and display their averages.
+The team has agreed that their program will have two classes; \texttt{Grader.java} that contains the main method and \texttt{Student.java} from which student objects are instantiated.
+So far the students wrote a sample \texttt{Grader.java}, shown below, to demonstrate how student objects should be used.
+
+\lstinputlisting[firstline=12]{\topDirectory/src/main/java/f01/Grader.java}
+
+They are now trying to develop the Student class and are asking for your help.
+
+\begin{enumerate}
+	\item Write a UML diagram for the \texttt{Student} class that can be used with \texttt{Grader.java} file.
+	\item Develop the \texttt{Student.java} file that implements your UML diagram.
+\end{enumerate}
+
+\newpage
+
+\section*{Question 6}
+
+A software developer was assigned to develop an Employee class for a simple accounting software.
+In a development meeting, he proposed the UML diagram shown in Figure \ref{fig1} for the Employee class.
+Some developers, however, argued that this design is prone to major security threats and needs minor modification.
+Briefly explain what you think is the issue with this design.
+Rewrite the UML diagram to fix the issue.
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\begin{class}[text width=10cm]{Employee}{0, 0}
+			\attribute{+ name: String}
+			\attribute{+ numHours: num}
+			\attribute{+ isIntern: boolean}
+			\operation{+ Employee(name: String, isIntern: boolean)}
+			\operation{+ work(numHours: int): void}
+			\operation{+ isIntern(): boolean}
+			\operation{+ getName(): String}
+			\operation{+ getSalary(): int}
+		\end{class}
+	\end{tikzpicture}
+	\caption{UML Diagram for Employee class}\label{fig1}
+\end{figure}
 
 \end{document}
