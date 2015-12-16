@@ -12,8 +12,9 @@ package edu.umb.cs114.f01.q1.p3;
 public class Array {
 	public static void main(String[] args) {
 		int sum = 0;
-		int[] array = new int[5];
-		for (int i = 1; i <= 5; i++) {
+		int num = Integer.parseInt(args[0]);
+		int[] array = new int[num];
+		for (int i = 1; i <= num; i++) {
 			array[i - 1] = i;
 			sum += i;
 		}

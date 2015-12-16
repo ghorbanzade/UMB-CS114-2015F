@@ -24,7 +24,7 @@
 
 \section*{Question 1}
 
-The following code snippets either do not compile.
+The following code snippets do not compile.
 There are two distinct compilation problems in each code snippet.
 You are expected to find and fix all errors so that given command-line argument will lead to expected output as indicated.
 
@@ -63,8 +63,9 @@ public class Temperature {
 public class Array {
 	public static void main(String[] args) {
 		sum = 0;
-		int[] array = new int[5];
-		for (int i = 1; i <= 5; i++) {
+		int num = Integer.parseInt(args[0]);
+		int[] array = new int[num];
+		for (int i = 1; i <= num; i++) {
 			array[i] = i;
 			sum += i;
 		}
