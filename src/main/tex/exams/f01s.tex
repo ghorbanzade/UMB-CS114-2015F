@@ -7,6 +7,7 @@
 
 \def \topDirectory {.}
 \def \texDirectory {\topDirectory/src/main/tex}
+\def \javaDirectory {\topDirectory/src/main/java}
 
 \documentclass[12pt,letterpaper,twoside]{article}
 \usepackage{\texDirectory/template/style/directives}
@@ -121,28 +122,28 @@ public class Circle {
 
 \item Execution Script \hfill Expected Output\\
 \texttt{java HelloWorld Beacons} \hfill \texttt{Hello Beacons!}
-\lstinputlisting[firstline=12,language=java]{\topDirectory/src/main/java/f01/HelloWorld.java}
+\lstinputlisting[firstline=12,language=java]{\javaDirectory/f01/HelloWorld.java}
 
 \item Execution Script \hfill Expected Output\\
 \texttt{java Temperature 86} \hfill \texttt{30.00}
-\lstinputlisting[firstline=12,language=java]{\topDirectory/src/main/java/f01/Temperature.java}
+\lstinputlisting[firstline=12,language=java]{\javaDirectory/f01/Temperature.java}
 
 \newpage
 
 \item Execution Script \hfill Expected Output\\
 \texttt{java Array 3} \hfill \texttt{6}
-\lstinputlisting[firstline=12,language=java]{\topDirectory/src/main/java/f01/Array.java}
+\lstinputlisting[firstline=12,language=java]{\javaDirectory/f01/Array.java}
 
 \item Execution Script \hfill Expected Output\\
 \texttt{java Random 5} \hfill integer $x$ where $0 \leq x < 5$
-\lstinputlisting[firstline=12,language=java]{\topDirectory/src/main/java/f01/Random.java}
+\lstinputlisting[firstline=12,language=java]{\javaDirectory/f01/Random.java}
 
 \newpage
 
 \item Execution Script \hfill Expected Output\\
 \texttt{java CircleDemo 1} \hfill 3.14
-\lstinputlisting[firstline=12,language=java]{\topDirectory/src/main/java/f01/CircleDemo.java}
-\lstinputlisting[firstline=12,language=java]{\topDirectory/src/main/java/f01/Circle.java}
+\lstinputlisting[firstline=12,language=java]{\javaDirectory/f01/CircleDemo.java}
+\lstinputlisting[firstline=12,language=java]{\javaDirectory/f01/Circle.java}
 
 \end{enumerate}
 
@@ -156,7 +157,7 @@ Determine the output of the following program when user gives number four as com
 Formulate the output based on any integer number given as command line argument.
 Support your answer by explaining how the program works.
 
-\lstinputlisting[firstline=12]{\topDirectory/src/main/java/f01/Math.java}
+\lstinputlisting[firstline=12]{\javaDirectory/f01/Math.java}
 
 \subsection*{Solution}
 
@@ -181,7 +182,7 @@ A student has developed the following code snippet for his CS114 assignment.
 The program asks for a number $n$ and prints a triangle in $n$ number of lines
 using star characters as shown below.
 
-\lstinputlisting[firstline=12]{\topDirectory/src/main/java/f01/Triangle1.java}
+\lstinputlisting[firstline=12]{\javaDirectory/f01/Triangle1.java}
 
 \begin{terminal}
 $ javac Triangle1.java
@@ -209,7 +210,7 @@ Enter number of rows: 4
 
 \subsection*{Solution}
 
-\lstinputlisting[firstline=12, language=java]{\topDirectory/src/main/java/f01/Triangle2.java}
+\lstinputlisting[firstline=12, language=java]{\javaDirectory/f01/Triangle2.java}
 
 \newpage
 
@@ -225,7 +226,7 @@ public static int[][] generateMatrix(int size);
 
 The code snippet given below illustrates how to implement the method.
 
-\lstinputlisting[firstline=12, language=java]{\topDirectory/src/main/java/f01/Matrix.java}
+\lstinputlisting[firstline=12, language=java]{\javaDirectory/f01/Matrix.java}
 
 \newpage
 
@@ -235,7 +236,7 @@ A group of students are making an object-oriented java program that can record g
 The team has agreed that their program will have two classes; \texttt{Grader.java} that contains the main method and \texttt{Student.java} from which student objects are instantiated.
 So far the students wrote a sample \texttt{Grader.java}, shown below, to demonstrate how student objects should be used.
 
-\lstinputlisting[firstline=12]{\topDirectory/src/main/java/f01/Grader.java}
+\lstinputlisting[firstline=12]{\javaDirectory/f01/Grader.java}
 
 They are now trying to develop the Student class and are asking for your help.
 
@@ -268,7 +269,7 @@ They are now trying to develop the Student class and are asking for your help.
 
 	\item Following is an implementation of the Student class.
 
-	\lstinputlisting[firstline=12,language=java]{\topDirectory/src/main/java/f01/Student.java}
+	\lstinputlisting[firstline=12,language=java]{\javaDirectory/f01/Student.java}
 
 \end{enumerate}
 
