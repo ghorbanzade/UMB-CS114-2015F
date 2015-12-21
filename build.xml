@@ -41,15 +41,22 @@
 
 	<target name="compile" depends="taskdefs">
 		<mkdir dir="${class.bin.dir}"/>
-		<ac:for list="${java.main.src.subdirs}" param="java.main.src.subdir" trim="yes">
+		<ac:for list="${package-list}" param="package" trim="yes">
 			<sequential>
-				<javac srcdir="${java.main.src.dir}/@{java.main.src.subdir}" destdir="${class.bin.dir}" includeantruntime="false" classpathref="classpath.main"/>
+				<javac srcdir="${java.main.src.dir}/@{package}" destdir="${class.bin.dir}" includeantruntime="false" classpathref="classpath.main"/>
 			</sequential>
 		</ac:for>
 	</target>
 
 	<target name="jar" depends="compile">
 		<mkdir dir="${jar.bin.dir}"/>
+		<ac:for list="${package-list}" param="package" trim="yes">
+			<sequential>
+				<jar destfile="${jar.bin.dir}/@{package}.jar">
+					<fileset dir="${class.bin.dir}" includes="${organization-path}/@{package}/**/*.class"/>
+				</jar>
+			</sequential>
+		</ac:for>
 	</target>
 
 	<target name="dist" depends="clean, jar">
