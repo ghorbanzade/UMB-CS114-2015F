@@ -1,0 +1,215 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CS114: Introduction to Programming in Java
+% Copyright 2015 Pejman Ghorbanzade <mail@ghorbanzade.com>
+% Creative Commons Attribution-ShareAlike 4.0 International License
+% https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/LICENSE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def \topDirectory {.}
+\def \texDirectory {\topDirectory/src/main/tex}
+\def \javaDirectory {\topDirectory/src/main/java}
+
+\documentclass[12pt,letterpaper,twoside]{article}
+\usepackage{\texDirectory/template/style/directives}
+\usepackage{\texDirectory/template/style/assignment}
+\input{\texDirectory/template/config}
+
+\usepackage[school]{\texDirectory/template/style/pgf-umlcd/pgf-umlcd}
+
+\begin{document}
+
+\doc{title}{Final Exam}
+\doc{points}{20}
+
+\prepare{header}
+
+\section*{Question 1}
+
+The following code snippets do not compile.
+There are two distinct compilation problems in each code snippet.
+You are expected to find and fix all errors so that given command-line argument will lead to expected output as indicated.
+
+\begin{enumerate}[label=\textbf{(\alph*)}]
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java HelloWorld Beacons} \hfill \texttt{Hello Beacons!}
+
+\begin{lstlisting}
+public class HelloWorld {
+	public static void main(String[] args) {
+		System.out.printf("Hello %s!", args)
+	}
+}
+\end{lstlisting}
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java AreaCalculator 2} \hfill \texttt{12.57}
+
+\begin{lstlisting}
+public class AreaCalculator {
+	public static void main(String[] args) {
+		double radius = Integer.parseInt(args[0]);
+		area = Math.PI * Math.pow(radius, 2);
+		System.out.printf("%.2f\n", area);
+	}
+}
+\end{lstlisting}
+
+\newpage
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java Factorial 3} \hfill \texttt{6}
+
+\begin{lstlisting}
+public class Factorial {
+	public static void main(String[] args) {
+		int num = Integer.parseInt(args[0]);
+		int sum = 1;
+		for (int i: i <= num: i++) {
+			sum *= i;
+		}
+		System.out.println(sum);
+	}
+}
+\end{lstlisting}
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java Perimeter 3 4 5} \hfill \texttt{12}
+
+\begin{lstlisting}
+public class Perimeter {
+	public static void main(String[] args) {
+		double[] sides = new double[3];
+		for (int i = 0; i < sides.length; i++) {
+			sides[i] = Double.parseDouble(args[i]);
+		}
+		double perimeter = new getPerimeter(sides);
+		System.out.println(perimeter);
+	}
+	public static double getPerimeter(double sides) {
+		double perimeter = 0;
+		for (int i = 0; i < sides.length; i++) {
+			perimeter += sides[i];
+		}
+		return perimeter;
+	}
+}
+\end{lstlisting}
+
+\newpage
+
+\item Execution Script \hfill Expected Output\\
+\texttt{java CarTest 3 4} \hfill \texttt{5.0}
+
+\begin{lstlisting}
+public class CarTest {
+	public static void main(String[] args) {
+		double distX = Double.parseDouble(args[0]);
+		double distY = Double.parseDouble(args[1]);
+		Car myCar = Car();
+		myCar.move(distX, distY);
+		System.out.println(myCar.getDistance());
+	}
+}
+public class Car {
+	private double posX;
+	private double posY;
+	public Car() {
+		this.posX = 0;
+		this.posY = 0;
+	}
+	public void move(double distX, double distY) {
+		this.posX += distX;
+		this.posY += distY;
+	}
+	private double getDistance() {
+		double a = Math.pow(this.posX, 2);
+		double b = Math.pow(this.posY, 2);
+		return Math.sqrt(a + b);
+	}
+}
+\end{lstlisting}
+
+\end{enumerate}
+
+\newpage
+
+\section*{Question 2}
+
+A student found the following program on a scrap paper in-between pages of a Java textbook she borrowed from the library.
+The program compiles and runs without error.
+However, since it does not have any comment or self-explanatory method names, the student is not sure what the program does.
+
+Read the program and briefly explain its functionality.
+Formulate your answer by indicating the output of the program for an arbitrary integer $x$ as user-input.
+
+\lstinputlisting[firstline=12]{\javaDirectory/f02/Mystery.java}
+
+\section*{Question 3}
+
+The following program prompts user for a number $n$ and prints a center-aligned triangle of the given form in $n$ number of lines.
+
+\lstinputlisting[firstline=12]{\javaDirectory/f02/Diamond1.java}
+
+\begin{terminal}
+$ javac Diamond1.java
+$ java Diamond1
+Enter number of rows: 3
+  *
+ ***
+*****
+\end{terminal}
+
+Rewrite the program such that it produces a diamond of the following form instead of a triangle.
+
+\begin{terminal}
+$ javac Diamond2.java
+$ java Diamond2
+Enter number of rows: 3
+  *
+ ***
+*****
+ ***
+  *
+\end{terminal}
+
+\section*{Question 4}
+
+Write a static method with the following method signature that takes two integers $n$ and $m$ and returns a two-dimensional array of characters that represents a randomly-generated barcode with two symbols `*' and ` ' in $n$ rows and $m$ columns.
+
+\begin{terminal}
+public static char[][] generateBarcode(int rows, int cols);
+\end{terminal}
+
+As an example, \texttt{generateBarcode(4, 6)} may return an array that if printed on the console will look like the following.
+
+\begin{terminal}
+ ** **
+** *
+* ** *
+ *  *
+\end{terminal}
+
+\section*{Question 5}
+
+Write the UML diagram for a class \texttt{Elevator.java} that can be used to make the following program compile and execute as expected.
+
+\lstinputlisting[firstline=12]{\javaDirectory/f02/ElevatorTest.java}
+
+\newpage
+
+\section*{Question 6}
+
+A group of students are developing a simple software for teaching children how to paint using a computer.
+
+After several meetings, the team have agreed on their design strategy to support basic geometry shapes.
+They are proposing that each circle instance should have a radius and a certain position on the convas. In addition, a circle may have a border and may be colored.
+
+Your team members have already developed \texttt{Border} and \texttt{Color} classes and are expecting you to develop the \texttt{Circle} class itself.
+
+\begin{enumerate}
+	\item Write a UML diagram for the \texttt{Circle} class that is in line with the proposed design strategy.
+	\item Develop the \texttt{Circle.java} file that implements your UML diagram.
+\end{enumerate}
+
+\end{document}
