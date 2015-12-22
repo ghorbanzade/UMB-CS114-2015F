@@ -52,8 +52,10 @@
 		<mkdir dir="${jar.bin.dir}"/>
 		<ac:for list="${package-list}" param="package" trim="yes">
 			<sequential>
+				<mkdir dir="${resources.main.src.dir}/@{package}"/>
 				<jar destfile="${jar.bin.dir}/@{package}.jar">
 					<fileset dir="${class.bin.dir}" includes="${organization-path}/@{package}/**/*.class"/>
+					<fileset dir="${resources.main.src.dir}/@{package}"/>
 				</jar>
 			</sequential>
 		</ac:for>
