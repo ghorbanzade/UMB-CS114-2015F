@@ -6,6 +6,10 @@ This repository contains course material developed for *CS114: Introduction to J
 The material include lecture slides, problem sets and their solutions as well as Java source codes.
 They are released in hope that they will be useful for anyone interested in learning fundamentals of computer programming using Java.
 
+## Release
+[Version v1.0] of this repository was released on Dec 21, 2015.
+A binary PDF of the entire course material can be found [here](https://github.com/ghorbanzade/UMB-CS114-2015F/releases/download/v1.0/course-material.pdf).
+
 ## Syllabus
 The course syllabus, as thought in Fall 2015, can be found in [`Syllabus`] directory.
 
@@ -27,6 +31,7 @@ For questions or further information please contact [Pejman Ghorbanzade].
 
 [University of Massachusetts Boston]: http://www.umb.edu
 [Pejman Ghorbanzade]: http://www.ghorbanzade.com
+[Version v1.0]: https://github.com/ghorbanzade/UMB-CS114-2015F/releases/tag/v1.0
 [`Syllabus`]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/src/main/md/syllabus.md
 [dependencies]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/src/main/md/dependencies.md
 [Creative Commons Attribution-ShareAlike 4.0 International License]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/LICENSE
