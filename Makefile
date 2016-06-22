@@ -1,38 +1,25 @@
-TOP_DIR = .
-BIN_DIR = $(TOP_DIR)/bin
-SRC_DIR = $(TOP_DIR)/src
+BIN_DIR = build/distributions
+SRC_DIR = src
 TEX_DIR = $(SRC_DIR)/main/tex
-FONT_DIR= $(TEX_DIR)/template/fonts
-DOC_DIR = $(BIN_DIR)/documents
-SYLLABUS_DIR = $(TEX_DIR)/syllabus
-ASSIGNMENTS_DIR = $(TEX_DIR)/assignments
-EXAMS_DIR = $(TEX_DIR)/exams
-SLIDES_DIR = $(TEX_DIR)/slides
+DOC_DIR = $(BIN_DIR)/doc
 
-SYLLABUS = syllabus
-ASSIGNMENTS = hw01 hw01s hw02 hw02s hw03 hw03s hw04 hw04s hw05 hw05s
-EXAMS = m01 m01s m02 m02s f01 f01s f02 f02s
-SLIDES = ls01 ls02 ls03 ls04 ls05 ls06 ls07 ls08 ls09 ls10 ls11 ls12 ls13 ls14
+DOCS = \
+syllabus/syllabus \
+hw01/hw01 hw01/hw01s hw02/hw02 hw02/hw02s hw03/hw03 hw03/hw03s \
+hw04/hw04 hw04/hw04s hw05/hw05 hw05/hw05s \
+m01/m01 m01/m01s m02/m02 m02/m02s f01/f01 f01/f01s f02/f02 f02/f02s \
+ls01/ls01 ls02/ls02 ls03/ls03 ls04/ls04 ls05/ls05 ls06/ls06 \
+ls07/ls07 ls08/ls08 ls09/ls09 ls10/ls10 ls11/ls11 ls12/ls12 \
+ls13/ls13 ls14/ls14
 
-ALL_DOC = $(SYLLABUS) $(ASSIGNMENTS) $(EXAMS) $(SLIDES)
-ALL_PDF = $(foreach NUM, $(ALL_DOC), $(DOC_DIR)/$(NUM).pdf)
+DOC_SRC = $(foreach NUM, $(DOCS), $(TEX_DIR)/$(NUM).tex)
+DOC_DST = $(foreach NUM, $(DOC_SRC), $(DOC_DIR)/$(NUM:$(TEX_DIR)/%.tex=%.pdf))
 
-SYLLABUS_TEX = $(foreach NUM, $(SYLLABUS), $(SYLLABUS_DIR)/$(NUM).tex)
-SYLLABUS_PDF = $(foreach NUM, $(SYLLABUS), $(DOC_DIR)/$(NUM).pdf)
-ASSIGNMENTS_TEX = $(foreach NUM, $(ASSIGNMENTS), $(ASSIGNMENTS_DIR)/$(NUM).tex)
-ASSIGNMENTS_PDF = $(foreach NUM, $(ASSIGNMENTS), $(DOC_DIR)/$(NUM).pdf)
-EXAMS_TEX = $(foreach NUM, $(EXAMS), $(EXAMS_DIR)/$(NUM).tex)
-EXAMS_PDF = $(foreach NUM, $(EXAMS), $(DOC_DIR)/$(NUM).pdf)
-SLIDES_TEX = $(foreach NUM, $(SLIDES), $(SLIDES_DIR)/$(NUM).tex)
-SLIDES_PDF = $(foreach NUM, $(SLIDES), $(DOC_DIR)/$(NUM).pdf)
+.PHONY: dirs code docs publish clean
 
-.PHONY: clean code docs syllabus assignments exams slides bind tidy all
+all: dirs code docs
 
-all: code
-
-docs: directories code build
-
-directories:
+dirs:
 	@mkdir -p $(BIN_DIR)
 	@mkdir -p $(DOC_DIR)
 
@@ -86,17 +73,36 @@ binder:
 code:
 	@ant;
 
-tidy:
-	@rm -rf $(FONT_DIR)
-	@find $(BIN_DIR) -name '*.log' -delete
-	@find $(BIN_DIR) -name '*.aux' -delete
-	@find $(BIN_DIR) -name '*.out' -delete
-	@find $(BIN_DIR) -name '*.vrb' -delete
-	@find $(BIN_DIR) -name '*.snm' -delete
-	@find $(BIN_DIR) -name '*.toc' -delete
-	@find $(BIN_DIR) -name '*.nav' -delete
-	@find $(BIN_DIR) -name '*.pyg' -delete
+docs: dirs $(DOC_DST)
+	@echo -n "  Binding documents... "
+	@gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite \
+		-sOutputFile=$(BIN_DIR)/cs240.pdf \
+		$(foreach NUM, $(DOC_DST), $(DOC_DIR)/$(notdir $(NUM)))
+	@echo "OK"
+
+$(DOC_DST): $(DOC_SRC)
+	@echo -n "  Building $(@F)... "
+	@pdflatex -halt-on-error -output-directory $(DOC_DIR) \
+		-shell-escape $(@:$(DOC_DIR)/%.pdf=$(TEX_DIR)/%.tex) > /dev/null
+	@pdflatex -halt-on-error -output-directory $(DOC_DIR) \
+		-shell-escape $(@:$(DOC_DIR)/%.pdf=$(TEX_DIR)/%.tex) > /dev/null
+	@rm -rf $(DOC_DIR)/$(@F:.pdf=).aux
+	@rm -rf $(DOC_DIR)/$(@F:.pdf=).log
+	@rm -rf $(DOC_DIR)/$(@F:.pdf=).nav
+	@rm -rf $(DOC_DIR)/$(@F:.pdf=).out
+	@rm -rf $(DOC_DIR)/$(@F:.pdf=).snm
+	@rm -rf $(DOC_DIR)/$(@F:.pdf=).toc
+	@rm -rf $(DOC_DIR)/$(@F:.pdf=).vrb
+	@rm -rf _minted-$(patsubst %.pdf,%, $(@F:.pdf=))
+	@echo "OK"
+
+publish: all
+	@echo -n "  Uploading to Remote... " && \
+	./upload_files.sh
+	@echo "OK"
 
 clean:
+	@echo -n "  Removing binaries... "
 	@ant clean
 	@rm -rf $(BIN_DIR)
+	@echo "OK"
