@@ -1,56 +1,39 @@
 # list of files that should be uploaded to remote server
 
-doc/syllabus.pdf
+cs114.pdf
 
-doc/ls01.pdf
-doc/ls02.pdf
-doc/ls03.pdf
-doc/ls04.pdf
-doc/ls05.pdf
-doc/ls06.pdf
-doc/ls07.pdf
-doc/ls08.pdf
-doc/ls09.pdf
-doc/ls10.pdf
-doc/ls11.pdf
-doc/ls12.pdf
-doc/ls13.pdf
-doc/ls14.pdf
-doc/ls15.pdf
-doc/ls16.pdf
-doc/ls17.pdf
-doc/ls18.pdf
+syllabus.pdf
 
-doc/hw01.pdf  hw01-czjkkbmc.pdf
-doc/hw01s.pdf hw01s-rzhhnrav.pdf
-doc/hw02.pdf  hw02-phfzxycy.pdf
-doc/hw02s.pdf hw02s-cqjvqwhz.pdf
-doc/hw03.pdf  hw03-rnmgudjz.pdf
-doc/hw03s.pdf hw03s-jgadswvf.pdf
-doc/hw04.pdf  hw04-sqhcbkch.pdf
-doc/hw04s.pdf hw04s-dqprwvtm.pdf
-doc/hw05.pdf  hw05-hputpeye.pdf
-doc/hw05s.pdf hw05s-xuzzhpft.pdf
-doc/hw06.pdf  hw06-kkmyyvay.pdf
-doc/hw06s.pdf hw06s-jmvabyhe.pdf
-doc/m01.pdf   m01-gaerzaup.pdf
-doc/m01s.pdf  m01s-ycnevaqf.pdf
-doc/m02.pdf   m02-hsemfjkd.pdf
-doc/m02s.pdf  m02s-qexvuwwc.pdf
-doc/f01.pdf   f01-ucywjhqb.pdf
-doc/f01s.pdf  f01s-wmduddpd.pdf
-doc/f02.pdf   f02-fxqzynjs.pdf
-doc/f02s.pdf  f02s-tyfjknnc.pdf
+ls01.pdf
+ls02.pdf
+ls03.pdf
+ls04.pdf
+ls05.pdf
+ls06.pdf
+ls07.pdf
+ls08.pdf
+ls09.pdf
+ls10.pdf
+ls11.pdf
+ls12.pdf
+ls13.pdf
+ls14.pdf
 
-zip/hw01.zip hw01s-jdxgtuun.zip
-zip/hw02.zip hw02s-zcfdgqcm.zip
-zip/hw03.zip hw03s-vbaqmxmu.zip
-zip/hw04.zip hw04s-gtvesmey.zip
-zip/hw05.zip hw05s-zwspwqxq.zip
-zip/hw06.zip hw06s-ddnedunz.zip
-zip/m01.zip  m01s-xpvzvvxj.zip
-zip/m02.zip  m02s-rdmvwvby.zip
-zip/f01.zip  f01s-bbapkpfh.zip
-zip/f02.zip  f02s-fkkzqzuq.zip
-
-doc/cs240.pdf
+hw01.pdf  hw01-ndmgesgu.pdf
+hw01s.pdf hw01s-kdqrpsfk.pdf
+hw02.pdf  hw02-fv2v2jye.pdf
+hw02s.pdf hw02s-9tarc3cq.pdf
+hw03.pdf  hw03-8ex57z26.pdf
+hw03s.pdf hw03s-f6y463k6.pdf
+hw04.pdf  hw04-wjmhqaca.pdf
+hw04s.pdf hw04s-svhbxcud.pdf
+hw05.pdf  hw05-ucgubjpj.pdf
+hw05s.pdf hw05s-dqsazzfm.pdf
+m01.pdf   m01-34ppam2w.pdf
+m01s.pdf  m01s-wqq5mv2u.pdf
+m02.pdf   m02-bpm45wst.pdf
+m02s.pdf  m02s-pz87uf7g.pdf
+f01.pdf   f01-sgfuuycq.pdf
+f01s.pdf  f01s-wmufdpfa.pdf
+f02.pdf   f02-czxfbrjc.pdf
+f02s.pdf  f02s-agqdbqxh.pdf
