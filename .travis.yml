@@ -1,21 +1,17 @@
-sudo: required
-dist: trusty
-language: java
-jdk:
-  - oraclejdk8
-  - oraclejdk7
-addons:
-  apt:
-    packages:
-    - texlive-latex-base
-    - texlive-latex-extra
-    - latex-beamer
-    - pgf
-    - python-pygments
-    - ghostscript
+language: generic
+services:
+  - docker
+script:
+  - bash cfg/build.sh build
+  - bash cfg/build.sh stage
+after_success:
+  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+      echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin;
+      docker push ghorbanzade/umb-cs114-2015f;
+    fi
 notifications:
   email:
     recipients:
-      - mail@ghorbanzade.com
-    on_success: change
+      - pejman@ghorbanzade.com
+    on_success: always
     on_failure: always
