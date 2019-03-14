@@ -3,7 +3,7 @@ BIN_DIR = $(TOP_DIR)/bin
 SRC_DIR = $(TOP_DIR)/src
 TEX_DIR = $(SRC_DIR)/main/tex
 FONT_DIR= $(TEX_DIR)/template/fonts
-DOC_DIR = $(BIN_DIR)/documents
+DOC_DIR = $(BIN_DIR)/doc
 SYLLABUS_DIR = $(TEX_DIR)/syllabus
 ASSIGNMENTS_DIR = $(TEX_DIR)/assignments
 EXAMS_DIR = $(TEX_DIR)/exams
@@ -85,7 +85,7 @@ $(SLIDES_PDF): $(SLIDES_TEX)
 binder:
 	@printf "  Binding documents... "
 	@gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite \
-			-sOutputFile=$(BIN_DIR)/course-material.pdf $(ALL_PDF)
+			-sOutputFile=$(DOC_DIR)/cs114.pdf $(ALL_PDF)
 	@echo "Done."
 
 code:
