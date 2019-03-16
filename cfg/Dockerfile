@@ -23,4 +23,4 @@ RUN make -C /opt
 # ---- production ---
 
 FROM alpine:3.8
-COPY --from=doc_builder /opt/bin/doc /opt/bin/doc
+COPY --from=doc_builder /opt/bin /opt/bin
