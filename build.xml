@@ -53,15 +53,32 @@
 		<ant:for list="${package-list}" param="package" trim="yes">
 			<sequential>
 				<mkdir dir="${resources.main.src.dir}/@{package}"/>
-				<jar destfile="${jar.dir}/${ant.project.name}-@{package}.jar">
-					<fileset dir="${class.dir}" includes="${organization-path}/@{package}/*.class" excludes="**/*Test.class"/>
+				<jar destfile="${jar.dir}/${project-name}-@{package}.jar">
+					<fileset dir="${class.dir}"
+						includes="${organization-path}/@{package}/*.class"
+						excludes="**/*Test.class"/>
 					<fileset dir="${resources.main.src.dir}/@{package}"/>
 				</jar>
 			</sequential>
 		</ant:for>
 	</target>
 
-	<target name="dist" depends="clean, jar">
+	<target name="zip" depends="jar">
+		<mkdir dir="${zip.dir}"/>
+		<ant:for list="${package-list}" param="package" trim="yes">
+			<sequential>
+				<zip destfile="${zip.dir}/${project-name}-@{package}.zip">
+					<zipfileset dir="${jar.dir}"
+						includes="${project-name}-@{package}.jar"
+						prefix="${project-name}/@{package}/jar" />
+					<zipfileset dir="${class.dir}/${organization-path}/@{package}"
+						prefix="${project-name}/@{package}/classes/${organization-path}/@{package}" />
+				</zip>
+			</sequential>
+		</ant:for>
+	</target>
+
+	<target name="dist" depends="clean, jar, zip">
 	</target>
 
 	<target name="clean">
