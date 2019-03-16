@@ -1,7 +1,8 @@
 # list of files that should be uploaded to remote server
 
 cs114.pdf
-Syllabus.md
+
+../../Syllabus.md Syllabus.md
 
 syllabus.pdf
 
@@ -38,3 +39,13 @@ f01.pdf   f01-sgfuuycq.pdf
 f01s.pdf  f01s-wmufdpfa.pdf
 f02.pdf   f02-czxfbrjc.pdf
 f02s.pdf  f02s-agqdbqxh.pdf
+
+../zip/umb-cs114-2015f-hw01.zip hw01s-ycwtmrpq.zip
+../zip/umb-cs114-2015f-hw02.zip hw02s-cthepcwu.zip
+../zip/umb-cs114-2015f-hw03.zip hw03s-enzswkhc.zip
+../zip/umb-cs114-2015f-hw04.zip hw04s-zmhvczmx.zip
+../zip/umb-cs114-2015f-hw05.zip hw05s-tkeqafuq.zip
+../zip/umb-cs114-2015f-m01.zip  m01s-zfgsxepe.zip
+../zip/umb-cs114-2015f-m02.zip  m02s-yyqgajkk.zip
+../zip/umb-cs114-2015f-f01.zip  f01s-wgypjkrm.zip
+../zip/umb-cs114-2015f-f02.zip  f02s-rcxeutff.zip
