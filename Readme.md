@@ -16,7 +16,7 @@ in learning fundamentals of computer programming using Java.
 
 ## Release
 
-[Version v1.0] of this repository was released on Dec 21, 2015.
+[Version 1.0] of this repository was released on Dec 21, 2015.
 A binary PDF of the entire course material can be found [here][3].
 
 ## Syllabus
@@ -48,12 +48,12 @@ For questions or further information please contact [Pejman Ghorbanzade].
 
 [University of Massachusetts Boston]: https://umb.edu
 [Pejman Ghorbanzade]: https://pejman.ghorbanzade.com
-[Version v1.0]: https://github.com/ghorbanzade/UMB-CS114-2015F/releases/tag/v1.0
-[Syllabus.md]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/src/main/md/syllabus.md
-[Install.md]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/src/main/md/dependencies.md
+[Version 1.0]: https://github.com/ghorbanzade/UMB-CS114-2015F/releases/tag/v1.0
+[Syllabus.md]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/Install.md
+[Install.md]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/Syllabus.md
 
 [1]: https://github.com/ghorbanzade/UMB-CS110-2015S
 [2]: https://github.com/ghorbanzade/UMB-CS240-2016S
-[3]: https://github.com/ghorbanzade/UMB-CS114-2015F/releases/download/v1.0/course-material.pdf
+[3]: https://github.com/ghorbanzade/UMB-CS114-2015F/releases/download/v1.1/course-material.pdf
 [4]: https://creativecommons.org/licenses/by-sa/4.0/
-[5]: License.md
+[5]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/License.md
