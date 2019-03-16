@@ -11,14 +11,14 @@ RUN apt-get update \
   # we won't ever need lists
   && rm -rf /var/lib/apt/lists/*
 
-RUN groupadd -r pejman && useradd -u 8002 --no-log-init -r -g pejman pejman
+RUN groupadd -r pejman && useradd -m -u 8002 --no-log-init -r -g pejman pejman
 
 COPY . /opt/
 
 RUN chown -R pejman:pejman /opt
 USER pejman
 
-RUN make -C /opt docs
+RUN make -C /opt
 
 # ---- production ---
 
