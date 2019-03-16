@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-    ant ghostscript latex-beamer lmodern make python-pygments \
+    ant ghostscript latex-beamer lmodern make openjdk-7-jdk python-pygments \
     texlive-fonts-recommended texlive-latex-base texlive-latex-extra \
     texlive-xetex zip \
   # we won't ever need lists

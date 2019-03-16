@@ -10,7 +10,9 @@ as well as Java source codes.
 They are released in hope that they will be useful for anyone interested
 in learning fundamentals of computer programming using Java.
 
-> You may also be interested to checkout [Introduction to Computing][1] or [Programming in C][2] course repositories that I taught in Spring 2015 and Spring 2016, respectively.
+> You may also be interested to checkout [Introduction to Computing][1]
+> or [Programming in C][2] course repositories that I taught in Spring
+> 2015 and Spring 2016, respectively.
 
 ## Release
 
@@ -20,12 +22,12 @@ A binary PDF of the entire course material can be found [here][3].
 ## Syllabus
 
 The course syllabus, as thought in Fall 2015, can be found in
-[`Syllabus`] directory.
+[Syllabus.md] page
 
 ## Development
 
 Instructions for building source codes and documents are described
-in _[dependencies]_ page.
+in [Install.md] page.
 
 ## Contribution
 
@@ -47,8 +49,8 @@ For questions or further information please contact [Pejman Ghorbanzade].
 [University of Massachusetts Boston]: https://umb.edu
 [Pejman Ghorbanzade]: https://pejman.ghorbanzade.com
 [Version v1.0]: https://github.com/ghorbanzade/UMB-CS114-2015F/releases/tag/v1.0
-[`Syllabus`]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/src/main/md/syllabus.md
-[dependencies]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/src/main/md/dependencies.md
+[Syllabus.md]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/src/main/md/syllabus.md
+[Install.md]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/src/main/md/dependencies.md
 
 [1]: https://github.com/ghorbanzade/UMB-CS110-2015S
 [2]: https://github.com/ghorbanzade/UMB-CS240-2016S
