@@ -1,6 +1,6 @@
 # Introduction to Java, Fall 2015
 
-[![Build Status](https://travis-ci.com/ghorbanzade/UMB-CS114-2015F.svg?branch=master)](http://travis-ci.com/ghorbanzade/UMB-CS114-2015F)
+[![Build Status](https://travis-ci.com/ghorbanzade/UMB-CS114-2015F.svg?branch=master)](https://travis-ci.com/ghorbanzade/UMB-CS114-2015F)
 
 This repository contains course material developed for *CS114:
 Introduction to Java* course at [University of Massachusetts Boston]
@@ -22,12 +22,12 @@ A binary PDF of the entire course material can be found [here][3].
 ## Syllabus
 
 The course syllabus, as thought in Fall 2015, can be found in
-[Syllabus.md] page
+[Syllabus.md].
 
 ## Development
 
 Instructions for building source codes and documents are described
-in [Install.md] page.
+in [Install.md].
 
 ## Contribution
 
@@ -49,8 +49,8 @@ For questions or further information please contact [Pejman Ghorbanzade].
 [University of Massachusetts Boston]: https://umb.edu
 [Pejman Ghorbanzade]: https://pejman.ghorbanzade.com
 [Version 1.0]: https://github.com/ghorbanzade/UMB-CS114-2015F/releases/tag/v1.0
-[Syllabus.md]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/Install.md
-[Install.md]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/Syllabus.md
+[Syllabus.md]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/Syllabus.md
+[Install.md]: https://github.com/ghorbanzade/UMB-CS114-2015F/blob/master/Install.md
 
 [1]: https://github.com/ghorbanzade/UMB-CS110-2015S
 [2]: https://github.com/ghorbanzade/UMB-CS240-2016S
