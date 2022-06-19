@@ -33,7 +33,7 @@ Students taking this course should have passed or be taking one of
 ## Instructor
 
 Pejman Ghorbanzade  
-Mail Address: ``mail [at] ghorbanzade [dot] com``  
+Mail Address: ``pejman [at] ghorbanzade [dot] com``  
 Office: S-3-124  
 Office Hours: Mondays, Wednesdays 16:00 to 17:30
 
